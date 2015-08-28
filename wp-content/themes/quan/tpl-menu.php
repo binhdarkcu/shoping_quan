@@ -6,7 +6,30 @@
         <span class="arw-close-canvas"><i class="fa fa-close"></i></span>
     </div>
     <div class="sidebar-menu">
-        <ul id="arw_accordionmenu" class="nav-accordion nav-mobile-accordion">
+        <?php
+
+        $defaults = array(
+            'theme_location'  => 'menu_top',
+            'menu'            => '',
+            'container_class' => '',
+            'container_id'    => '',
+            'menu_class'      => 'nav-accordion nav-mobile-accordion',
+            'menu_id'         => 'arw_accordionmenu',
+            'echo'            => true,
+            'fallback_cb'     => 'wp_page_menu',
+            'before'          => '',
+            'after'           => '',
+            'link_before'     => '',
+            'link_after'      => '',
+            'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+            'depth'           => 0,
+            'walker'          => ''
+        );
+
+        wp_nav_menu( $defaults );
+
+        ?>
+        <!--ul id="arw_accordionmenu" class="nav-accordion nav-mobile-accordion">
             <li><a href="http://m2.arexmage.com/arw_dots/"><span>Home</span></a></li>
             <li class="level0 nav-3 level-top first parent">
                 <a href="http://m2.arexmage.com/arw_dots/tv-video.html" class="level-top">
@@ -486,7 +509,7 @@
                     <span>Shop By Brands</span>
                 </a>
             </li>
-        </ul>
+        </ul-->
         <script type="text/javascript">
             jQuery(document).ready(function () {
                 jQuery("#arw_accordionmenu").arwAccordionMenu({

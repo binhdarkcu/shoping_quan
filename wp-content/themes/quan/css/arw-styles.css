@@ -4016,7 +4016,7 @@ ul.tags-list:hover li:hover a, ul.tags-list:hover li:active a, ul.tags-list:hove
 }
 .products-grid li.item > .wrapper-item {
   margin: 0 auto 30px;
-  max-width: 380px;
+  max-width: 290px;
   padding-left: 15px;
   padding-right: 15px;
   position: relative;

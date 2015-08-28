@@ -74,123 +74,17 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
-                                <div class="widget widget-static-block">
-                                    <div class="arw_dots_block_home_sidebar_1">
-                                        <div class="sidebar tab-icon-gift special-tab">
-                                            <div class="arw_tab_slider">
-                                                <ul class="slider-tab">
-                                                    <li data-enable-countdown="1" title="Deal Of The Day" id="tab_4_home_deal_of_the_day_tab" class="one_tab active first">
-                                                        <span><span>Deal Of The Day</span></span>
-                                                    </li>
-                                                    <!--
-                                                    -->
-                                                </ul>
-                                                <div class="one_tab" id="tab_4_home_deal_of_the_day_tab_contents">
-                                                    <div id="product-list-1902517679">
-                                                        <ul class="products-grid arw-1-col arw-row">
-                                                            <li class="arw-col item">
-                                                                <div class="wrapper-item">
-                                                                    <div class="arw-product-labels"><span class="arw-product-label product-sale-label"><span>Sale</span><span class="arw-label-ribbon"></span></span></div>            <input type="hidden" value="31" name="product" />
-                                                                    <div class="wrapper-item-inner  transform-effect vertical-effect skin1-effect">
-                                                                        <div class="outer-image">
-                                                                            <a href="http://m2.arexmage.com/arw_dots/apple-iphone-22.html" title="Apple iPhone 6" class="product-image">
-                                                                                <img class="front product-collection-image" src="http://m2.arexmage.com/arw_dots/media/catalog/product/cache/1/small_image/270x300/170ec19af00183b5e0368529fc2daa2f/e/p/ep_0003_b00nqgp5m8_1_1.jpg" alt="Apple iPhone 6" />
-                                                                                <img class="back" src="http://m2.arexmage.com/arw_dots/media/catalog/product/cache/1/small_image/270x300/170ec19af00183b5e0368529fc2daa2f/e/p/ep_0002_b00nqgp5m8_2.jpg" alt="" />
-                                                                            </a>
-                                                                        </div>
-                                                                        <div class="actions">
-                                                                            <button data-toggle="tooltip" data-placement="left" onclick="setLocation('http://m2.arexmage.com/arw_dots/apple-iphone-22.html')" class="button btn-cart" title="Add to Cart"><span><span class="icon_bag"></span></span></button>
-                                                                            <!--
-                                                                            -->
-                                                                            <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/wishlist/index/add/product/31/form_key/fY84n4ctdiOHbUdq/" class="button link-wishlist" title="Add to Wishlist"><span class="fa fa-heart"></span></a>
-                                                                            <!--
-                                                                            -->
-                                                                            <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/catalog/product_compare/add/product/31/uenc/aHR0cDovL20yLmFyZXhtYWdlLmNvbS9hcndfZG90cy8,/form_key/fY84n4ctdiOHbUdq/" class="button link-compare" title="Add to Compare"><span class="fa fa-bar-chart"></span></a>
-                                                                            <!--
-                                                                            -->
-                                                                            <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/arexworks/quickview/index/product_id/31/" class="button link-quickview" title="Quick View"><span class="fa fa-search-plus"></span></a>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="product-info">
-                                                                        <div class="row no-margin">
-                                                                            <div class="col-xs-8 arw-info-separator">
-                                                                                <h2 class="product-name">
-                                                                                    <a href="http://m2.arexmage.com/arw_dots/apple-iphone-22.html" title="Apple iPhone 6">
-                                                                                        <span title="Apple iPhone 6">Apple iPhone 6</span>
-                                                                                    </a>
-                                                                                </h2>
-                                                                                <div class="ratings">
-                                                                                    <span class="amount"><a href="#" onclick="var t = opener ? opener.window : window; t.location.href='http://m2.arexmage.com/arw_dots/review/product/list/id/31/'; return false;">1 Review(s)</a></span>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-xs-4 no-padding">
-
-
-
-                                                                                <div class="price-box">
-
-                                                                                    <p class="old-price">
-                                                                                        <span class="price-label">Regular Price:</span>
-                                                                                        <span class="price" id="old-price-31">
-                                                                                            $823.95
-                                                                                        </span>
-                                                                                    </p>
-
-                                                                                    <p class="special-price">
-                                                                                        <span class="price-label">Special Price</span>
-                                                                                        <span class="price" content="799.99" id="product-price-31">
-                                                                                            $799.99
-                                                                                        </span>
-                                                                                    </p>
-
-
-                                                                                </div>
-
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="arw-countdown-for-product" data-jcddata="07/10/2015 04:06:46" data-cdate="06/30/2030 12:00:00"></div>
-                                                                </div>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    
-                                                </div>
-                                                <div class="ajax_loading_tab"></div>
-                                                <div class="backgroundajax_tab"></div>
-                                            </div>
-
-                                            <div class="widget widget-static-block">
-                                                <div class="arw_dots_block_banner_3">
-                                                    <div class="block block-banner">
-                                                        <div class="block-content background-dae7ef min-height-370 text-uppercase text-center hover-effect-ming">
-                                                            <h3 class="font-size-36 font-weight-900 margin-top-15 margin-bottom-0 font-text">Freeship</h3>
-                                                            <p class="font-size-16 font-weight-700 margin-bottom-20 letter-spacing-1">Order more 500$</p>
-                                                            <a href="#">
-                                                                <img src="http://m2.arexmage.com/arw_dots/media/wysiwyg/arw/dots/_banners/banner-3.png" class="img-thumbnail" alt="banner image" />
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="col-xs-12 col-sm-8 col-md-8 col-lg-9">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                 <div class="arw_tab_slider">
                                     <ul class="slider-tab">
                                         <li data-enable-countdown="0" title="New Arrivals" id="tab_2_home_new_arrivals_tab" class="one_tab active first">
-                                            <span><span>New Arrivals</span></span>
+                                            <span><span>Sản phẩm mới</span></span>
                                         </li>
                                         <!--
                                         -->
                                     </ul>
                                     <div class="one_tab" id="tab_2_home_new_arrivals_tab_contents">
-                                        <div id="product-list-1838212428">
+                                        <div class="product-list-index">
                                             <ul class="products-slide products-grid arw-1-col arw-row">
                                                 <li class="arw-col item">
                                                     <div class="wrapper-item">
@@ -294,8 +188,6 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </li>
-                                                <li class="arw-col item">
                                                     <div class="wrapper-item">
                                                         <input type="hidden" value="21" name="product" />
                                                         <div class="wrapper-item-inner ">
@@ -396,8 +288,6 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </li>
-                                                <li class="arw-col item">
                                                     <div class="wrapper-item">
                                                         <input type="hidden" value="29" name="product" />
                                                         <div class="wrapper-item-inner ">
@@ -495,8 +385,6 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </li>
-                                                <li class="arw-col item">
                                                     <div class="wrapper-item">
                                                         <input type="hidden" value="24" name="product" />
                                                         <div class="wrapper-item-inner ">
@@ -597,8 +485,6 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </li>
-                                                <li class="arw-col item">
                                                     <div class="wrapper-item">
                                                         <input type="hidden" value="11" name="product" />
                                                         <div class="wrapper-item-inner ">
@@ -696,8 +582,6 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </li>
-                                                <li class="arw-col item">
                                                     <div class="wrapper-item">
                                                         <input type="hidden" value="28" name="product" />
                                                         <div class="wrapper-item-inner ">
@@ -799,36 +683,10 @@
                                                         </div>
                                                     </div>
                                                 </li>
+                                               
                                             </ul>
                                         </div>
-                                        <script type="text/javascript">
-                                            jQuery(document).ready(function () {
-                                                var owl = jQuery('#product-list-1838212428 .products-slide');
-                                                owl.owlCarousel({
-                                                    lazyLoad: false,
-                                                    nav: true,
-                                                    navText: ["<i class='arrow_left'></i>", "<i class='arrow_right'></i>"],
-                                                    margin: 0,
-                                                    loop: false,
-                                                    dots: true, responsive: {
-                                                        1200: { items: 3 }, 992: { items: 2 }, 768: { items: 2 }, 480: { items: 2 }, 320: { items: 1 }, 0: { items: 1 }
-                                                    }
-                                                });
-                                                arexworks.Frontend.initOwlGalleryImage(jQuery('#product-list-1838212428 .product-image.product-image-slideshow .wrapper-slideshow'));
-                                                setTimeout(function () {
-                                                    equalheight2(jQuery('#product-list-1838212428 .products-slide'), '.product-info');
-                                                }, 1000);
-                                                jQuery(window)
-                                                    .load(function () {
-                                                        equalheight2(jQuery('#product-list-1838212428 .products-slide'), '.product-info');
-                                                    })
-                                                    .resize(function () {
-                                                        setTimeout(function () {
-                                                            equalheight2(jQuery('#product-list-1838212428 .products-slide'), '.product-info');
-                                                        }, 1000);
-                                                    })
-                                            });
-                                        </script>
+                                        
                                     </div>
                                     <div class="ajax_loading_tab"></div>
                                     <div class="backgroundajax_tab"></div>
@@ -836,94 +694,23 @@
 
                             </div>
                         </div>
-                        <div class="widget widget-static-block">
-                            <div class="arw_dots_block_banner_2">
-                                <div class="row">
-                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                        <div class="block block-banner">
-                                            <div class="block-content background-f8f7f7 min-height-233 hover-effect-apollo">
-                                                <div class="row no-margin">
-                                                    <div class="col-xs-12 col-sm-6 col-sm-push-6 text-center">
-                                                        <h2 class="font-size-36 font-weight-700 text-uppercase margin-left-50 margin-right-50 border-bottom-1 border-color-e5e5e3 color-1b1d1c">Trusted Unlocker</h2>
-                                                        <p class="margin-bottom-30">For All Samsung Phone Since 2015</p>
-                                                        <a class="button" href="#">Shop Now</a>
-                                                    </div>
-                                                    <div class="col-xs-12 col-sm-6 col-sm-pull-6">
-                                                        <a href="#">
-                                                            <img class="img-thumbnail padding-left-35 padding-top-89" alt="banner image" src="http://m2.arexmage.com/arw_dots/media/wysiwyg/arw/dots/_banners/banner-2.png" />
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        
 
                         <div class="widget widget-static-block">
                             <div class="arw_dots_block_featured_products_tab">
                                 <div class="row">
-                                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
-                                        <div class="widget widget-static-block">
-                                            <div class="arw_dots_block_home_sidebar_2">
-                                                <div class="sidebar">
-                                                    <div class="widget widget-static-block">
-                                                        <div class="arw_dots_block_banner_4">
-                                                            <div class="block block-banner">
-                                                                <div class="block-content background-f8f7f7 min-height-342 text-center hover-effect-bubba">
-                                                                    <h3 class="font-weight-900 font-size-18 text-uppercase margin-top-60 color-333333">Macbook New</h3>
-                                                                    <p>All the power you want. All day long</p>
-                                                                    <a href="#">
-                                                                        <img src="http://m2.arexmage.com/arw_dots/media/wysiwyg/arw/dots/_banners/banner-4.png" class="img-thumbnail" alt="banner image" />
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="block block-subscribe">
-                                                        <div class="block-title">
-                                                            <strong><span>Newsletter</span></strong>
-                                                        </div>
-                                                        <form action="http://m2.arexmage.com/arw_dots/newsletter/subscriber/new/" method="post" id="newsletter-validate-detail">
-                                                            <div class="block-content">
-                                                                <h2 class="form-subscribe-title">Newsletter</h2>
-                                                                <div class="form-subscribe-header">
-                                                                    <label for="newsletter">Sign Up for Our Newsletter</label>
-                                                                </div>
-                                                                <p class="form-subscribe-subtitle">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium...</p>
-                                                                <div class="input-box">
-                                                                    <input type="text" name="email" id="newsletter" title="Sign up for our newsletter" class="input-text required-entry validate-email" />
-                                                                </div>
-                                                                <div class="actions">
-                                                                    <button type="submit" title="Subscribe" class="button"><span><span>Subscribe</span></span></button>
-                                                                </div>
-                                                            </div>
-                                                        </form>
-                                                        <script type="text/javascript">
-                                                            //<![CDATA[
-                                                            var newsletterSubscriberFormDetail = new VarienForm('newsletter-validate-detail');
-                                                            //]]>
-                                                        </script>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-9">
+                                    
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                         <div class="arw_tab_slider">
                                             <ul class="slider-tab">
                                                 <li data-enable-countdown="0" title="Featured Product" id="tab_3_home_featured_tab" class="one_tab active first">
-                                                    <span><span>Featured Product</span></span>
+                                                    <span><span>Sản phẩm nổi trội</span></span>
                                                 </li>
                                                 <!--
                                                 -->
                                             </ul>
                                             <div class="one_tab" id="tab_3_home_featured_tab_contents">
-                                                <div id="product-list-1039537814">
+                                                <div class="product-list-index">
                                                     <ul class="products-slide products-grid arw-1-col arw-row">
                                                         <li class="arw-col item">
                                                             <div class="wrapper-item">
@@ -1027,8 +814,6 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </li>
-                                                        <li class="arw-col item">
                                                             <div class="wrapper-item">
                                                                 <input type="hidden" value="45" name="product" />
                                                                 <div class="wrapper-item-inner ">
@@ -1130,8 +915,6 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </li>
-                                                        <li class="arw-col item">
                                                             <div class="wrapper-item">
                                                                 <input type="hidden" value="38" name="product" />
                                                                 <div class="wrapper-item-inner  transform-effect vertical-effect skin1-effect">
@@ -1233,111 +1016,6 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </li>
-                                                        <li class="arw-col item">
-                                                            <div class="wrapper-item">
-                                                                <input type="hidden" value="20" name="product" />
-                                                                <div class="wrapper-item-inner  transform-effect vertical-effect skin1-effect">
-                                                                    <div class="outer-image">
-                                                                        <a href="http://m2.arexmage.com/arw_dots/panasonic-lumix-dmc-fz200.html" title="Panasonic Lumix FZ200" class="product-image">
-                                                                            <img class="front product-collection-image" src="http://m2.arexmage.com/arw_dots/media/catalog/product/cache/1/small_image/270x300/170ec19af00183b5e0368529fc2daa2f/e/p/ep_0019_b008mb6zx0_1.jpg" alt="Panasonic Lumix FZ200" />
-                                                                            <img class="back" src="http://m2.arexmage.com/arw_dots/media/catalog/product/cache/1/small_image/270x300/170ec19af00183b5e0368529fc2daa2f/e/p/ep_0018_b008mb6zx0_2.jpg" alt="" />
-                                                                        </a>
-                                                                    </div>
-                                                                    <div class="actions">
-                                                                        <button data-toggle="tooltip" data-placement="left" onclick="setLocation('http://m2.arexmage.com/arw_dots/checkout/cart/add/uenc/aHR0cDovL20yLmFyZXhtYWdlLmNvbS9hcndfZG90cy8,/product/20/form_key/fY84n4ctdiOHbUdq/')" class="button btn-cart" title="Add to Cart"><span><span class="icon_bag"></span></span></button>
-                                                                        <!--
-                                                                        -->
-                                                                        <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/wishlist/index/add/product/20/form_key/fY84n4ctdiOHbUdq/" class="button link-wishlist" title="Add to Wishlist"><span class="fa fa-heart"></span></a>
-                                                                        <!--
-                                                                        -->
-                                                                        <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/catalog/product_compare/add/product/20/uenc/aHR0cDovL20yLmFyZXhtYWdlLmNvbS9hcndfZG90cy8,/form_key/fY84n4ctdiOHbUdq/" class="button link-compare" title="Add to Compare"><span class="fa fa-bar-chart"></span></a>
-                                                                        <!--
-                                                                        -->
-                                                                        <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/arexworks/quickview/index/product_id/20/" class="button link-quickview" title="Quick View"><span class="fa fa-search-plus"></span></a>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="product-info">
-                                                                    <div class="row no-margin">
-                                                                        <div class="col-xs-8 arw-info-separator">
-                                                                            <h2 class="product-name">
-                                                                                <a href="http://m2.arexmage.com/arw_dots/panasonic-lumix-dmc-fz200.html" title="Panasonic Lumix FZ200">
-                                                                                    <span title="Panasonic Lumix FZ200">Panasonic Lumix FZ200</span>
-                                                                                </a>
-                                                                            </h2>
-                                                                            <div class="ratings">
-                                                                                <div class="rating-box">
-                                                                                    <div class="rating" style="width:0%"></div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-xs-4 no-padding">
-
-
-
-                                                                            <div class="price-box">
-                                                                                <span class="regular-price" id="product-price-20">
-                                                                                    <span class="price" content="397.99">$397.99</span>
-                                                                                </span>
-
-                                                                            </div>
-
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="wrapper-item">
-                                                                <input type="hidden" value="12" name="product" />
-                                                                <div class="wrapper-item-inner ">
-                                                                    <div class="outer-image">
-                                                                        <a href="http://m2.arexmage.com/arw_dots/vic-firth-drummer-s-headphones.html" title="Vic Firth Drummer's" class="product-image">
-                                                                            <img class="front product-collection-image" src="http://m2.arexmage.com/arw_dots/media/catalog/product/cache/1/small_image/270x300/170ec19af00183b5e0368529fc2daa2f/e/p/ep_0025_b0002f513e_1.jpg" alt="Vic Firth Drummer's" />
-                                                                        </a>
-                                                                    </div>
-                                                                    <div class="actions">
-                                                                        <button data-toggle="tooltip" data-placement="left" onclick="setLocation('http://m2.arexmage.com/arw_dots/checkout/cart/add/uenc/aHR0cDovL20yLmFyZXhtYWdlLmNvbS9hcndfZG90cy8,/product/12/form_key/fY84n4ctdiOHbUdq/')" class="button btn-cart" title="Add to Cart"><span><span class="icon_bag"></span></span></button>
-                                                                        <!--
-                                                                        -->
-                                                                        <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/wishlist/index/add/product/12/form_key/fY84n4ctdiOHbUdq/" class="button link-wishlist" title="Add to Wishlist"><span class="fa fa-heart"></span></a>
-                                                                        <!--
-                                                                        -->
-                                                                        <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/catalog/product_compare/add/product/12/uenc/aHR0cDovL20yLmFyZXhtYWdlLmNvbS9hcndfZG90cy8,/form_key/fY84n4ctdiOHbUdq/" class="button link-compare" title="Add to Compare"><span class="fa fa-bar-chart"></span></a>
-                                                                        <!--
-                                                                        -->
-                                                                        <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/arexworks/quickview/index/product_id/12/" class="button link-quickview" title="Quick View"><span class="fa fa-search-plus"></span></a>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="product-info">
-                                                                    <div class="row no-margin">
-                                                                        <div class="col-xs-8 arw-info-separator">
-                                                                            <h2 class="product-name">
-                                                                                <a href="http://m2.arexmage.com/arw_dots/vic-firth-drummer-s-headphones.html" title="Vic Firth Drummer's">
-                                                                                    <span title="Vic Firth Drummer's">Vic Firth Drummer's</span>
-                                                                                </a>
-                                                                            </h2>
-                                                                            <div class="ratings">
-                                                                                <div class="rating-box">
-                                                                                    <div class="rating" style="width:0%"></div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-xs-4 no-padding">
-
-
-
-                                                                            <div class="price-box">
-                                                                                <span class="regular-price" id="product-price-12">
-                                                                                    <span class="price" content="25.03">$25.03</span>
-                                                                                </span>
-
-                                                                            </div>
-
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="arw-col item">
                                                             <div class="wrapper-item">
                                                                 <div class="arw-product-labels"><span class="arw-product-label product-sale-label"><span>Sale</span><span class="arw-label-ribbon"></span></span></div>            <input type="hidden" value="9" name="product" />
                                                                 <div class="wrapper-item-inner ">
@@ -1451,8 +1129,107 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </li>
-                                                        <li class="arw-col item">
+                                                            <div class="wrapper-item">
+                                                                <input type="hidden" value="20" name="product" />
+                                                                <div class="wrapper-item-inner  transform-effect vertical-effect skin1-effect">
+                                                                    <div class="outer-image">
+                                                                        <a href="http://m2.arexmage.com/arw_dots/panasonic-lumix-dmc-fz200.html" title="Panasonic Lumix FZ200" class="product-image">
+                                                                            <img class="front product-collection-image" src="http://m2.arexmage.com/arw_dots/media/catalog/product/cache/1/small_image/270x300/170ec19af00183b5e0368529fc2daa2f/e/p/ep_0019_b008mb6zx0_1.jpg" alt="Panasonic Lumix FZ200" />
+                                                                            <img class="back" src="http://m2.arexmage.com/arw_dots/media/catalog/product/cache/1/small_image/270x300/170ec19af00183b5e0368529fc2daa2f/e/p/ep_0018_b008mb6zx0_2.jpg" alt="" />
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="actions">
+                                                                        <button data-toggle="tooltip" data-placement="left" onclick="setLocation('http://m2.arexmage.com/arw_dots/checkout/cart/add/uenc/aHR0cDovL20yLmFyZXhtYWdlLmNvbS9hcndfZG90cy8,/product/20/form_key/fY84n4ctdiOHbUdq/')" class="button btn-cart" title="Add to Cart"><span><span class="icon_bag"></span></span></button>
+                                                                        <!--
+                                                                        -->
+                                                                        <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/wishlist/index/add/product/20/form_key/fY84n4ctdiOHbUdq/" class="button link-wishlist" title="Add to Wishlist"><span class="fa fa-heart"></span></a>
+                                                                        <!--
+                                                                        -->
+                                                                        <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/catalog/product_compare/add/product/20/uenc/aHR0cDovL20yLmFyZXhtYWdlLmNvbS9hcndfZG90cy8,/form_key/fY84n4ctdiOHbUdq/" class="button link-compare" title="Add to Compare"><span class="fa fa-bar-chart"></span></a>
+                                                                        <!--
+                                                                        -->
+                                                                        <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/arexworks/quickview/index/product_id/20/" class="button link-quickview" title="Quick View"><span class="fa fa-search-plus"></span></a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="product-info">
+                                                                    <div class="row no-margin">
+                                                                        <div class="col-xs-8 arw-info-separator">
+                                                                            <h2 class="product-name">
+                                                                                <a href="http://m2.arexmage.com/arw_dots/panasonic-lumix-dmc-fz200.html" title="Panasonic Lumix FZ200">
+                                                                                    <span title="Panasonic Lumix FZ200">Panasonic Lumix FZ200</span>
+                                                                                </a>
+                                                                            </h2>
+                                                                            <div class="ratings">
+                                                                                <div class="rating-box">
+                                                                                    <div class="rating" style="width:0%"></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-xs-4 no-padding">
+
+
+
+                                                                            <div class="price-box">
+                                                                                <span class="regular-price" id="product-price-20">
+                                                                                    <span class="price" content="397.99">$397.99</span>
+                                                                                </span>
+
+                                                                            </div>
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="wrapper-item">
+                                                                <input type="hidden" value="12" name="product" />
+                                                                <div class="wrapper-item-inner ">
+                                                                    <div class="outer-image">
+                                                                        <a href="http://m2.arexmage.com/arw_dots/vic-firth-drummer-s-headphones.html" title="Vic Firth Drummer's" class="product-image">
+                                                                            <img class="front product-collection-image" src="http://m2.arexmage.com/arw_dots/media/catalog/product/cache/1/small_image/270x300/170ec19af00183b5e0368529fc2daa2f/e/p/ep_0025_b0002f513e_1.jpg" alt="Vic Firth Drummer's" />
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="actions">
+                                                                        <button data-toggle="tooltip" data-placement="left" onclick="setLocation('http://m2.arexmage.com/arw_dots/checkout/cart/add/uenc/aHR0cDovL20yLmFyZXhtYWdlLmNvbS9hcndfZG90cy8,/product/12/form_key/fY84n4ctdiOHbUdq/')" class="button btn-cart" title="Add to Cart"><span><span class="icon_bag"></span></span></button>
+                                                                        <!--
+                                                                        -->
+                                                                        <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/wishlist/index/add/product/12/form_key/fY84n4ctdiOHbUdq/" class="button link-wishlist" title="Add to Wishlist"><span class="fa fa-heart"></span></a>
+                                                                        <!--
+                                                                        -->
+                                                                        <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/catalog/product_compare/add/product/12/uenc/aHR0cDovL20yLmFyZXhtYWdlLmNvbS9hcndfZG90cy8,/form_key/fY84n4ctdiOHbUdq/" class="button link-compare" title="Add to Compare"><span class="fa fa-bar-chart"></span></a>
+                                                                        <!--
+                                                                        -->
+                                                                        <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/arexworks/quickview/index/product_id/12/" class="button link-quickview" title="Quick View"><span class="fa fa-search-plus"></span></a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="product-info">
+                                                                    <div class="row no-margin">
+                                                                        <div class="col-xs-8 arw-info-separator">
+                                                                            <h2 class="product-name">
+                                                                                <a href="http://m2.arexmage.com/arw_dots/vic-firth-drummer-s-headphones.html" title="Vic Firth Drummer's">
+                                                                                    <span title="Vic Firth Drummer's">Vic Firth Drummer's</span>
+                                                                                </a>
+                                                                            </h2>
+                                                                            <div class="ratings">
+                                                                                <div class="rating-box">
+                                                                                    <div class="rating" style="width:0%"></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-xs-4 no-padding">
+
+
+
+                                                                            <div class="price-box">
+                                                                                <span class="regular-price" id="product-price-12">
+                                                                                    <span class="price" content="25.03">$25.03</span>
+                                                                                </span>
+
+                                                                            </div>
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                             <div class="wrapper-item">
                                                                 <input type="hidden" value="18" name="product" />
                                                                 <div class="wrapper-item-inner ">
@@ -1556,34 +1333,7 @@
                                                         </li>
                                                     </ul>
                                                 </div>
-                                                <script type="text/javascript">
-                                                    jQuery(document).ready(function () {
-                                                        var owl = jQuery('#product-list-1039537814 .products-slide');
-                                                        owl.owlCarousel({
-                                                            lazyLoad: false,
-                                                            nav: true,
-                                                            navText: ["<i class='arrow_left'></i>", "<i class='arrow_right'></i>"],
-                                                            margin: 0,
-                                                            loop: false,
-                                                            dots: false, responsive: {
-                                                                1200: { items: 3 }, 992: { items: 2 }, 768: { items: 2 }, 480: { items: 2 }, 320: { items: 1 }, 0: { items: 1 }
-                                                            }
-                                                        });
-                                                        arexworks.Frontend.initOwlGalleryImage(jQuery('#product-list-1039537814 .product-image.product-image-slideshow .wrapper-slideshow'));
-                                                        setTimeout(function () {
-                                                            equalheight2(jQuery('#product-list-1039537814 .products-slide'), '.product-info');
-                                                        }, 1000);
-                                                        jQuery(window)
-                                                            .load(function () {
-                                                                equalheight2(jQuery('#product-list-1039537814 .products-slide'), '.product-info');
-                                                            })
-                                                            .resize(function () {
-                                                                setTimeout(function () {
-                                                                    equalheight2(jQuery('#product-list-1039537814 .products-slide'), '.product-info');
-                                                                }, 1000);
-                                                            })
-                                                    });
-                                                </script>
+                                               
                                             </div>
                                             <div class="ajax_loading_tab"></div>
                                             <div class="backgroundajax_tab"></div>

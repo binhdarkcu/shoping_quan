@@ -133,7 +133,31 @@
                         </div>
                         <div class="clearfix"></div>
                         <div class="nav-container hidden-xs">
-                            <ul id="arw_nav" class="megamenu">
+                            <?php
+
+                            $defaults = array(
+                                'theme_location'  => 'menu_top',
+                                'menu'            => '',
+                                'container_class' => '',
+                                'container_id'    => '',
+                                'menu_class'      => 'megamenu',
+                                'menu_id'         => 'arw_nav',
+                                'echo'            => true,
+                                'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>'
+                            );
+
+                            wp_nav_menu( $defaults );
+
+                            ?>
+                            <script type="text/javascript">
+                                jQuery(function () {
+                                    jQuery(".megamenu").megamenu({
+                                        'animation': 'show',
+                                        'mm_timeout': 0
+                                    });
+                                });
+                            </script>
+                            <!--ul id="arw_nav" class="megamenu">
                                 <li class="level0 home level-top  active m-dropdown ">
                                     <a href="http://m2.arexmage.com/arw_dots/" class="level-top"><span>Home</span></a>
                                 </li>
@@ -387,16 +411,9 @@
                                         <span>Shop By Brands</span>
                                     </a>
                                 </li>
-                            </ul>
+                            </ul-->
                         </div>
-                        <script type="text/javascript">
-                            jQuery(function () {
-                                jQuery(".megamenu").megamenu({
-                                    'animation': 'show',
-                                    'mm_timeout': 0
-                                });
-                            });
-                        </script>
+                        
                     </nav>
                     
                 </div>

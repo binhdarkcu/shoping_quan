@@ -198,21 +198,21 @@ function arw_equal_height(container){
                         mm_timeout: 0
                     }, options);
                     var megamenu_object = this;
-                    megamenu_object.find("li.parent").each(function(){
+                    megamenu_object.find("li.menu-item").each(function(){
                         var cat_icon = '<i class="item-has-sub fa fa-angle-right"></i>';
                         if($(this).hasClass('level0')){
                             cat_icon = '<i class="item-has-sub fa fa-angle-down"></i>';
                         }
                         $(this).children('a').append(cat_icon);
-                        var mm_item = $(this).children('div');
+                        var mm_item = $(this).children('.sub-wrapper');
                         mm_item.hide();
                         mm_item.wrapInner('<div class="list_item_dropdown clearfix"></div>');
                         var timer = 0;
                         $(this).bind('mouseenter', function(e){
                             $(this).children('a').addClass('arw-hover');
-                            var mm_item_obj = $(this).children('div');
+                            var mm_item_obj = $(this).children('.sub-wrapper');
                             clearTimeout(timer);
-                            var check_menu = $(this).find('div.list_item_dropdown');
+                            var check_menu = $(this).find('.list_item_dropdown');
                             if(mm_item.length >0 && check_menu.length >0){
                                 if(check_menu.html().length>1){
                                     timer = setTimeout(function(){
@@ -238,7 +238,7 @@ function arw_equal_height(container){
                             }
                         });
                         $(this).bind('mouseleave', function(e){
-                            var mm_item_obj = $(this).children('div');
+                            var mm_item_obj = $(this).children('.sub-wrapper');
                             $(this).children('a').removeClass('arw-hover');
                             clearTimeout(timer);
                             switch(options.animation) {

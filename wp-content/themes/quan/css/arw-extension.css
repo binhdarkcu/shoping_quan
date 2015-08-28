@@ -955,7 +955,8 @@ div.ajax_loading_tab {
   vertical-align: middle;
   width: 0;
 }
-.megamenu .parent .sub-wrapper {
+.megamenu .parent .sub-wrapper,
+.megamenu .menu-item .sub-wrapper {
   left: 0;
   min-width: 17em;
   position: absolute;
@@ -977,6 +978,10 @@ div.ajax_loading_tab {
   -ms-box-shadow: 1px 6px 7px 0 rgba(0, 0, 0, 0.15);
   -o-box-shadow: 1px 6px 7px 0 rgba(0, 0, 0, 0.15);
   box-shadow: 1px 6px 7px 0 rgba(0, 0, 0, 0.15);
+}
+.megamenu .sub-wrapper li.menu-item{
+  padding-right: 15px;
+      width: 24%;
 }
 .megamenu .sub-wrapper.dropdown {
   padding-bottom: 0;
@@ -1276,12 +1281,12 @@ div.ajax_loading_tab {
 */
 /* Clear every first item in each row (row: group of n items) */
 /* Item grid: 1 column */
-.itemgrid-1col .item {
+.itemgrid-1col .item, .itemgrid-1col .menu-item {
   width: 98%;
 }
 
 /* Item grid: 2 columns */
-.itemgrid-2col .item {
+.itemgrid-2col .item, .itemgrid-2col .menu-item {
   width: 48%;
 }
 
@@ -1290,20 +1295,20 @@ div.ajax_loading_tab {
 }
 
 /* Item grid: 3 columns */
-.itemgrid-3col .item {
+.itemgrid-3col .item, .itemgrid-3col .menu-item {
   width: 31.333%;
 }
 
-.itemgrid-3col .item:nth-child(3n+1) {
+.itemgrid-3col .item:nth-child(3n+1), .itemgrid-3col .menu-item:nth-child(3n+1) {
   clear: left;
 }
 
 /* Item grid: 4 columns */
-.itemgrid-4col .item {
+.itemgrid-4col .item, .itemgrid-4col .menu-item {
   width: 23%;
 }
 
-.itemgrid-4col .item:nth-child(4n+1) {
+.itemgrid-4col .item:nth-child(4n+1), .itemgrid-4col .menu-item:nth-child(4n+1) {
   clear: left;
 }
 
@@ -1481,11 +1486,11 @@ div.ajax_loading_tab {
   text-transform: uppercase;
   white-space: nowrap;
 }
-.nav-primary-container .megamenu > li > a > span {
+.megamenu > li > a > span {
   padding-bottom: 1px;
   padding-top: 1px;
 }
-.nav-primary-container .megamenu > li.parent > a:after {
+.megamenu > li.menu-item-has-children > a:after {
   border-right: 4px solid transparent;
   border-left: 4px solid transparent;
   border-top: 4px solid currentColor;
@@ -1503,7 +1508,8 @@ div.ajax_loading_tab {
 .nav-primary-container .megamenu > li.active > a, .nav-primary-container .megamenu > li:hover > a {
   border-bottom-color: #2dc1bf;
 }
-.nav-primary-container .megamenu > li > .sub-wrapper {
+.nav-primary-container .megamenu > li > .sub-wrapper,
+.nav-primary-container .megamenu > li > .sub-menu {
   top: auto;
 }
 
