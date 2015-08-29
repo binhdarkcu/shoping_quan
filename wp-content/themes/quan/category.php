@@ -1,4 +1,8 @@
 <?php get_header('category');?>
+<?php
+	$category = get_queried_object();
+	
+?>
 <div class="main-container col2-left-layout">
     <div class="arw_breadcrumbs">
     	<div class="container">

@@ -15,95 +15,24 @@
                                 <div class="form-search">
                                     <select class="search-select-cat" name="cat">
                                         <option value="0">All Category</option>
-                                        <option value='3'>TV & Video</option>
-                                        <option value='11'>&nbsp;&nbsp;&nbsp;TVs by Type</option>
-                                        <option value='72'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4K Ultra HD TVs</option>
-                                        <option value='73'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Curved TVs</option>
-                                        <option value='74'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LED & LCD TVs</option>
-                                        <option value='75'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OLED TVs</option>
-                                        <option value='76'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Smart TVs</option>
-                                        <option value='12'>&nbsp;&nbsp;&nbsp;TVs by Screen Size</option>
-                                        <option value='77'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;32 Inches and Under</option>
-                                        <option value='78'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;33 to 43 Inches</option>
-                                        <option value='79'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;44 to 49 Inches</option>
-                                        <option value='80'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;50 to 59 Inches</option>
-                                        <option value='81'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;60 Inches and Up</option>
-                                        <option value='13'>&nbsp;&nbsp;&nbsp;TVs by Price</option>
-                                        <option value='82'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Under $500</option>
-                                        <option value='83'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$500 to $999</option>
-                                        <option value='84'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$1,000 to $1,999</option>
-                                        <option value='85'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$2,000 to $2,999</option>
-                                        <option value='86'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$3,000 and Above</option>
-                                        <option value='91'>&nbsp;&nbsp;&nbsp;Videos</option>
-                                        <option value='14'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Streaming Media Players</option>
-                                        <option value='87'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Stream Content</option>
-                                        <option value='88'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Enhance Live TV</option>
-                                        <option value='89'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cast Content to Your TV</option>
-                                        <option value='90'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Best Sellers</option>
-                                        <option value='15'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Blu-ray Players</option>
-                                        <option value='16'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Projectors</option>
-                                        <option value='17'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Home Audio</option>
-                                        <option value='18'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Accessories</option>
-                                        <option value='4'>Home Audio & Theater</option>
-                                        <option value='19'>&nbsp;&nbsp;&nbsp;Speakers</option>
-                                        <option value='20'>&nbsp;&nbsp;&nbsp;Home Theater</option>
-                                        <option value='21'>&nbsp;&nbsp;&nbsp;Wireless & Multiroom</option>
-                                        <option value='22'>&nbsp;&nbsp;&nbsp;Stereo Components</option>
-                                        <option value='23'>&nbsp;&nbsp;&nbsp;Radios & Portable</option>
-                                        <option value='24'>&nbsp;&nbsp;&nbsp;Audio Accessories</option>
-                                        <option value='5'>Camera, Photo & Video</option>
-                                        <option value='25'>&nbsp;&nbsp;&nbsp;Point-and-Shoots</option>
-                                        <option value='26'>&nbsp;&nbsp;&nbsp;Compact System Cameras</option>
-                                        <option value='27'>&nbsp;&nbsp;&nbsp;Digital SLRs</option>
-                                        <option value='28'>&nbsp;&nbsp;&nbsp;Lenses</option>
-                                        <option value='29'>&nbsp;&nbsp;&nbsp;Optics</option>
-                                        <option value='30'>&nbsp;&nbsp;&nbsp;Camcorders</option>
-                                        <option value='31'>&nbsp;&nbsp;&nbsp;Cases & Bags</option>
-                                        <option value='32'>&nbsp;&nbsp;&nbsp;Accessories</option>
-                                        <option value='33'>&nbsp;&nbsp;&nbsp;Surveillance</option>
-                                        <option value='34'>&nbsp;&nbsp;&nbsp;Bundles</option>
-                                        <option value='6'>Cell Phones & Accessories</option>
-                                        <option value='35'>&nbsp;&nbsp;&nbsp;Phones & Tablets with Plans</option>
-                                        <option value='36'>&nbsp;&nbsp;&nbsp;No-Contract Phones</option>
-                                        <option value='37'>&nbsp;&nbsp;&nbsp;Unlocked Phones</option>
-                                        <option value='38'>&nbsp;&nbsp;&nbsp;Bluetooth Headsets</option>
-                                        <option value='39'>&nbsp;&nbsp;&nbsp;Smart Watches</option>
-                                        <option value='40'>&nbsp;&nbsp;&nbsp;Cases & Covers</option>
-                                        <option value='41'>&nbsp;&nbsp;&nbsp;All Accessories</option>
-                                        <option value='42'>&nbsp;&nbsp;&nbsp;Chargers</option>
-                                        <option value='43'>&nbsp;&nbsp;&nbsp;Batteries</option>
-                                        <option value='44'>&nbsp;&nbsp;&nbsp;Bluetooth Speakers</option>
-                                        <option value='7'>Video Games</option>
-                                        <option value='45'>&nbsp;&nbsp;&nbsp;Fire TV</option>
-                                        <option value='46'>&nbsp;&nbsp;&nbsp;Playstation 4</option>
-                                        <option value='47'>&nbsp;&nbsp;&nbsp;Xbox One</option>
-                                        <option value='48'>&nbsp;&nbsp;&nbsp;Handhelds</option>
-                                        <option value='49'>&nbsp;&nbsp;&nbsp;Nintendo</option>
-                                        <option value='50'>&nbsp;&nbsp;&nbsp;Playstation 3</option>
-                                        <option value='51'>&nbsp;&nbsp;&nbsp;Xbox 360</option>
-                                        <option value='52'>&nbsp;&nbsp;&nbsp;PC & Mac</option>
-                                        <option value='8'>Portable Audio & Accessories</option>
-                                        <option value='53'>&nbsp;&nbsp;&nbsp;MP3 Players</option>
-                                        <option value='54'>&nbsp;&nbsp;&nbsp;Portable Speakers</option>
-                                        <option value='55'>&nbsp;&nbsp;&nbsp;Accessories</option>
-                                        <option value='56'>&nbsp;&nbsp;&nbsp;Headphones</option>
-                                        <option value='57'>&nbsp;&nbsp;&nbsp;Cases</option>
-                                        <option value='58'>&nbsp;&nbsp;&nbsp;Chargers</option>
-                                        <option value='59'>&nbsp;&nbsp;&nbsp;Mouting Kits</option>
-                                        <option value='60'>&nbsp;&nbsp;&nbsp;Armbands</option>
-                                        <option value='61'>&nbsp;&nbsp;&nbsp;App-Enabled Accessories</option>
-                                        <option value='62'>&nbsp;&nbsp;&nbsp;Vehicle Electronics</option>
-                                        <option value='71'>Computers</option>
-                                        <option value='9'>&nbsp;&nbsp;&nbsp;Laptops & Tablets</option>
-                                        <option value='63'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Laptops</option>
-                                        <option value='64'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tablets</option>
-                                        <option value='65'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2 in 1 Computers</option>
-                                        <option value='70'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Accessories</option>
-                                        <option value='10'>&nbsp;&nbsp;&nbsp;Desktops & Monitors</option>
-                                        <option value='66'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Desktops</option>
-                                        <option value='67'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Monitors</option>
-                                        <option value='68'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Computer Accessories</option>
-                                        <option value='69'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PC Components</option>
+                                        <?php 
+                                         $i=0;
+                                         $args_category = array(
+                                            'orderby'                  => 'name',
+                                            'order'                    => 'ASC',
+                                            'exclude'                  => '',
+                                            'include'                  => '',
+                                            'taxonomy'                 => 'category'
+
+                                        ); 
+                                          $categories = get_categories($args_category); 
+                                          foreach ( $categories as $category ) {
+                                            $i++;
+                                        ?>
+                                        <option value="<?php echo $category->term_id;?>"><?php echo $category->name;?></option>
+                                        <?php
+                                            }
+                                         ?>
                                     </select>
                                     <input id="search" type="text" name="q" value="" class="input-text" maxlength="128" />
                                     <button type="submit" title="Search" class="btn btn2"><span><span><i class="fa fa-search"></i></span></span></button>

@@ -87,13 +87,42 @@
                                         <div class="product-list-index">
                                             <ul class="products-slide products-grid arw-1-col arw-row">
                                                 <li class="arw-col item">
+                                                    <?php
+                                                        $i = 0;
+                                                        $args_newhome = array(
+                                                            'post_type'      => 'post',
+                                                            'posts_per_page' => 15,
+                                                            'meta_query' => array(
+                                                                array(
+                                                                    'key' => 'new_product_home', // name of custom field
+                                                                    'value' => '"new_display_home"', // matches exactly "red"
+                                                                    'compare' => 'LIKE'
+                                                                )
+                                                            )
+                                                        );
+                                                        $querynewHome = get_posts($args_newhome);
+                                                       
+                                                        foreach ($querynewHome as $newhome) {
+                                                            $i++;
+                                                            $url = get_field('image_for_slider',$newhome->ID);
+                                                            $bigImg = wp_get_attachment_url( get_post_thumbnail_id($newhome->ID) );
+                                                            $price = get_field('product_price',$newhome->ID);
+                                                            $price = number_format( $price, 0, ',', '.');
+                                                    ?>
                                                     <div class="wrapper-item">
                                                         <input type="hidden" value="22" name="product" />
                                                         <div class="wrapper-item-inner  transform-effect vertical-effect skin1-effect">
                                                             <div class="outer-image">
-                                                                <a href="http://m2.arexmage.com/arw_dots/sw3-smartwatch-3.html" title="SW3 SmartWatch 3" class="product-image">
-                                                                    <img class="front product-collection-image" src="http://m2.arexmage.com/arw_dots/media/catalog/product/cache/1/small_image/270x300/170ec19af00183b5e0368529fc2daa2f/e/p/ep_0013_b00n9oaqi0_2.jpg" alt="SW3 SmartWatch 3" />
-                                                                    <img class="back" src="http://m2.arexmage.com/arw_dots/media/catalog/product/cache/1/small_image/270x300/170ec19af00183b5e0368529fc2daa2f/e/p/ep_0013_b00n9oaqi0_2.jpg" alt="" />
+                                                                <a href="<?php echo get_the_permalink($newhome->ID)?>" title="<?php echo get_the_title($newhome->ID);?>" class="product-image">
+                                                                    <img class="front product-collection-image" src="<?php echo $bigImg;?>" alt="<?php echo get_the_title($newhome->ID);?>" />
+                                                                    <?php
+                                                                    // check if the repeater field has rows of data
+                                                                    if( have_rows('description_image') ){
+                                                                        while ( have_rows('description_image') ) : the_row();
+                                                                        $image_desc = get_sub_field('product_images_sub');
+                                                                    ?>
+                                                                    <img class="back" src="<?php echo $image_desc;  ?>" alt="" />
+                                                                    <?php  endwhile; }?>
                                                                 </a>
                                                             </div>
                                                             <div class="actions">
@@ -113,8 +142,8 @@
                                                             <div class="row no-margin">
                                                                 <div class="col-xs-8 arw-info-separator">
                                                                     <h2 class="product-name">
-                                                                        <a href="http://m2.arexmage.com/arw_dots/sw3-smartwatch-3.html" title="SW3 SmartWatch 3">
-                                                                            <span title="SW3 SmartWatch 3">SW3 SmartWatch 3</span>
+                                                                        <a href="<?php echo get_the_permalink($newhome->ID)?>" title="SW3 SmartWatch 3">
+                                                                            <span title="SW3 SmartWatch 3"><?php echo get_the_title($newhome->ID);?></span>
                                                                         </a>
                                                                     </h2>
                                                                     <div class="ratings">
@@ -129,7 +158,7 @@
 
                                                                     <div class="price-box">
                                                                         <span class="regular-price" id="product-price-22">
-                                                                            <span class="price" content="179.99">$179.99</span>
+                                                                            <span class="price" content="<?php echo $price;?>"><?php echo $price;?> VMĐ</span>
                                                                         </span>
 
                                                                     </div>
@@ -138,550 +167,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="wrapper-item">
-                                                        <input type="hidden" value="13" name="product" />
-                                                        <div class="wrapper-item-inner ">
-                                                            <div class="outer-image">
-                                                                <a href="http://m2.arexmage.com/arw_dots/iphone-5-a1428.html" title="iPhone 5 A1428" class="product-image">
-                                                                    <img class="front product-collection-image" src="http://m2.arexmage.com/arw_dots/media/catalog/product/cache/1/small_image/270x300/170ec19af00183b5e0368529fc2daa2f/e/p/ep_0006_b00asuruyq.jpg" alt="iPhone 5 A1428" />
-                                                                </a>
-                                                            </div>
-                                                            <div class="actions">
-                                                                <button data-toggle="tooltip" data-placement="left" onclick="setLocation('http://m2.arexmage.com/arw_dots/checkout/cart/add/uenc/aHR0cDovL20yLmFyZXhtYWdlLmNvbS9hcndfZG90cy8,/product/13/form_key/fY84n4ctdiOHbUdq/')" class="button btn-cart" title="Add to Cart"><span><span class="icon_bag"></span></span></button>
-                                                                <!--
-                                                                -->
-                                                                <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/wishlist/index/add/product/13/form_key/fY84n4ctdiOHbUdq/" class="button link-wishlist" title="Add to Wishlist"><span class="fa fa-heart"></span></a>
-                                                                <!--
-                                                                -->
-                                                                <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/catalog/product_compare/add/product/13/uenc/aHR0cDovL20yLmFyZXhtYWdlLmNvbS9hcndfZG90cy8,/form_key/fY84n4ctdiOHbUdq/" class="button link-compare" title="Add to Compare"><span class="fa fa-bar-chart"></span></a>
-                                                                <!--
-                                                                -->
-                                                                <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/arexworks/quickview/index/product_id/13/" class="button link-quickview" title="Quick View"><span class="fa fa-search-plus"></span></a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="product-info">
-                                                            <div class="row no-margin">
-                                                                <div class="col-xs-8 arw-info-separator">
-                                                                    <h2 class="product-name">
-                                                                        <a href="http://m2.arexmage.com/arw_dots/iphone-5-a1428.html" title="iPhone 5 A1428">
-                                                                            <span title="iPhone 5 A1428">iPhone 5 A1428</span>
-                                                                        </a>
-                                                                    </h2>
-                                                                    <div class="ratings">
-                                                                        <div class="rating-box">
-                                                                            <div class="rating" style="width:0%"></div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-xs-4 no-padding">
-
-
-
-                                                                    <div class="price-box">
-                                                                        <span class="regular-price" id="product-price-13">
-                                                                            <span class="price" content="349.99">$349.99</span>
-                                                                        </span>
-
-                                                                    </div>
-
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="wrapper-item">
-                                                        <input type="hidden" value="21" name="product" />
-                                                        <div class="wrapper-item-inner ">
-                                                            <div class="outer-image">
-                                                                <a href="http://m2.arexmage.com/arw_dots/motorola-moto-360.html" title="Motorola Moto 360" class="product-image">
-                                                                    <img class="front product-collection-image" src="http://m2.arexmage.com/arw_dots/media/catalog/product/cache/1/small_image/270x300/170ec19af00183b5e0368529fc2daa2f/e/p/ep_0015_b00obheq26_1.jpg" alt="Motorola Moto 360" />
-                                                                </a>
-                                                            </div>
-                                                            <div class="actions">
-                                                                <button data-toggle="tooltip" data-placement="left" onclick="setLocation('http://m2.arexmage.com/arw_dots/checkout/cart/add/uenc/aHR0cDovL20yLmFyZXhtYWdlLmNvbS9hcndfZG90cy8,/product/21/form_key/fY84n4ctdiOHbUdq/')" class="button btn-cart" title="Add to Cart"><span><span class="icon_bag"></span></span></button>
-                                                                <!--
-                                                                -->
-                                                                <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/wishlist/index/add/product/21/form_key/fY84n4ctdiOHbUdq/" class="button link-wishlist" title="Add to Wishlist"><span class="fa fa-heart"></span></a>
-                                                                <!--
-                                                                -->
-                                                                <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/catalog/product_compare/add/product/21/uenc/aHR0cDovL20yLmFyZXhtYWdlLmNvbS9hcndfZG90cy8,/form_key/fY84n4ctdiOHbUdq/" class="button link-compare" title="Add to Compare"><span class="fa fa-bar-chart"></span></a>
-                                                                <!--
-                                                                -->
-                                                                <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/arexworks/quickview/index/product_id/21/" class="button link-quickview" title="Quick View"><span class="fa fa-search-plus"></span></a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="product-info">
-                                                            <div class="row no-margin">
-                                                                <div class="col-xs-8 arw-info-separator">
-                                                                    <h2 class="product-name">
-                                                                        <a href="http://m2.arexmage.com/arw_dots/motorola-moto-360.html" title="Motorola Moto 360">
-                                                                            <span title="Motorola Moto 360">Motorola Moto 360</span>
-                                                                        </a>
-                                                                    </h2>
-                                                                    <div class="ratings">
-                                                                        <div class="rating-box">
-                                                                            <div class="rating" style="width:0%"></div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-xs-4 no-padding">
-
-
-
-                                                                    <div class="price-box">
-                                                                        <span class="regular-price" id="product-price-21">
-                                                                            <span class="price" content="291.99">$291.99</span>
-                                                                        </span>
-
-                                                                    </div>
-
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="wrapper-item">
-                                                        <input type="hidden" value="15" name="product" />
-                                                        <div class="wrapper-item-inner ">
-                                                            <div class="outer-image">
-                                                                <a href="http://m2.arexmage.com/arw_dots/samsung-galaxy-s6-sm-g920f.html" title="Samsung Galaxy S6" class="product-image">
-                                                                    <img class="front product-collection-image" src="http://m2.arexmage.com/arw_dots/media/catalog/product/cache/1/small_image/270x300/170ec19af00183b5e0368529fc2daa2f/e/p/ep_0005_b00u8ksuig.jpg" alt="Samsung Galaxy S6" />
-                                                                </a>
-                                                            </div>
-                                                            <div class="actions">
-                                                                <button data-toggle="tooltip" data-placement="left" onclick="setLocation('http://m2.arexmage.com/arw_dots/checkout/cart/add/uenc/aHR0cDovL20yLmFyZXhtYWdlLmNvbS9hcndfZG90cy8,/product/15/form_key/fY84n4ctdiOHbUdq/')" class="button btn-cart" title="Add to Cart"><span><span class="icon_bag"></span></span></button>
-                                                                <!--
-                                                                -->
-                                                                <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/wishlist/index/add/product/15/form_key/fY84n4ctdiOHbUdq/" class="button link-wishlist" title="Add to Wishlist"><span class="fa fa-heart"></span></a>
-                                                                <!--
-                                                                -->
-                                                                <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/catalog/product_compare/add/product/15/uenc/aHR0cDovL20yLmFyZXhtYWdlLmNvbS9hcndfZG90cy8,/form_key/fY84n4ctdiOHbUdq/" class="button link-compare" title="Add to Compare"><span class="fa fa-bar-chart"></span></a>
-                                                                <!--
-                                                                -->
-                                                                <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/arexworks/quickview/index/product_id/15/" class="button link-quickview" title="Quick View"><span class="fa fa-search-plus"></span></a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="product-info">
-                                                            <div class="row no-margin">
-                                                                <div class="col-xs-8 arw-info-separator">
-                                                                    <h2 class="product-name">
-                                                                        <a href="http://m2.arexmage.com/arw_dots/samsung-galaxy-s6-sm-g920f.html" title="Samsung Galaxy S6">
-                                                                            <span title="Samsung Galaxy S6">Samsung Galaxy S6</span>
-                                                                        </a>
-                                                                    </h2>
-                                                                    <div class="ratings">
-                                                                        <div class="rating-box">
-                                                                            <div class="rating" style="width:0%"></div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-xs-4 no-padding">
-
-
-
-                                                                    <div class="price-box">
-                                                                        <span class="regular-price" id="product-price-15">
-                                                                            <span class="price" content="615">$615.00</span>
-                                                                        </span>
-
-                                                                    </div>
-
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="wrapper-item">
-                                                        <input type="hidden" value="29" name="product" />
-                                                        <div class="wrapper-item-inner ">
-                                                            <div class="outer-image">
-                                                                <a href="http://m2.arexmage.com/arw_dots/apple-iphone-4.html" title="Apple iPhone 4" class="product-image">
-                                                                    <img class="front product-collection-image" src="http://m2.arexmage.com/arw_dots/media/catalog/product/cache/1/small_image/270x300/170ec19af00183b5e0368529fc2daa2f/e/p/ep_0001_b0074r1ip8_1.jpg" alt="Apple iPhone 4" />
-                                                                </a>
-                                                            </div>
-                                                            <div class="actions">
-                                                                <button data-toggle="tooltip" data-placement="left" onclick="setLocation('http://m2.arexmage.com/arw_dots/checkout/cart/add/uenc/aHR0cDovL20yLmFyZXhtYWdlLmNvbS9hcndfZG90cy8,/product/29/form_key/fY84n4ctdiOHbUdq/')" class="button btn-cart" title="Add to Cart"><span><span class="icon_bag"></span></span></button>
-                                                                <!--
-                                                                -->
-                                                                <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/wishlist/index/add/product/29/form_key/fY84n4ctdiOHbUdq/" class="button link-wishlist" title="Add to Wishlist"><span class="fa fa-heart"></span></a>
-                                                                <!--
-                                                                -->
-                                                                <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/catalog/product_compare/add/product/29/uenc/aHR0cDovL20yLmFyZXhtYWdlLmNvbS9hcndfZG90cy8,/form_key/fY84n4ctdiOHbUdq/" class="button link-compare" title="Add to Compare"><span class="fa fa-bar-chart"></span></a>
-                                                                <!--
-                                                                -->
-                                                                <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/arexworks/quickview/index/product_id/29/" class="button link-quickview" title="Quick View"><span class="fa fa-search-plus"></span></a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="product-info">
-                                                            <div class="row no-margin">
-                                                                <div class="col-xs-8 arw-info-separator">
-                                                                    <h2 class="product-name">
-                                                                        <a href="http://m2.arexmage.com/arw_dots/apple-iphone-4.html" title="Apple iPhone 4">
-                                                                            <span title="Apple iPhone 4">Apple iPhone 4</span>
-                                                                        </a>
-                                                                    </h2>
-                                                                    <div class="ratings">
-                                                                        <div class="rating-box">
-                                                                            <div class="rating" style="width:0%"></div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-xs-4 no-padding">
-                                                                    <div class="price-box">
-                                                                        <span class="regular-price" id="product-price-29">
-                                                                            <span class="price" content="97.98">$97.98</span>
-                                                                        </span>
-
-                                                                    </div>
-
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="wrapper-item">
-                                                        <input type="hidden" value="25" name="product" />
-                                                        <div class="wrapper-item-inner ">
-                                                            <div class="outer-image">
-                                                                <a href="http://m2.arexmage.com/arw_dots/urbane-wearable-smart-watch.html" title="Urbane Smart Watch" class="product-image">
-                                                                    <img class="front product-collection-image" src="http://m2.arexmage.com/arw_dots/media/catalog/product/cache/1/small_image/270x300/170ec19af00183b5e0368529fc2daa2f/e/p/ep_0011_b00w3e5g3c.jpg" alt="Urbane Smart Watch" />
-                                                                </a>
-                                                            </div>
-                                                            <div class="actions">
-                                                                <button data-toggle="tooltip" data-placement="left" onclick="setLocation('http://m2.arexmage.com/arw_dots/checkout/cart/add/uenc/aHR0cDovL20yLmFyZXhtYWdlLmNvbS9hcndfZG90cy8,/product/25/form_key/fY84n4ctdiOHbUdq/')" class="button btn-cart" title="Add to Cart"><span><span class="icon_bag"></span></span></button>
-                                                                <!--
-                                                                -->
-                                                                <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/wishlist/index/add/product/25/form_key/fY84n4ctdiOHbUdq/" class="button link-wishlist" title="Add to Wishlist"><span class="fa fa-heart"></span></a>
-                                                                <!--
-                                                                -->
-                                                                <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/catalog/product_compare/add/product/25/uenc/aHR0cDovL20yLmFyZXhtYWdlLmNvbS9hcndfZG90cy8,/form_key/fY84n4ctdiOHbUdq/" class="button link-compare" title="Add to Compare"><span class="fa fa-bar-chart"></span></a>
-                                                                <!--
-                                                                -->
-                                                                <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/arexworks/quickview/index/product_id/25/" class="button link-quickview" title="Quick View"><span class="fa fa-search-plus"></span></a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="product-info">
-                                                            <div class="row no-margin">
-                                                                <div class="col-xs-8 arw-info-separator">
-                                                                    <h2 class="product-name">
-                                                                        <a href="http://m2.arexmage.com/arw_dots/urbane-wearable-smart-watch.html" title="Urbane Smart Watch">
-                                                                            <span title="Urbane Smart Watch">Urbane Smart Watch</span>
-                                                                        </a>
-                                                                    </h2>
-                                                                    <div class="ratings">
-                                                                        <div class="rating-box">
-                                                                            <div class="rating" style="width:0%"></div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-xs-4 no-padding">
-
-
-
-                                                                    <div class="price-box">
-                                                                        <span class="regular-price" id="product-price-25">
-                                                                            <span class="price" content="349.99">$349.99</span>
-                                                                        </span>
-
-                                                                    </div>
-
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="wrapper-item">
-                                                        <input type="hidden" value="24" name="product" />
-                                                        <div class="wrapper-item-inner ">
-                                                            <div class="outer-image">
-                                                                <a href="http://m2.arexmage.com/arw_dots/pebble-smart-watch.html" title="Pebble Smart Watch" class="product-image">
-                                                                    <img class="front product-collection-image" src="http://m2.arexmage.com/arw_dots/media/catalog/product/cache/1/small_image/270x300/170ec19af00183b5e0368529fc2daa2f/e/p/ep_0012_b00kx828dg.jpg" alt="Pebble Smart Watch" />
-                                                                </a>
-                                                            </div>
-                                                            <div class="actions">
-                                                                <button data-toggle="tooltip" data-placement="left" onclick="setLocation('http://m2.arexmage.com/arw_dots/checkout/cart/add/uenc/aHR0cDovL20yLmFyZXhtYWdlLmNvbS9hcndfZG90cy8,/product/24/form_key/fY84n4ctdiOHbUdq/')" class="button btn-cart" title="Add to Cart"><span><span class="icon_bag"></span></span></button>
-                                                                <!--
-                                                                -->
-                                                                <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/wishlist/index/add/product/24/form_key/fY84n4ctdiOHbUdq/" class="button link-wishlist" title="Add to Wishlist"><span class="fa fa-heart"></span></a>
-                                                                <!--
-                                                                -->
-                                                                <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/catalog/product_compare/add/product/24/uenc/aHR0cDovL20yLmFyZXhtYWdlLmNvbS9hcndfZG90cy8,/form_key/fY84n4ctdiOHbUdq/" class="button link-compare" title="Add to Compare"><span class="fa fa-bar-chart"></span></a>
-                                                                <!--
-                                                                -->
-                                                                <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/arexworks/quickview/index/product_id/24/" class="button link-quickview" title="Quick View"><span class="fa fa-search-plus"></span></a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="product-info">
-                                                            <div class="row no-margin">
-                                                                <div class="col-xs-8 arw-info-separator">
-                                                                    <h2 class="product-name">
-                                                                        <a href="http://m2.arexmage.com/arw_dots/pebble-smart-watch.html" title="Pebble Smart Watch">
-                                                                            <span title="Pebble Smart Watch">Pebble Smart Watch</span>
-                                                                        </a>
-                                                                    </h2>
-                                                                    <div class="ratings">
-                                                                        <div class="rating-box">
-                                                                            <div class="rating" style="width:0%"></div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-xs-4 no-padding">
-
-
-
-                                                                    <div class="price-box">
-                                                                        <span class="regular-price" id="product-price-24">
-                                                                            <span class="price" content="89.99">$89.99</span>
-                                                                        </span>
-
-                                                                    </div>
-
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="wrapper-item">
-                                                        <input type="hidden" value="27" name="product" />
-                                                        <div class="wrapper-item-inner ">
-                                                            <div class="outer-image">
-                                                                <a href="http://m2.arexmage.com/arw_dots/apple-iphone-6.html" title="Apple iPhone 6" class="product-image">
-                                                                    <img class="front product-collection-image" src="http://m2.arexmage.com/arw_dots/media/catalog/product/cache/1/small_image/270x300/170ec19af00183b5e0368529fc2daa2f/e/p/ep_0003_b00nqgp5m8.jpg" alt="Apple iPhone 6" />
-                                                                </a>
-                                                            </div>
-                                                            <div class="actions">
-                                                                <button data-toggle="tooltip" data-placement="left" onclick="setLocation('http://m2.arexmage.com/arw_dots/checkout/cart/add/uenc/aHR0cDovL20yLmFyZXhtYWdlLmNvbS9hcndfZG90cy8,/product/27/form_key/fY84n4ctdiOHbUdq/')" class="button btn-cart" title="Add to Cart"><span><span class="icon_bag"></span></span></button>
-                                                                <!--
-                                                                -->
-                                                                <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/wishlist/index/add/product/27/form_key/fY84n4ctdiOHbUdq/" class="button link-wishlist" title="Add to Wishlist"><span class="fa fa-heart"></span></a>
-                                                                <!--
-                                                                -->
-                                                                <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/catalog/product_compare/add/product/27/uenc/aHR0cDovL20yLmFyZXhtYWdlLmNvbS9hcndfZG90cy8,/form_key/fY84n4ctdiOHbUdq/" class="button link-compare" title="Add to Compare"><span class="fa fa-bar-chart"></span></a>
-                                                                <!--
-                                                                -->
-                                                                <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/arexworks/quickview/index/product_id/27/" class="button link-quickview" title="Quick View"><span class="fa fa-search-plus"></span></a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="product-info">
-                                                            <div class="row no-margin">
-                                                                <div class="col-xs-8 arw-info-separator">
-                                                                    <h2 class="product-name">
-                                                                        <a href="http://m2.arexmage.com/arw_dots/apple-iphone-6.html" title="Apple iPhone 6">
-                                                                            <span title="Apple iPhone 6">Apple iPhone 6</span>
-                                                                        </a>
-                                                                    </h2>
-                                                                    <div class="ratings">
-                                                                        <div class="rating-box">
-                                                                            <div class="rating" style="width:0%"></div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-xs-4 no-padding">
-
-
-
-                                                                    <div class="price-box">
-                                                                        <span class="regular-price" id="product-price-27">
-                                                                            <span class="price" content="823.38">$823.38</span>
-                                                                        </span>
-
-                                                                    </div>
-
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="wrapper-item">
-                                                        <input type="hidden" value="11" name="product" />
-                                                        <div class="wrapper-item-inner ">
-                                                            <div class="outer-image">
-                                                                <a href="http://m2.arexmage.com/arw_dots/asus-zenfone-2-ze551ml.html" title="ASUS ZenFone 2 ZE551ML" class="product-image">
-                                                                    <img class="front product-collection-image" src="http://m2.arexmage.com/arw_dots/media/catalog/product/cache/1/small_image/270x300/170ec19af00183b5e0368529fc2daa2f/e/p/ep_0007_b00vwkkf52.jpg" alt="ASUS ZenFone 2 ZE551ML" />
-                                                                </a>
-                                                            </div>
-                                                            <div class="actions">
-                                                                <button data-toggle="tooltip" data-placement="left" onclick="setLocation('http://m2.arexmage.com/arw_dots/checkout/cart/add/uenc/aHR0cDovL20yLmFyZXhtYWdlLmNvbS9hcndfZG90cy8,/product/11/form_key/fY84n4ctdiOHbUdq/')" class="button btn-cart" title="Add to Cart"><span><span class="icon_bag"></span></span></button>
-                                                                <!--
-                                                                -->
-                                                                <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/wishlist/index/add/product/11/form_key/fY84n4ctdiOHbUdq/" class="button link-wishlist" title="Add to Wishlist"><span class="fa fa-heart"></span></a>
-                                                                <!--
-                                                                -->
-                                                                <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/catalog/product_compare/add/product/11/uenc/aHR0cDovL20yLmFyZXhtYWdlLmNvbS9hcndfZG90cy8,/form_key/fY84n4ctdiOHbUdq/" class="button link-compare" title="Add to Compare"><span class="fa fa-bar-chart"></span></a>
-                                                                <!--
-                                                                -->
-                                                                <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/arexworks/quickview/index/product_id/11/" class="button link-quickview" title="Quick View"><span class="fa fa-search-plus"></span></a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="product-info">
-                                                            <div class="row no-margin">
-                                                                <div class="col-xs-8 arw-info-separator">
-                                                                    <h2 class="product-name">
-                                                                        <a href="http://m2.arexmage.com/arw_dots/asus-zenfone-2-ze551ml.html" title="ASUS ZenFone 2 ZE551ML">
-                                                                            <span title="ASUS ZenFone 2 ZE551ML">ASUS ZenFone 2 ZE551ML</span>
-                                                                        </a>
-                                                                    </h2>
-                                                                    <div class="ratings">
-                                                                        <span class="amount"><a href="#" onclick="var t = opener ? opener.window : window; t.location.href='http://m2.arexmage.com/arw_dots/review/product/list/id/11/'; return false;">1 Review(s)</a></span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-xs-4 no-padding">
-
-
-
-                                                                    <div class="price-box">
-                                                                        <span class="regular-price" id="product-price-11">
-                                                                            <span class="price" content="199.99">$199.99</span>
-                                                                        </span>
-
-                                                                    </div>
-
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="wrapper-item">
-                                                        <input type="hidden" value="26" name="product" />
-                                                        <div class="wrapper-item-inner  transform-effect vertical-effect skin1-effect">
-                                                            <div class="outer-image">
-                                                                <a href="http://m2.arexmage.com/arw_dots/pebble-steel-smart-watch.html" title="Steel Smart Watch" class="product-image">
-                                                                    <img class="front product-collection-image" src="http://m2.arexmage.com/arw_dots/media/catalog/product/cache/1/small_image/270x300/170ec19af00183b5e0368529fc2daa2f/e/p/ep_0008_b00kvhel8e_3.jpg" alt="Steel Smart Watch" />
-                                                                    <img class="back" src="http://m2.arexmage.com/arw_dots/media/catalog/product/cache/1/small_image/270x300/170ec19af00183b5e0368529fc2daa2f/e/p/ep_0008_b00kvhel8e_3.jpg" alt="" />
-                                                                </a>
-                                                            </div>
-                                                            <div class="actions">
-                                                                <button data-toggle="tooltip" data-placement="left" onclick="setLocation('http://m2.arexmage.com/arw_dots/checkout/cart/add/uenc/aHR0cDovL20yLmFyZXhtYWdlLmNvbS9hcndfZG90cy8,/product/26/form_key/fY84n4ctdiOHbUdq/')" class="button btn-cart" title="Add to Cart"><span><span class="icon_bag"></span></span></button>
-                                                                <!--
-                                                                -->
-                                                                <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/wishlist/index/add/product/26/form_key/fY84n4ctdiOHbUdq/" class="button link-wishlist" title="Add to Wishlist"><span class="fa fa-heart"></span></a>
-                                                                <!--
-                                                                -->
-                                                                <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/catalog/product_compare/add/product/26/uenc/aHR0cDovL20yLmFyZXhtYWdlLmNvbS9hcndfZG90cy8,/form_key/fY84n4ctdiOHbUdq/" class="button link-compare" title="Add to Compare"><span class="fa fa-bar-chart"></span></a>
-                                                                <!--
-                                                                -->
-                                                                <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/arexworks/quickview/index/product_id/26/" class="button link-quickview" title="Quick View"><span class="fa fa-search-plus"></span></a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="product-info">
-                                                            <div class="row no-margin">
-                                                                <div class="col-xs-8 arw-info-separator">
-                                                                    <h2 class="product-name">
-                                                                        <a href="http://m2.arexmage.com/arw_dots/pebble-steel-smart-watch.html" title="Steel Smart Watch">
-                                                                            <span title="Steel Smart Watch">Steel Smart Watch</span>
-                                                                        </a>
-                                                                    </h2>
-                                                                    <div class="ratings">
-                                                                        <span class="amount"><a href="#" onclick="var t = opener ? opener.window : window; t.location.href='http://m2.arexmage.com/arw_dots/review/product/list/id/26/'; return false;">1 Review(s)</a></span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-xs-4 no-padding">
-
-
-
-                                                                    <div class="price-box">
-                                                                        <span class="regular-price" id="product-price-26">
-                                                                            <span class="price" content="149.99">$149.99</span>
-                                                                        </span>
-
-                                                                    </div>
-
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="wrapper-item">
-                                                        <input type="hidden" value="28" name="product" />
-                                                        <div class="wrapper-item-inner ">
-                                                            <div class="outer-image">
-                                                                <a href="http://m2.arexmage.com/arw_dots/sony-xperia-z3.html" title="Sony Xperia Z3" class="product-image">
-                                                                    <img class="front product-collection-image" src="http://m2.arexmage.com/arw_dots/media/catalog/product/cache/1/small_image/270x300/170ec19af00183b5e0368529fc2daa2f/e/p/ep_0002_b00nboyrns.jpg" alt="Sony Xperia Z3" />
-                                                                </a>
-                                                            </div>
-                                                            <div class="actions">
-                                                                <button data-toggle="tooltip" data-placement="left" onclick="setLocation('http://m2.arexmage.com/arw_dots/checkout/cart/add/uenc/aHR0cDovL20yLmFyZXhtYWdlLmNvbS9hcndfZG90cy8,/product/28/form_key/fY84n4ctdiOHbUdq/')" class="button btn-cart" title="Add to Cart"><span><span class="icon_bag"></span></span></button>
-                                                                <!--
-                                                                -->
-                                                                <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/wishlist/index/add/product/28/form_key/fY84n4ctdiOHbUdq/" class="button link-wishlist" title="Add to Wishlist"><span class="fa fa-heart"></span></a>
-                                                                <!--
-                                                                -->
-                                                                <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/catalog/product_compare/add/product/28/uenc/aHR0cDovL20yLmFyZXhtYWdlLmNvbS9hcndfZG90cy8,/form_key/fY84n4ctdiOHbUdq/" class="button link-compare" title="Add to Compare"><span class="fa fa-bar-chart"></span></a>
-                                                                <!--
-                                                                -->
-                                                                <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/arexworks/quickview/index/product_id/28/" class="button link-quickview" title="Quick View"><span class="fa fa-search-plus"></span></a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="product-info">
-                                                            <div class="row no-margin">
-                                                                <div class="col-xs-8 arw-info-separator">
-                                                                    <h2 class="product-name">
-                                                                        <a href="http://m2.arexmage.com/arw_dots/sony-xperia-z3.html" title="Sony Xperia Z3">
-                                                                            <span title="Sony Xperia Z3">Sony Xperia Z3</span>
-                                                                        </a>
-                                                                    </h2>
-                                                                    <div class="ratings">
-                                                                        <div class="rating-box">
-                                                                            <div class="rating" style="width:0%"></div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-xs-4 no-padding">
-
-
-
-                                                                    <div class="price-box">
-                                                                        <span class="regular-price" id="product-price-28">
-                                                                            <span class="price" content="394.01">$394.01</span>
-                                                                        </span>
-
-                                                                    </div>
-
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="wrapper-item">
-                                                        <input type="hidden" value="30" name="product" />
-                                                        <div class="wrapper-item-inner ">
-                                                            <div class="outer-image">
-                                                                <a href="http://m2.arexmage.com/arw_dots/nokia-lumia-930.html" title="Nokia Lumia 930" class="product-image">
-                                                                    <img class="front product-collection-image" src="http://m2.arexmage.com/arw_dots/media/catalog/product/cache/1/small_image/270x300/170ec19af00183b5e0368529fc2daa2f/e/p/ep_0000_b00lncvneq.jpg" alt="Nokia Lumia 930" />
-                                                                </a>
-                                                            </div>
-                                                            <div class="actions">
-                                                                <button data-toggle="tooltip" data-placement="left" onclick="setLocation('http://m2.arexmage.com/arw_dots/checkout/cart/add/uenc/aHR0cDovL20yLmFyZXhtYWdlLmNvbS9hcndfZG90cy8,/product/30/form_key/fY84n4ctdiOHbUdq/')" class="button btn-cart" title="Add to Cart"><span><span class="icon_bag"></span></span></button>
-                                                                <!--
-                                                                -->
-                                                                <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/wishlist/index/add/product/30/form_key/fY84n4ctdiOHbUdq/" class="button link-wishlist" title="Add to Wishlist"><span class="fa fa-heart"></span></a>
-                                                                <!--
-                                                                -->
-                                                                <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/catalog/product_compare/add/product/30/uenc/aHR0cDovL20yLmFyZXhtYWdlLmNvbS9hcndfZG90cy8,/form_key/fY84n4ctdiOHbUdq/" class="button link-compare" title="Add to Compare"><span class="fa fa-bar-chart"></span></a>
-                                                                <!--
-                                                                -->
-                                                                <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/arexworks/quickview/index/product_id/30/" class="button link-quickview" title="Quick View"><span class="fa fa-search-plus"></span></a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="product-info">
-                                                            <div class="row no-margin">
-                                                                <div class="col-xs-8 arw-info-separator">
-                                                                    <h2 class="product-name">
-                                                                        <a href="http://m2.arexmage.com/arw_dots/nokia-lumia-930.html" title="Nokia Lumia 930">
-                                                                            <span title="Nokia Lumia 930">Nokia Lumia 930</span>
-                                                                        </a>
-                                                                    </h2>
-                                                                    <div class="ratings">
-                                                                        <div class="rating-box">
-                                                                            <div class="rating" style="width:0%"></div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-xs-4 no-padding">
-
-
-
-                                                                    <div class="price-box">
-                                                                        <span class="regular-price" id="product-price-30">
-                                                                            <span class="price" content="339.99">$339.99</span>
-                                                                        </span>
-
-                                                                    </div>
-
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    <?php }?>
                                                 </li>
                                                
                                             </ul>
@@ -713,624 +199,89 @@
                                                 <div class="product-list-index">
                                                     <ul class="products-slide products-grid arw-1-col arw-row">
                                                         <li class="arw-col item">
-                                                            <div class="wrapper-item">
-                                                                <input type="hidden" value="14" name="product" />
-                                                                <div class="wrapper-item-inner ">
-                                                                    <div class="outer-image">
-                                                                        <a href="http://m2.arexmage.com/arw_dots/audio-technica-athm50rd.html" title="Audio-Technica ATHM50RD" class="product-image">
-                                                                            <img class="front product-collection-image" src="http://m2.arexmage.com/arw_dots/media/catalog/product/cache/1/small_image/270x300/170ec19af00183b5e0368529fc2daa2f/e/p/ep_0024_b00b0fr2qo.jpg" alt="Audio-Technica ATHM50RD" />
-                                                                        </a>
-                                                                    </div>
-                                                                    <div class="actions">
-                                                                        <button data-toggle="tooltip" data-placement="left" onclick="setLocation('http://m2.arexmage.com/arw_dots/checkout/cart/add/uenc/aHR0cDovL20yLmFyZXhtYWdlLmNvbS9hcndfZG90cy8,/product/14/form_key/fY84n4ctdiOHbUdq/')" class="button btn-cart" title="Add to Cart"><span><span class="icon_bag"></span></span></button>
-                                                                        <!--
-                                                                        -->
-                                                                        <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/wishlist/index/add/product/14/form_key/fY84n4ctdiOHbUdq/" class="button link-wishlist" title="Add to Wishlist"><span class="fa fa-heart"></span></a>
-                                                                        <!--
-                                                                        -->
-                                                                        <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/catalog/product_compare/add/product/14/uenc/aHR0cDovL20yLmFyZXhtYWdlLmNvbS9hcndfZG90cy8,/form_key/fY84n4ctdiOHbUdq/" class="button link-compare" title="Add to Compare"><span class="fa fa-bar-chart"></span></a>
-                                                                        <!--
-                                                                        -->
-                                                                        <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/arexworks/quickview/index/product_id/14/" class="button link-quickview" title="Quick View"><span class="fa fa-search-plus"></span></a>
-                                                                    </div>
+                                                        <?php
+                                                            $i = 0;
+                                                            $args_newhome = array(
+                                                                'post_type'      => 'post',
+                                                                'posts_per_page' => 15,
+                                                                'meta_query' => array(
+                                                                    array(
+                                                                        'key' => 'spot_product_home', // name of custom field
+                                                                        'value' => '"spot_product_home"', // matches exactly "red"
+                                                                        'compare' => 'LIKE'
+                                                                    )
+                                                                )
+                                                            );
+                                                            $querynewHome = get_posts($args_newhome);
+                                                           
+                                                            foreach ($querynewHome as $newhome) {
+                                                                $i++;
+                                                                $url = get_field('image_for_slider',$newhome->ID);
+                                                                $bigImg = wp_get_attachment_url( get_post_thumbnail_id($newhome->ID) );
+                                                                $price = get_field('product_price',$newhome->ID);
+                                                                $price = number_format( $price, 0, ',', '.');
+                                                        ?>
+                                                        <div class="wrapper-item">
+                                                            <input type="hidden" value="22" name="product" />
+                                                            <div class="wrapper-item-inner  transform-effect vertical-effect skin1-effect">
+                                                                <div class="outer-image">
+                                                                    <a href="<?php echo get_the_permalink($newhome->ID)?>" title="<?php echo get_the_title($newhome->ID);?>" class="product-image">
+                                                                        <img class="front product-collection-image" src="<?php echo $bigImg;?>" alt="<?php echo get_the_title($newhome->ID);?>" />
+                                                                        <?php
+                                                                        // check if the repeater field has rows of data
+                                                                        if( have_rows('description_image') ){
+                                                                            while ( have_rows('description_image') ) : the_row();
+                                                                            $image_desc = get_sub_field('product_images_sub');
+                                                                        ?>
+                                                                        <img class="back" src="<?php echo $image_desc;  ?>" alt="" />
+                                                                        <?php  endwhile; }?>
+                                                                    </a>
                                                                 </div>
-                                                                <div class="product-info">
-                                                                    <div class="row no-margin">
-                                                                        <div class="col-xs-8 arw-info-separator">
-                                                                            <h2 class="product-name">
-                                                                                <a href="http://m2.arexmage.com/arw_dots/audio-technica-athm50rd.html" title="Audio-Technica ATHM50RD">
-                                                                                    <span title="Audio-Technica ATHM50RD">Audio-Technica ATHM50RD</span>
-                                                                                </a>
-                                                                            </h2>
-                                                                            <div class="ratings">
-                                                                                <div class="rating-box">
-                                                                                    <div class="rating" style="width:0%"></div>
-                                                                                </div>
+                                                                <div class="actions">
+                                                                    <button data-toggle="tooltip" data-placement="left" onclick="setLocation('http://m2.arexmage.com/arw_dots/checkout/cart/add/uenc/aHR0cDovL20yLmFyZXhtYWdlLmNvbS9hcndfZG90cy8,/product/22/form_key/fY84n4ctdiOHbUdq/')" class="button btn-cart" title="Add to Cart"><span><span class="icon_bag"></span></span></button>
+                                                                    <!--
+                                                                    -->
+                                                                    <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/wishlist/index/add/product/22/form_key/fY84n4ctdiOHbUdq/" class="button link-wishlist" title="Add to Wishlist"><span class="fa fa-heart"></span></a>
+                                                                    <!--
+                                                                    -->
+                                                                    <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/catalog/product_compare/add/product/22/uenc/aHR0cDovL20yLmFyZXhtYWdlLmNvbS9hcndfZG90cy8,/form_key/fY84n4ctdiOHbUdq/" class="button link-compare" title="Add to Compare"><span class="fa fa-bar-chart"></span></a>
+                                                                    <!--
+                                                                    -->
+                                                                    <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/arexworks/quickview/index/product_id/22/" class="button link-quickview" title="Quick View"><span class="fa fa-search-plus"></span></a>
+                                                                </div>
+                                                            </div>
+                                                            <div class="product-info">
+                                                                <div class="row no-margin">
+                                                                    <div class="col-xs-8 arw-info-separator">
+                                                                        <h2 class="product-name">
+                                                                            <a href="<?php echo get_the_permalink($newhome->ID)?>" title="SW3 SmartWatch 3">
+                                                                                <span title="SW3 SmartWatch 3"><?php echo get_the_title($newhome->ID);?></span>
+                                                                            </a>
+                                                                        </h2>
+                                                                        <div class="ratings">
+                                                                            <div class="rating-box">
+                                                                                <div class="rating" style="width:0%"></div>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="col-xs-4 no-padding">
+                                                                    </div>
+                                                                    <div class="col-xs-4 no-padding">
 
 
 
-                                                                            <div class="price-box">
-                                                                                <span class="regular-price" id="product-price-14">
-                                                                                    <span class="price" content="134.99">$134.99</span>
-                                                                                </span>
-
-                                                                            </div>
+                                                                        <div class="price-box">
+                                                                            <span class="regular-price" id="product-price-22">
+                                                                                <span class="price" content="<?php echo $price;?>"><?php echo $price;?> VMĐ</span>
+                                                                            </span>
 
                                                                         </div>
+
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="wrapper-item">
-                                                                <input type="hidden" value="19" name="product" />
-                                                                <div class="wrapper-item-inner  transform-effect vertical-effect skin1-effect">
-                                                                    <div class="outer-image">
-                                                                        <a href="http://m2.arexmage.com/arw_dots/nikon-d5300-digital-slr.html" title="Nikon D5300 Digital SLR" class="product-image">
-                                                                            <img class="front product-collection-image" src="http://m2.arexmage.com/arw_dots/media/catalog/product/cache/1/small_image/270x300/170ec19af00183b5e0368529fc2daa2f/e/p/ep_0021_b00i1cpa0o_1.jpg" alt="Nikon D5300 Digital SLR" />
-                                                                            <img class="back" src="http://m2.arexmage.com/arw_dots/media/catalog/product/cache/1/small_image/270x300/170ec19af00183b5e0368529fc2daa2f/e/p/ep_0020_b00i1cpa0o_2.jpg" alt="" />
-                                                                        </a>
-                                                                    </div>
-                                                                    <div class="actions">
-                                                                        <button data-toggle="tooltip" data-placement="left" onclick="setLocation('http://m2.arexmage.com/arw_dots/checkout/cart/add/uenc/aHR0cDovL20yLmFyZXhtYWdlLmNvbS9hcndfZG90cy8,/product/19/form_key/fY84n4ctdiOHbUdq/')" class="button btn-cart" title="Add to Cart"><span><span class="icon_bag"></span></span></button>
-                                                                        <!--
-                                                                        -->
-                                                                        <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/wishlist/index/add/product/19/form_key/fY84n4ctdiOHbUdq/" class="button link-wishlist" title="Add to Wishlist"><span class="fa fa-heart"></span></a>
-                                                                        <!--
-                                                                        -->
-                                                                        <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/catalog/product_compare/add/product/19/uenc/aHR0cDovL20yLmFyZXhtYWdlLmNvbS9hcndfZG90cy8,/form_key/fY84n4ctdiOHbUdq/" class="button link-compare" title="Add to Compare"><span class="fa fa-bar-chart"></span></a>
-                                                                        <!--
-                                                                        -->
-                                                                        <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/arexworks/quickview/index/product_id/19/" class="button link-quickview" title="Quick View"><span class="fa fa-search-plus"></span></a>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="product-info">
-                                                                    <div class="row no-margin">
-                                                                        <div class="col-xs-8 arw-info-separator">
-                                                                            <h2 class="product-name">
-                                                                                <a href="http://m2.arexmage.com/arw_dots/nikon-d5300-digital-slr.html" title="Nikon D5300 Digital SLR">
-                                                                                    <span title="Nikon D5300 Digital SLR">Nikon D5300 Digital SLR</span>
-                                                                                </a>
-                                                                            </h2>
-                                                                            <div class="ratings">
-                                                                                <div class="rating-box">
-                                                                                    <div class="rating" style="width:0%"></div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-xs-4 no-padding">
-
-
-
-                                                                            <div class="price-box">
-                                                                                <span class="regular-price" id="product-price-19">
-                                                                                    <span class="price" content="746.95">$746.95</span>
-                                                                                </span>
-
-                                                                            </div>
-
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="wrapper-item">
-                                                                <input type="hidden" value="45" name="product" />
-                                                                <div class="wrapper-item-inner ">
-                                                                    <div class="outer-image">
-                                                                        <a href="http://m2.arexmage.com/arw_dots/apple-collection.html" title="Grouped Demo" class="product-image">
-                                                                            <img class="front product-collection-image" src="http://m2.arexmage.com/arw_dots/media/catalog/product/cache/1/small_image/270x300/170ec19af00183b5e0368529fc2daa2f/a/p/apple_collection.jpg" alt="Grouped Demo" />
-                                                                        </a>
-                                                                    </div>
-                                                                    <div class="actions">
-                                                                        <button data-toggle="tooltip" data-placement="left" onclick="setLocation('http://m2.arexmage.com/arw_dots/checkout/cart/add/uenc/aHR0cDovL20yLmFyZXhtYWdlLmNvbS9hcndfZG90cy8,/product/45/form_key/fY84n4ctdiOHbUdq/')" class="button btn-cart" title="Add to Cart"><span><span class="icon_bag"></span></span></button>
-                                                                        <!--
-                                                                        -->
-                                                                        <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/wishlist/index/add/product/45/form_key/fY84n4ctdiOHbUdq/" class="button link-wishlist" title="Add to Wishlist"><span class="fa fa-heart"></span></a>
-                                                                        <!--
-                                                                        -->
-                                                                        <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/catalog/product_compare/add/product/45/uenc/aHR0cDovL20yLmFyZXhtYWdlLmNvbS9hcndfZG90cy8,/form_key/fY84n4ctdiOHbUdq/" class="button link-compare" title="Add to Compare"><span class="fa fa-bar-chart"></span></a>
-                                                                        <!--
-                                                                        -->
-                                                                        <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/arexworks/quickview/index/product_id/45/" class="button link-quickview" title="Quick View"><span class="fa fa-search-plus"></span></a>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="product-info">
-                                                                    <div class="row no-margin">
-                                                                        <div class="col-xs-8 arw-info-separator">
-                                                                            <h2 class="product-name">
-                                                                                <a href="http://m2.arexmage.com/arw_dots/apple-collection.html" title="Grouped Demo">
-                                                                                    <span title="Grouped Demo">Grouped Demo</span>
-                                                                                </a>
-                                                                            </h2>
-                                                                            <div class="ratings">
-                                                                                <div class="rating-box">
-                                                                                    <div class="rating" style="width:0%"></div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-xs-4 no-padding">
-
-
-                                                                            <div class="price-box">
-                                                                                <p class="minimal-price">
-                                                                                    <span class="price-label">Starting at:</span>
-                                                                                    <span class="price" id="product-minimal-price-45">
-                                                                                        $97.98
-                                                                                    </span>
-                                                                                </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="wrapper-item">
-                                                                <input type="hidden" value="23" name="product" />
-                                                                <div class="wrapper-item-inner  transform-effect vertical-effect skin1-effect">
-                                                                    <div class="outer-image">
-                                                                        <a href="http://m2.arexmage.com/arw_dots/sony-a77ii-digital-slr-camera.html" title="Sony A77II Digital Camera" class="product-image">
-                                                                            <img class="front product-collection-image" src="http://m2.arexmage.com/arw_dots/media/catalog/product/cache/1/small_image/270x300/170ec19af00183b5e0368529fc2daa2f/e/p/ep_0017_b00k0byln6_1.jpg" alt="Sony A77II Digital Camera" />
-                                                                            <img class="back" src="http://m2.arexmage.com/arw_dots/media/catalog/product/cache/1/small_image/270x300/170ec19af00183b5e0368529fc2daa2f/e/p/ep_0016_b00k0byln6_2.jpg" alt="" />
-                                                                        </a>
-                                                                    </div>
-                                                                    <div class="actions">
-                                                                        <button data-toggle="tooltip" data-placement="left" onclick="setLocation('http://m2.arexmage.com/arw_dots/checkout/cart/add/uenc/aHR0cDovL20yLmFyZXhtYWdlLmNvbS9hcndfZG90cy8,/product/23/form_key/fY84n4ctdiOHbUdq/')" class="button btn-cart" title="Add to Cart"><span><span class="icon_bag"></span></span></button>
-                                                                        <!--
-                                                                        -->
-                                                                        <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/wishlist/index/add/product/23/form_key/fY84n4ctdiOHbUdq/" class="button link-wishlist" title="Add to Wishlist"><span class="fa fa-heart"></span></a>
-                                                                        <!--
-                                                                        -->
-                                                                        <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/catalog/product_compare/add/product/23/uenc/aHR0cDovL20yLmFyZXhtYWdlLmNvbS9hcndfZG90cy8,/form_key/fY84n4ctdiOHbUdq/" class="button link-compare" title="Add to Compare"><span class="fa fa-bar-chart"></span></a>
-                                                                        <!--
-                                                                        -->
-                                                                        <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/arexworks/quickview/index/product_id/23/" class="button link-quickview" title="Quick View"><span class="fa fa-search-plus"></span></a>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="product-info">
-                                                                    <div class="row no-margin">
-                                                                        <div class="col-xs-8 arw-info-separator">
-                                                                            <h2 class="product-name">
-                                                                                <a href="http://m2.arexmage.com/arw_dots/sony-a77ii-digital-slr-camera.html" title="Sony A77II Digital Camera">
-                                                                                    <span title="Sony A77II Digital Camera">Sony A77II Digital Camera</span>
-                                                                                </a>
-                                                                            </h2>
-                                                                            <div class="ratings">
-                                                                                <div class="rating-box">
-                                                                                    <div class="rating" style="width:0%"></div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-xs-4 no-padding">
-
-
-
-                                                                            <div class="price-box">
-                                                                                <span class="regular-price" id="product-price-23">
-                                                                                    <span class="price" content="898">$898.00</span>
-                                                                                </span>
-
-                                                                            </div>
-
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="wrapper-item">
-                                                                <input type="hidden" value="38" name="product" />
-                                                                <div class="wrapper-item-inner  transform-effect vertical-effect skin1-effect">
-                                                                    <div class="outer-image">
-                                                                        <a href="http://m2.arexmage.com/arw_dots/beats-studio-wireless.html" title="Beats Studio Wireless" class="product-image">
-                                                                            <img class="front product-collection-image" src="http://m2.arexmage.com/arw_dots/media/catalog/product/cache/1/small_image/270x300/170ec19af00183b5e0368529fc2daa2f/e/p/ep_0003_dwca680cb1_1.jpg" alt="Beats Studio Wireless" />
-                                                                            <img class="back" src="http://m2.arexmage.com/arw_dots/media/catalog/product/cache/1/small_image/270x300/170ec19af00183b5e0368529fc2daa2f/e/p/ep_0002_dwca680cb1_2.jpg" alt="" />
-                                                                        </a>
-                                                                    </div>
-                                                                    <div class="actions">
-                                                                        <button data-toggle="tooltip" data-placement="left" onclick="setLocation('http://m2.arexmage.com/arw_dots/beats-studio-wireless.html')" class="button btn-cart" title="Add to Cart"><span><span class="icon_bag"></span></span></button>
-                                                                        <!--
-                                                                        -->
-                                                                        <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/wishlist/index/add/product/38/form_key/fY84n4ctdiOHbUdq/" class="button link-wishlist" title="Add to Wishlist"><span class="fa fa-heart"></span></a>
-                                                                        <!--
-                                                                        -->
-                                                                        <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/catalog/product_compare/add/product/38/uenc/aHR0cDovL20yLmFyZXhtYWdlLmNvbS9hcndfZG90cy8,/form_key/fY84n4ctdiOHbUdq/" class="button link-compare" title="Add to Compare"><span class="fa fa-bar-chart"></span></a>
-                                                                        <!--
-                                                                        -->
-                                                                        <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/arexworks/quickview/index/product_id/38/" class="button link-quickview" title="Quick View"><span class="fa fa-search-plus"></span></a>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="product-info">
-                                                                    <div class="row no-margin">
-                                                                        <div class="col-xs-8 arw-info-separator">
-                                                                            <h2 class="product-name">
-                                                                                <a href="http://m2.arexmage.com/arw_dots/beats-studio-wireless.html" title="Beats Studio Wireless">
-                                                                                    <span title="Beats Studio Wireless">Beats Studio Wireless</span>
-                                                                                </a>
-                                                                            </h2>
-                                                                            <div class="ratings">
-                                                                                <div class="rating-box">
-                                                                                    <div class="rating" style="width:0%"></div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-xs-4 no-padding">
-
-
-
-                                                                            <div class="price-box">
-                                                                                <span class="regular-price" id="product-price-38">
-                                                                                    <span class="price" content="379.95">$379.95</span>
-                                                                                </span>
-
-                                                                            </div>
-
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="wrapper-item">
-                                                                <input type="hidden" value="10" name="product" />
-                                                                <div class="wrapper-item-inner ">
-                                                                    <div class="outer-image">
-                                                                        <a href="http://m2.arexmage.com/arw_dots/bose-soundtrue-headphones.html" title="Bose SoundTrue" class="product-image">
-                                                                            <img class="front product-collection-image" src="http://m2.arexmage.com/arw_dots/media/catalog/product/cache/1/small_image/270x300/170ec19af00183b5e0368529fc2daa2f/e/p/ep_0026_b00m5a7l14.jpg" alt="Bose SoundTrue" />
-                                                                        </a>
-                                                                    </div>
-                                                                    <div class="actions">
-                                                                        <button data-toggle="tooltip" data-placement="left" onclick="setLocation('http://m2.arexmage.com/arw_dots/checkout/cart/add/uenc/aHR0cDovL20yLmFyZXhtYWdlLmNvbS9hcndfZG90cy8,/product/10/form_key/fY84n4ctdiOHbUdq/')" class="button btn-cart" title="Add to Cart"><span><span class="icon_bag"></span></span></button>
-                                                                        <!--
-                                                                        -->
-                                                                        <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/wishlist/index/add/product/10/form_key/fY84n4ctdiOHbUdq/" class="button link-wishlist" title="Add to Wishlist"><span class="fa fa-heart"></span></a>
-                                                                        <!--
-                                                                        -->
-                                                                        <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/catalog/product_compare/add/product/10/uenc/aHR0cDovL20yLmFyZXhtYWdlLmNvbS9hcndfZG90cy8,/form_key/fY84n4ctdiOHbUdq/" class="button link-compare" title="Add to Compare"><span class="fa fa-bar-chart"></span></a>
-                                                                        <!--
-                                                                        -->
-                                                                        <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/arexworks/quickview/index/product_id/10/" class="button link-quickview" title="Quick View"><span class="fa fa-search-plus"></span></a>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="product-info">
-                                                                    <div class="row no-margin">
-                                                                        <div class="col-xs-8 arw-info-separator">
-                                                                            <h2 class="product-name">
-                                                                                <a href="http://m2.arexmage.com/arw_dots/bose-soundtrue-headphones.html" title="Bose SoundTrue">
-                                                                                    <span title="Bose SoundTrue">Bose SoundTrue</span>
-                                                                                </a>
-                                                                            </h2>
-                                                                            <div class="ratings">
-                                                                                <div class="rating-box">
-                                                                                    <div class="rating" style="width:0%"></div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-xs-4 no-padding">
-
-
-
-                                                                            <div class="price-box">
-                                                                                <span class="regular-price" id="product-price-10">
-                                                                                    <span class="price" content="89.95">$89.95</span>
-                                                                                </span>
-
-                                                                            </div>
-
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="wrapper-item">
-                                                                <div class="arw-product-labels"><span class="arw-product-label product-sale-label"><span>Sale</span><span class="arw-label-ribbon"></span></span></div>            <input type="hidden" value="9" name="product" />
-                                                                <div class="wrapper-item-inner ">
-                                                                    <div class="outer-image">
-                                                                        <a href="http://m2.arexmage.com/arw_dots/jaybird-bluebuds-headphones.html" title="JayBird BlueBuds" class="product-image">
-                                                                            <img class="front product-collection-image" src="http://m2.arexmage.com/arw_dots/media/catalog/product/cache/1/small_image/270x300/170ec19af00183b5e0368529fc2daa2f/e/p/ep_0027_b00airuoi8.jpg" alt="JayBird BlueBuds" />
-                                                                        </a>
-                                                                    </div>
-                                                                    <div class="actions">
-                                                                        <button data-toggle="tooltip" data-placement="left" onclick="setLocation('http://m2.arexmage.com/arw_dots/checkout/cart/add/uenc/aHR0cDovL20yLmFyZXhtYWdlLmNvbS9hcndfZG90cy8,/product/9/form_key/fY84n4ctdiOHbUdq/')" class="button btn-cart" title="Add to Cart"><span><span class="icon_bag"></span></span></button>
-                                                                        <!--
-                                                                        -->
-                                                                        <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/wishlist/index/add/product/9/form_key/fY84n4ctdiOHbUdq/" class="button link-wishlist" title="Add to Wishlist"><span class="fa fa-heart"></span></a>
-                                                                        <!--
-                                                                        -->
-                                                                        <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/catalog/product_compare/add/product/9/uenc/aHR0cDovL20yLmFyZXhtYWdlLmNvbS9hcndfZG90cy8,/form_key/fY84n4ctdiOHbUdq/" class="button link-compare" title="Add to Compare"><span class="fa fa-bar-chart"></span></a>
-                                                                        <!--
-                                                                        -->
-                                                                        <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/arexworks/quickview/index/product_id/9/" class="button link-quickview" title="Quick View"><span class="fa fa-search-plus"></span></a>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="product-info">
-                                                                    <div class="row no-margin">
-                                                                        <div class="col-xs-8 arw-info-separator">
-                                                                            <h2 class="product-name">
-                                                                                <a href="http://m2.arexmage.com/arw_dots/jaybird-bluebuds-headphones.html" title="JayBird BlueBuds">
-                                                                                    <span title="JayBird BlueBuds">JayBird BlueBuds</span>
-                                                                                </a>
-                                                                            </h2>
-                                                                            <div class="ratings">
-                                                                                <div class="rating-box">
-                                                                                    <div class="rating" style="width:0%"></div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-xs-4 no-padding">
-
-
-
-                                                                            <div class="price-box">
-
-                                                                                <p class="old-price">
-                                                                                    <span class="price-label">Regular Price:</span>
-                                                                                    <span class="price" id="old-price-9">
-                                                                                        $169.99
-                                                                                    </span>
-                                                                                </p>
-
-                                                                                <p class="special-price">
-                                                                                    <span class="price-label">Special Price</span>
-                                                                                    <span class="price" content="129.99" id="product-price-9">
-                                                                                        $129.99
-                                                                                    </span>
-                                                                                </p>
-
-
-                                                                            </div>
-
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="wrapper-item">
-                                                                <input type="hidden" value="46" name="product" />
-                                                                <div class="wrapper-item-inner ">
-                                                                    <div class="outer-image">
-                                                                        <a href="http://m2.arexmage.com/arw_dots/hitech-products.html" title="Bundle Demo" class="product-image">
-                                                                            <img class="front product-collection-image" src="http://m2.arexmage.com/arw_dots/media/catalog/product/cache/1/small_image/270x300/170ec19af00183b5e0368529fc2daa2f/h/t/htpjff1.jpg" alt="Bundle Demo" />
-                                                                        </a>
-                                                                    </div>
-                                                                    <div class="actions">
-                                                                        <button data-toggle="tooltip" data-placement="left" onclick="setLocation('http://m2.arexmage.com/arw_dots/hitech-products.html')" class="button btn-cart" title="Add to Cart"><span><span class="icon_bag"></span></span></button>
-                                                                        <!--
-                                                                        -->
-                                                                        <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/wishlist/index/add/product/46/form_key/fY84n4ctdiOHbUdq/" class="button link-wishlist" title="Add to Wishlist"><span class="fa fa-heart"></span></a>
-                                                                        <!--
-                                                                        -->
-                                                                        <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/catalog/product_compare/add/product/46/uenc/aHR0cDovL20yLmFyZXhtYWdlLmNvbS9hcndfZG90cy8,/form_key/fY84n4ctdiOHbUdq/" class="button link-compare" title="Add to Compare"><span class="fa fa-bar-chart"></span></a>
-                                                                        <!--
-                                                                        -->
-                                                                        <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/arexworks/quickview/index/product_id/46/" class="button link-quickview" title="Quick View"><span class="fa fa-search-plus"></span></a>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="product-info">
-                                                                    <div class="row no-margin">
-                                                                        <div class="col-xs-8 arw-info-separator">
-                                                                            <h2 class="product-name">
-                                                                                <a href="http://m2.arexmage.com/arw_dots/hitech-products.html" title="Bundle Demo">
-                                                                                    <span title="Bundle Demo">Bundle Demo</span>
-                                                                                </a>
-                                                                            </h2>
-                                                                            <div class="ratings">
-                                                                                <div class="rating-box">
-                                                                                    <div class="rating" style="width:0%"></div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-xs-4 no-padding">
-
-                                                                            <div class="price-box">
-                                                                                <p class="price-from">
-                                                                                    <span class="price-label">From:</span>
-                                                                                    <span class="price">$827.97</span>
-                                                                                </p>
-                                                                                <p class="price-to">
-                                                                                    <span class="price-label">To:</span>
-                                                                                    <span class="price">$3,975.37</span>
-                                                                                </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="wrapper-item">
-                                                                <input type="hidden" value="20" name="product" />
-                                                                <div class="wrapper-item-inner  transform-effect vertical-effect skin1-effect">
-                                                                    <div class="outer-image">
-                                                                        <a href="http://m2.arexmage.com/arw_dots/panasonic-lumix-dmc-fz200.html" title="Panasonic Lumix FZ200" class="product-image">
-                                                                            <img class="front product-collection-image" src="http://m2.arexmage.com/arw_dots/media/catalog/product/cache/1/small_image/270x300/170ec19af00183b5e0368529fc2daa2f/e/p/ep_0019_b008mb6zx0_1.jpg" alt="Panasonic Lumix FZ200" />
-                                                                            <img class="back" src="http://m2.arexmage.com/arw_dots/media/catalog/product/cache/1/small_image/270x300/170ec19af00183b5e0368529fc2daa2f/e/p/ep_0018_b008mb6zx0_2.jpg" alt="" />
-                                                                        </a>
-                                                                    </div>
-                                                                    <div class="actions">
-                                                                        <button data-toggle="tooltip" data-placement="left" onclick="setLocation('http://m2.arexmage.com/arw_dots/checkout/cart/add/uenc/aHR0cDovL20yLmFyZXhtYWdlLmNvbS9hcndfZG90cy8,/product/20/form_key/fY84n4ctdiOHbUdq/')" class="button btn-cart" title="Add to Cart"><span><span class="icon_bag"></span></span></button>
-                                                                        <!--
-                                                                        -->
-                                                                        <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/wishlist/index/add/product/20/form_key/fY84n4ctdiOHbUdq/" class="button link-wishlist" title="Add to Wishlist"><span class="fa fa-heart"></span></a>
-                                                                        <!--
-                                                                        -->
-                                                                        <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/catalog/product_compare/add/product/20/uenc/aHR0cDovL20yLmFyZXhtYWdlLmNvbS9hcndfZG90cy8,/form_key/fY84n4ctdiOHbUdq/" class="button link-compare" title="Add to Compare"><span class="fa fa-bar-chart"></span></a>
-                                                                        <!--
-                                                                        -->
-                                                                        <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/arexworks/quickview/index/product_id/20/" class="button link-quickview" title="Quick View"><span class="fa fa-search-plus"></span></a>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="product-info">
-                                                                    <div class="row no-margin">
-                                                                        <div class="col-xs-8 arw-info-separator">
-                                                                            <h2 class="product-name">
-                                                                                <a href="http://m2.arexmage.com/arw_dots/panasonic-lumix-dmc-fz200.html" title="Panasonic Lumix FZ200">
-                                                                                    <span title="Panasonic Lumix FZ200">Panasonic Lumix FZ200</span>
-                                                                                </a>
-                                                                            </h2>
-                                                                            <div class="ratings">
-                                                                                <div class="rating-box">
-                                                                                    <div class="rating" style="width:0%"></div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-xs-4 no-padding">
-
-
-
-                                                                            <div class="price-box">
-                                                                                <span class="regular-price" id="product-price-20">
-                                                                                    <span class="price" content="397.99">$397.99</span>
-                                                                                </span>
-
-                                                                            </div>
-
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="wrapper-item">
-                                                                <input type="hidden" value="12" name="product" />
-                                                                <div class="wrapper-item-inner ">
-                                                                    <div class="outer-image">
-                                                                        <a href="http://m2.arexmage.com/arw_dots/vic-firth-drummer-s-headphones.html" title="Vic Firth Drummer's" class="product-image">
-                                                                            <img class="front product-collection-image" src="http://m2.arexmage.com/arw_dots/media/catalog/product/cache/1/small_image/270x300/170ec19af00183b5e0368529fc2daa2f/e/p/ep_0025_b0002f513e_1.jpg" alt="Vic Firth Drummer's" />
-                                                                        </a>
-                                                                    </div>
-                                                                    <div class="actions">
-                                                                        <button data-toggle="tooltip" data-placement="left" onclick="setLocation('http://m2.arexmage.com/arw_dots/checkout/cart/add/uenc/aHR0cDovL20yLmFyZXhtYWdlLmNvbS9hcndfZG90cy8,/product/12/form_key/fY84n4ctdiOHbUdq/')" class="button btn-cart" title="Add to Cart"><span><span class="icon_bag"></span></span></button>
-                                                                        <!--
-                                                                        -->
-                                                                        <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/wishlist/index/add/product/12/form_key/fY84n4ctdiOHbUdq/" class="button link-wishlist" title="Add to Wishlist"><span class="fa fa-heart"></span></a>
-                                                                        <!--
-                                                                        -->
-                                                                        <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/catalog/product_compare/add/product/12/uenc/aHR0cDovL20yLmFyZXhtYWdlLmNvbS9hcndfZG90cy8,/form_key/fY84n4ctdiOHbUdq/" class="button link-compare" title="Add to Compare"><span class="fa fa-bar-chart"></span></a>
-                                                                        <!--
-                                                                        -->
-                                                                        <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/arexworks/quickview/index/product_id/12/" class="button link-quickview" title="Quick View"><span class="fa fa-search-plus"></span></a>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="product-info">
-                                                                    <div class="row no-margin">
-                                                                        <div class="col-xs-8 arw-info-separator">
-                                                                            <h2 class="product-name">
-                                                                                <a href="http://m2.arexmage.com/arw_dots/vic-firth-drummer-s-headphones.html" title="Vic Firth Drummer's">
-                                                                                    <span title="Vic Firth Drummer's">Vic Firth Drummer's</span>
-                                                                                </a>
-                                                                            </h2>
-                                                                            <div class="ratings">
-                                                                                <div class="rating-box">
-                                                                                    <div class="rating" style="width:0%"></div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-xs-4 no-padding">
-
-
-
-                                                                            <div class="price-box">
-                                                                                <span class="regular-price" id="product-price-12">
-                                                                                    <span class="price" content="25.03">$25.03</span>
-                                                                                </span>
-
-                                                                            </div>
-
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="wrapper-item">
-                                                                <input type="hidden" value="18" name="product" />
-                                                                <div class="wrapper-item-inner ">
-                                                                    <div class="outer-image">
-                                                                        <a href="http://m2.arexmage.com/arw_dots/bose-quietcomfort-25-headphones.html" title="Bose Quiet Comfort 25" class="product-image">
-                                                                            <img class="front product-collection-image" src="http://m2.arexmage.com/arw_dots/media/catalog/product/cache/1/small_image/270x300/170ec19af00183b5e0368529fc2daa2f/e/p/ep_0022_b00m1neukk.jpg" alt="Bose Quiet Comfort 25" />
-                                                                        </a>
-                                                                    </div>
-                                                                    <div class="actions">
-                                                                        <button data-toggle="tooltip" data-placement="left" onclick="setLocation('http://m2.arexmage.com/arw_dots/checkout/cart/add/uenc/aHR0cDovL20yLmFyZXhtYWdlLmNvbS9hcndfZG90cy8,/product/18/form_key/fY84n4ctdiOHbUdq/')" class="button btn-cart" title="Add to Cart"><span><span class="icon_bag"></span></span></button>
-                                                                        <!--
-                                                                        -->
-                                                                        <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/wishlist/index/add/product/18/form_key/fY84n4ctdiOHbUdq/" class="button link-wishlist" title="Add to Wishlist"><span class="fa fa-heart"></span></a>
-                                                                        <!--
-                                                                        -->
-                                                                        <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/catalog/product_compare/add/product/18/uenc/aHR0cDovL20yLmFyZXhtYWdlLmNvbS9hcndfZG90cy8,/form_key/fY84n4ctdiOHbUdq/" class="button link-compare" title="Add to Compare"><span class="fa fa-bar-chart"></span></a>
-                                                                        <!--
-                                                                        -->
-                                                                        <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/arexworks/quickview/index/product_id/18/" class="button link-quickview" title="Quick View"><span class="fa fa-search-plus"></span></a>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="product-info">
-                                                                    <div class="row no-margin">
-                                                                        <div class="col-xs-8 arw-info-separator">
-                                                                            <h2 class="product-name">
-                                                                                <a href="http://m2.arexmage.com/arw_dots/bose-quietcomfort-25-headphones.html" title="Bose Quiet Comfort 25">
-                                                                                    <span title="Bose Quiet Comfort 25">Bose Quiet Comfort 25</span>
-                                                                                </a>
-                                                                            </h2>
-                                                                            <div class="ratings">
-                                                                                <div class="rating-box">
-                                                                                    <div class="rating" style="width:0%"></div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-xs-4 no-padding">
-
-
-
-                                                                            <div class="price-box">
-                                                                                <span class="regular-price" id="product-price-18">
-                                                                                    <span class="price" content="299">$299.00</span>
-                                                                                </span>
-
-                                                                            </div>
-
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="wrapper-item">
-                                                                <input type="hidden" value="16" name="product" />
-                                                                <div class="wrapper-item-inner ">
-                                                                    <div class="outer-image">
-                                                                        <a href="http://m2.arexmage.com/arw_dots/beats-solo-2-wireless-headphone.html" title="Beats Solo 2 Wireless" class="product-image">
-                                                                            <img class="front product-collection-image" src="http://m2.arexmage.com/arw_dots/media/catalog/product/cache/1/small_image/270x300/170ec19af00183b5e0368529fc2daa2f/e/p/ep_0023_b00p87c58k.jpg" alt="Beats Solo 2 Wireless" />
-                                                                        </a>
-                                                                    </div>
-                                                                    <div class="actions">
-                                                                        <button data-toggle="tooltip" data-placement="left" onclick="setLocation('http://m2.arexmage.com/arw_dots/checkout/cart/add/uenc/aHR0cDovL20yLmFyZXhtYWdlLmNvbS9hcndfZG90cy8,/product/16/form_key/fY84n4ctdiOHbUdq/')" class="button btn-cart" title="Add to Cart"><span><span class="icon_bag"></span></span></button>
-                                                                        <!--
-                                                                        -->
-                                                                        <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/wishlist/index/add/product/16/form_key/fY84n4ctdiOHbUdq/" class="button link-wishlist" title="Add to Wishlist"><span class="fa fa-heart"></span></a>
-                                                                        <!--
-                                                                        -->
-                                                                        <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/catalog/product_compare/add/product/16/uenc/aHR0cDovL20yLmFyZXhtYWdlLmNvbS9hcndfZG90cy8,/form_key/fY84n4ctdiOHbUdq/" class="button link-compare" title="Add to Compare"><span class="fa fa-bar-chart"></span></a>
-                                                                        <!--
-                                                                        -->
-                                                                        <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/arexworks/quickview/index/product_id/16/" class="button link-quickview" title="Quick View"><span class="fa fa-search-plus"></span></a>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="product-info">
-                                                                    <div class="row no-margin">
-                                                                        <div class="col-xs-8 arw-info-separator">
-                                                                            <h2 class="product-name">
-                                                                                <a href="http://m2.arexmage.com/arw_dots/beats-solo-2-wireless-headphone.html" title="Beats Solo 2 Wireless">
-                                                                                    <span title="Beats Solo 2 Wireless">Beats Solo 2 Wireless</span>
-                                                                                </a>
-                                                                            </h2>
-                                                                            <div class="ratings">
-                                                                                <div class="rating-box">
-                                                                                    <div class="rating" style="width:0%"></div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-xs-4 no-padding">
-
-
-
-                                                                            <div class="price-box">
-                                                                                <span class="regular-price" id="product-price-16">
-                                                                                    <span class="price" content="257.95">$257.95</span>
-                                                                                </span>
-
-                                                                            </div>
-
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </li>
+                                                        </div>
+                                                        <?php }?>
+                                                    </li>
+                                                   
                                                     </ul>
                                                 </div>
                                                

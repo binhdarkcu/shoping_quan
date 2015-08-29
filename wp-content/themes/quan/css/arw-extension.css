@@ -1511,6 +1511,7 @@ div.ajax_loading_tab {
 .nav-primary-container .megamenu > li > .sub-wrapper,
 .nav-primary-container .megamenu > li > .sub-menu {
   top: auto;
+  display: none;
 }
 
 #toPopup {

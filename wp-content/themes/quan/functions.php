@@ -4,7 +4,7 @@
 
    
     //add theme support
-    add_theme_support('post-thumbnails',array('post','page'));
+    add_theme_support('post-thumbnails',array('post','page','slider'));
 	//set_post_thumbnail_size( 360, 182, true ); 
     //register post type
     include TEMPLATEPATH.'/post-type/registry-post-type.php';
