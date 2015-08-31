@@ -270,7 +270,7 @@
 
                                                                         <div class="price-box">
                                                                             <span class="regular-price" id="product-price-22">
-                                                                                <span class="price" content="<?php echo $price;?>"><?php echo $price;?> VMĐ</span>
+                                                                                <span class="price" content="<?php echo $price;?>"><?php echo $price;?> VNĐ</span>
                                                                             </span>
 
                                                                         </div>

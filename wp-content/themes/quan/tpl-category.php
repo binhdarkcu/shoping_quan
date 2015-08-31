@@ -3,39 +3,38 @@
 	            <strong><span>Loại sản phẩm</span></strong>
 	        </div>
 	        <div class="block-content">
-	            <ul id="categories_nav_left_48320002" class="nav-accordion nav-categories">
+	            <ul id="categories_nav_left" class="nav-accordion nav-categories">
 	            	<?php 
-	            	 $i=0;
-	            	 $args_category = array(
-						'orderby'                  => 'name',
-						'order'                    => 'ASC',
-						'hide_empty'               => 1,
-						'hierarchical'             => 1,
-						'exclude'                  => '',
-						'include'                  => '',
-						'number'                   => '7',
-						'taxonomy'                 => 'category',
-						'pad_counts'               => false 
+	            	  $i=0;
+    				get_the_categories();
 
-					); 
-					  $categories = get_categories($args_category); 
-					  foreach ( $categories as $category ) {
-					  	$i++;
+						function get_the_categories( $parent = 0 ) 
+						{
+						    $categories = get_categories( "exclude=20&number=7&hide_empty=0&parent=$parent" );
+
+						    if ( $categories ) {
+						        foreach ( $categories as $cat ) {
+						        	$i++;
+						            if ( $cat->category_parent == $parent ) {
 					?>
-					<li class="level0 nav-<?php echo $i;?> level-top parent">
-	                    <a href="<?php echo get_category_link( $category->term_id); ?>" class="level-top">
-	                        <span><?php echo $category->name;?></span>
-	                    </a>
-	                </li>
-					
+										<li class="level0 nav-<?php echo $i;?> level-top parent">
+						                    <a href="<?php echo get_category_link( $cat->term_id); ?>" class="level-top">
+						                        <span><?php echo $cat->name;?></span>
+						                    </a>
+						                    <ul>
+						                    	<?php get_the_categories( $cat->term_id );?>
+						                    </ul>
+						                </li>
 					<?php
+						            }
+						        }
+						    }
 						}
-					 ?>
-	                
+					?>	
 	            </ul>
 	            <script type="text/javascript">
 	                jQuery(document).ready(function () {
-	                    jQuery("#categories_nav_left_48320002").arwAccordionMenu({
+	                    jQuery(".nav-categories").arwAccordionMenu({
 	                        accordion: true,
 	                        speed: 400,
 	                        closedSign: 'collapse',

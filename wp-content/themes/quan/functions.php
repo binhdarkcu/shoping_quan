@@ -30,7 +30,37 @@
 	//contact form
 	//include TEMPLATEPATH . '/email/xtemplate.jimform.php';
 	// Setup Admin Thumbnail Size
-	
+	function custom_list_categories( $args = '' ) {
+	  $defaults = array(
+	    'taxonomy' => 'category',
+	    'show_option_none' => '',
+	    'echo' => 1,
+	    'depth' => 2,
+	    'wrap_class' => '',
+	    'level_class' => '',
+	    'parent_title_format' => '%s',
+	    'current_class' => 'current'
+	  );
+	  $r = wp_parse_args( $args, $defaults );
+	  if ( ! isset( $r['wrap_class'] ) ) $r['wrap_class'] = ( 'category' == $r['taxonomy'] ) ? 'categories' : $r['taxonomy'];
+	  extract( $r );
+	  if ( ! taxonomy_exists($taxonomy) ) return false;
+	  $categories = get_categories( $r );
+	  $output = "<ul class='" . esc_attr( $wrap_class ) . "'>" . PHP_EOL;
+	  if ( empty( $categories ) ) {
+	    if ( ! empty( $show_option_none ) ) $output .= "<li>" . $show_option_none . "</li>" . PHP_EOL;
+	  } else {
+	    if ( is_category() || is_tax() || is_tag() ) {
+	      $current_term_object = get_queried_object();
+	      if ( $r['taxonomy'] == $current_term_object->taxonomy ) $r['current_category'] = get_queried_object_id();
+	    }
+	    $depth = $r['depth'];
+	    $walker = new My_Category_Walker;
+	    $output .= $walker->walk($categories, $depth, $r);
+	  }
+	  $output .= "</ul>" . PHP_EOL;
+	  if ( $echo ) echo $output; else return $output;
+	}
 	//register menu
 	function register_menu() {
 	  register_nav_menu('menu_top',__( 'menu_top' ));
