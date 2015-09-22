@@ -212,10 +212,3 @@
     height: 100%;
     width: 100%;
 }
-
-.product-list-index .products-slide li{
-    display: inline-block;
-}
-.product-list-index .products-slide li .wrapper-item{
-    display: inline-block;
-}

@@ -972,7 +972,9 @@ img {
   font-weight: normal;
   padding: 0;
 }
-
+input.error{
+  border-color: red!important;
+}
 /* -------------------------------------------- *
  * Price Box - Special
  */
@@ -983,6 +985,12 @@ img {
 .price-box .old-price .price-label,
 .price-box .special-price .price-label {
   display: none;
+}
+.price-box .special-price .price-label{
+  display: block;
+}
+.price-box .special-price .price-label{
+  font-size: 14px;
 }
 .price-box .old-price .price,
 .price-box .special-price .price {
@@ -4015,11 +4023,13 @@ ul.tags-list:hover li:hover a, ul.tags-list:hover li:active a, ul.tags-list:hove
   padding-right: 0;
 }
 .products-grid li.item > .wrapper-item {
-  margin: 0 auto 30px;
-  max-width: 290px;
-  padding-left: 15px;
-  padding-right: 15px;
-  position: relative;
+      margin: 0 auto 30px;
+    max-width: 290px;
+    padding-left: 15px;
+    padding-right: 15px;
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
 }
 @media (max-width: 480px) {
   .products-grid li.item > .wrapper-item {

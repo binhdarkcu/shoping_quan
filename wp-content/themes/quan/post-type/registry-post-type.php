@@ -37,22 +37,22 @@ function register_custom_slider() {
     register_post_type('slider',$slider);
 }
 
-add_action( 'init', 'register_custom_organize' );
-function register_custom_organize() {
+add_action( 'init', 'register_custom_adv' );
+function register_custom_adv() {
     $slider_label = array(
-        'name' => _x('Organisaties', 'Organisaties'),
-        'singular_name' => _x('organisaties', 'organisaties'),
-        'add_new' => _x('Add New', 'Organisaties'),
-        'add_new_item' => __('Add New'),
-        'edit_item' => __('Edit '),
-        'new_item' => __('Add New'),
-        'all_items' => __('View All'),
-        'view_item' => __('View'),
-        'search_items' => __('Search'),
+        'name' => _x('Advertises', 'Advertises'),
+        'singular_name' => _x('advertises', 'advertises'),
+        'add_new' => _x('Thêm mới', 'Clients'),
+        'add_new_item' => __('Thêm mới'),
+        'edit_item' => __('Sửa '),
+        'new_item' => __('Thêm mới'),
+        'all_items' => __('Xem tất cả'),
+        'view_item' => __('Xem'),
+        'search_items' => __('Tìm kiếm'),
         'not_found' =>  __('Not Find'),
         'not_found_in_trash' => __('Not Find in Trash'),
         'parent_item_colon' => '',
-        'menu_name' => 'Organisaties'
+        'menu_name' => 'Quảng cáo'
     );
     $slider = array(
         'labels' => $slider_label,
@@ -62,15 +62,15 @@ function register_custom_organize() {
         'show_in_menu' => true,
         'show_in_nav_menus'=>true,
         'query_var' => true,
-        'rewrite' =>  array('slug'=>'organisaties'),
+        'rewrite' =>  array('slug'=>'advertises'),
         'capability_type' => 'post',
         'has_archive' => true,
         'hierarchical' => false,
         'menu_position' => 5,
         'menu_icon'	=> get_bloginfo('template_url').'/post-type/images/facities.png',
-        //'taxonomies'		=> array('category'),
-        'supports' => array('title','thumbnail'),
+        'taxonomies'		=> array('category'),
+        'supports' => array('title','editor','thumbnail'),
     );
-    register_post_type('organisaties',$slider);
+    register_post_type('advertises',$slider);
 }
 

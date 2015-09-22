@@ -9,33 +9,33 @@
  * http://opensource.org/licenses/afl-3.0.php
  * If you did not receive a copy of the license and are unable to
  * obtain it through the world-wide-web, please send an email
- * to license@magentocommerce.com so we can send you a copy immediately.
+ * to license@magento.com so we can send you a copy immediately.
  *
  * DISCLAIMER
  *
  * Do not edit or add to this file if you wish to upgrade Magento to newer
  * versions in the future. If you wish to customize Magento for your
- * needs please refer to http://www.magentocommerce.com for more information.
+ * needs please refer to http://www.magento.com for more information.
  *
  * @category    Varien
  * @package     js
- * @copyright   Copyright (c) 2014 Magento Inc. (http://www.magentocommerce.com)
+ * @copyright   Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
-if (typeof ProductAjax == 'undefined') {
-    var ProductAjax = {};
+if (typeof Product == 'undefined') {
+    var Product = {};
 }
 
 /**************************** CONFIGURABLE PRODUCT **************************/
-ProductAjax.Config = Class.create();
-ProductAjax.Config.prototype = {
+Product.Config = Class.create();
+Product.Config.prototype = {
     initialize: function(config){
         this.config     = config;
         this.taxConfig  = this.config.taxConfig;
         if (config.containerId) {
-            this.settings   = $$('#' + config.containerId + ' ' + '.super-attribute-select-duc');
+            this.settings   = $$('#' + config.containerId + ' ' + '.super-attribute-select');
         } else {
-            this.settings   = $$('.super-attribute-select-duc');
+            this.settings   = $$('.super-attribute-select');
         }
         this.state      = new Hash();
         this.priceTemplate = new Template(this.config.template);

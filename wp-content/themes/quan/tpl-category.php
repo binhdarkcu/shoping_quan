@@ -10,7 +10,11 @@
 
 						function get_the_categories( $parent = 0 ) 
 						{
-						    $categories = get_categories( "exclude=20&number=7&hide_empty=0&parent=$parent" );
+						    if(is_home()){
+						    	$categories = get_categories( "exclude=20&number=7&hide_empty=0&parent=$parent" );
+						    }else{
+						    	$categories = get_categories( "exclude=20&hide_empty=0&parent=$parent" );
+						    }
 
 						    if ( $categories ) {
 						        foreach ( $categories as $cat ) {

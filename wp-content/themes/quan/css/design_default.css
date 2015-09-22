@@ -184,7 +184,7 @@ border-color:#ededed;
 border-color:#ededed;
 }
 .data-table td .product-name,.data-table td h3{
-font-family:Montserrat;
+font-family:Arial;
 }
 .data-table tfoot{
 border-top-color:#ededed;
@@ -204,7 +204,7 @@ border-color:#ededed;
 body{
 font-size:14px;
 color:#696969;
-font-family:Lato;
+font-family:Arial;
 background-color:#fff;
 }
 a{
@@ -215,13 +215,13 @@ color:#2dc1bf;
 }
 h1,.h1,h2,.h2,h3,.h3,h4,.h4,h5,.h5,h6,.h6{
 color:#000;
-font-family:Montserrat;
+font-family:Arial;
 }
 .font-text{
-font-family:Lato;
+font-family:Arial;
 }
 .font-heading{
-font-family:Montserrat;
+font-family:Arial;
 }
 .label,label{
 color:#000;
@@ -253,7 +253,7 @@ border-color:#e5e5e5;
 border-color:#e5e5e5;
 }
 .block-title{
-font-family:Montserrat;
+font-family:Arial;
 }
 .block-subtitle{
 color:#2dc1bf;
@@ -266,7 +266,7 @@ color:#000;
 }
 .block-layered-nav dt{
 color:#2dc1bf;
-font-family:Montserrat;
+font-family:Arial;
 }
 .block-layered-nav dd{
 border-bottom-color:#e5e5e5;
@@ -285,7 +285,7 @@ border-color:#e5e5e5;
 }
 .block-subscribe .form-subscribe-title{
 color:#2dc1bf;
-font-family:Lato;
+font-family:Arial;
 }
 .block-subscribe .form-subscribe-header,.block-subscribe .form-subscribe-subtitle{
 color:#000;
@@ -657,7 +657,7 @@ color:#363c4f;
 color:#747474;
 }
 .arw-category-has-image .category-title h1{
-font-family:Lato;
+font-family:Arial;
 }
 .products-list .product-name a,.products-grid .product-name a{
 color:#333;
@@ -792,7 +792,7 @@ background-color:#fff;
 border-color:#dcdcdc;
 }
 .product-view .product-essential .product-shop .price-box{
-font-family:Montserrat;
+font-family:Arial;
 }
 .product-view .product-essential .product-shop .btn-cart{
 background:#181818;
@@ -825,7 +825,7 @@ color:#333;
 background-color:#fff;
 }
 .product-collateral .data-table th{
-font-family:Montserrat;
+font-family:Arial;
 }
 .product-shop .grouped-items-table .name-wrapper{
 color:#696969;
@@ -841,7 +841,7 @@ color:#98a5ae;
 background:#fff;
 border-top-color:#dcdcdc;
 border-right-color:#dcdcdc;
-font-family:Montserrat;
+font-family:Arial;
 }
 .product_details_tabs .product-tabs li:first-child a{
 border-left-color:#dcdcdc;
@@ -862,7 +862,7 @@ background:#fff;
 color:#98a5ae;
 background:#fff;
 border-color:#dcdcdc;
-font-family:Montserrat;
+font-family:Arial;
 }
 .product_details_tabs .product-accordion-heading.active{
 border-top-color:#333;
@@ -914,12 +914,12 @@ background:#000;
 color:#050404;
 }
 .megamenu > li > a{
-font-family:Montserrat;
+font-family:Arial;
 }
 .megamenu .sub-wrapper{
 background:#fff;
 border-bottom-color:#2dc1bf;
-font-family:Montserrat;
+font-family:Arial;
 }
 .megamenu .arwmenu-block .groups .title-group{
 color:#000;
@@ -967,7 +967,7 @@ background:transparent;
 color:#2dc1bf;
 }
 .nav-primary-container .megamenu > li > a{
-font-family:Montserrat;
+font-family:Arial;
 }
 .nav-primary-container .megamenu > li.active > a,.nav-primary-container .megamenu > li:hover > a{
 border-bottom-color:#2dc1bf;
@@ -1051,13 +1051,13 @@ color:#fff;
 }
 .arw_tab_slider .slider-tab li{
 color:#fff;
-font-family:Montserrat;
+font-family:Arial;
 }
 .arw_tab_slider .slider-tab li + li:before{
 border-left-color:#e5e5e5;
 }
 .tab-control-highlight-font .arw_tab_slider .slider-tab{
-font-family:Lato;
+font-family:Arial;
 }
 .sidebar.special-tab .arw_tab_slider,.sidebar .special-tab .arw_tab_slider{
 background-color:#f8f7f7;
@@ -1120,7 +1120,7 @@ color:#000;
 border-left:1px solid #9fe9e8;
 }
 .arw-countdown-for-product .c-item span{
-font-family:Lato;
+font-family:Arial;
 }
 .arw-countdown-for-product .c-item span:first-child{
 font-family:Montserrat;

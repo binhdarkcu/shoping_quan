@@ -1,7 +1,7 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>ARW Dots - Responsive Magento Theme</title>
+    <title><?php echo get_bloginfo('name')?> - <?php echo get_bloginfo('description')?></title>
     <base href="<?php echo get_bloginfo('template_url')?>/"></base>
     <meta name="description" content="Default Description" />
     <meta name="keywords" content="Magento, Varien, E-commerce" />

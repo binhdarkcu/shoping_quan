@@ -1,10 +1,14 @@
 <?php
     /*update_option('siteurl','http://georgia-bc.be');
     update_option('home','http://georgia-bc.be');*/
-
+    function ses_init() {
+      if (!session_id())
+	      session_start();
+	}
+	add_action('init','ses_init');
    
     //add theme support
-    add_theme_support('post-thumbnails',array('post','page','slider'));
+    add_theme_support('post-thumbnails',array('post','page','slider','advertises','three_product_home','hot_news'));
 	//set_post_thumbnail_size( 360, 182, true ); 
     //register post type
     include TEMPLATEPATH.'/post-type/registry-post-type.php';
@@ -20,14 +24,22 @@
 	//change label post
     //include 'inc/page_nav.php';
 
-
 	//contact form
-	//include TEMPLATEPATH . '/email/smtp.php';
-	//include TEMPLATEPATH . '/email/xtemplate.contact.php';
+	include TEMPLATEPATH . '/email/smtp.php';
+	include TEMPLATEPATH . '/email/xtemplate.payment.php';
 	//include TEMPLATEPATH . '/email/xtemplate.forgotpassword.php';
 	
-	
+	include 'orders/page_orders.php';
 	//contact form
+
+	add_filter( 'posts_where', 'title_like_posts_where', 10, 2 );
+	function title_like_posts_where( $where, &$wp_query ) {
+	    global $wpdb;
+	    if ( $post_title_like = $wp_query->get( 'post_title_like' ) ) {
+	        $where .= ' AND ' . $wpdb->posts . '.post_title LIKE \'' . esc_sql( like_escape( $post_title_like ) ) . '%\'';
+	    }
+	    return $where;
+	}
 	//include TEMPLATEPATH . '/email/xtemplate.jimform.php';
 	// Setup Admin Thumbnail Size
 	function custom_list_categories( $args = '' ) {
@@ -71,7 +83,13 @@
 	}
 	add_action( 'init', 'register_menu' );
 	
-	
+	function get_content_by_id($id){
+		$content_post = get_post($id);
+		$content = $content_post->post_content;
+		$content = apply_filters('the_content', $content);
+		$content = str_replace(']]>', ']]&gt;', $content);
+		return $content;
+	}
 	function get_page_id_by_slug($slug){
 	    global $wpdb;
 	    $id = $wpdb->get_var("SELECT ID FROM $wpdb->posts WHERE post_name = '".$slug."'AND post_type = 'page'");

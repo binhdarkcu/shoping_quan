@@ -1,20 +1,40 @@
 <header class="header-container header_fixed_menu">
     <div id="header">
-        
+        <script type="text/javascript">
+            var HOMEURL = "<?php echo home_url();?>";
+            var BLOGHOME = "<?php echo site_url();?>";
+            var LANG = "<?php echo $curlang;?>";
+        </script>
         <div class="header-main header-wrapper">
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                         <div class="header-logo">
-                            <h1 class="logo"><strong class="no-display">ARW Dots</strong><a href="<?php echo get_bloginfo('home')?>" title="ARW Dots" class="logo"><img src="http://m2.arexmage.com/arw_dots/skin/frontend/arw_dots/default/images/media/logo.png" alt="ARW Dots" /></a></h1>
+                            <h1 class="logo"><a href="<?php echo get_bloginfo('home')?>" title="<?php echo get_bloginfo('name')?>" class="logo"><img src="<?php echo get_field('header_logo','option')?>"/></a></h1>
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-6 col-md-8 col-lg-8 col-lg-offset-1">
                         <div class="arw-search-container data-width-3">
+                            <?php
+                                if (isset( $_GET['search'] ) && wp_verify_nonce($_GET['search'], 'act_search') ){
+                                    global $wpdb;
+
+                                    if (!empty($_GET['cat']) && !empty($_GET['q'])) {
+                                         $link = site_url().'/search/?category='.$_GET['cat'].'&q='.$_GET['q'];
+                                         echo "<script>setTimeout(function(){window.location.href = '$link';},1);</script>";
+                                    } else if (!empty($_GET['cat']) && empty($_GET['q'])) {
+                                        $link = get_category_link($_GET['cat']);
+                                        echo "<script>setTimeout(function(){window.location.href = '$link';},1);</script>";
+                                    }else{
+                                        $link = site_url().'/search/?q='.$_GET['q'];
+                                        echo "<script>setTimeout(function(){window.location.href = '$link';},1);</script>";
+                                    }
+                                }
+                            ?>
                             <form id="search_mini_form" action="" method="get">
                                 <div class="form-search">
                                     <select class="search-select-cat" name="cat">
-                                        <option value="0">All Category</option>
+                                        <option value="0">Danh mục</option>
                                         <?php 
                                          $i=0;
                                          $args_category = array(
@@ -34,15 +54,9 @@
                                             }
                                          ?>
                                     </select>
-                                    <input id="search" type="text" name="q" value="" class="input-text" maxlength="128" />
+                                    <input id="search" placeholder="Tìm kiếm sản phẩm" type="text" name="q" value="" class="input-text" maxlength="128" />
                                     <button type="submit" title="Search" class="btn btn2"><span><span><i class="fa fa-search"></i></span></span></button>
-                                    <div id="search_autocomplete" class="search-autocomplete"></div>
-                                    <script type="text/javascript">
-                                        //<![CDATA[
-                                        var searchForm = new Varien.searchForm('search_mini_form', 'search', 'Search entire store here...');
-                                        searchForm.initAutocomplete('http://m2.arexmage.com/arw_dots/catalogsearch/ajax/suggest/', 'search_autocomplete');
-                                        //]]>
-                                    </script>
+                                    <?php wp_nonce_field('act_search','search');?>
                                 </div>
                             </form>
                         </div>

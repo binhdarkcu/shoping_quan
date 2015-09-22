@@ -65,7 +65,8 @@
                         <ul class="products-grid arw-3-col arw-row" id="product-list-2046808">
                         	<?php
 								//$query_category = get_category_post($category->name);
-								query_posts( array ( 'category_name' => $category->slug, 'posts_per_page' => -1 ) );
+                                $array_cat = array ( 'category_name' => $category->slug, 'posts_per_page' => -1 ) ;
+								query_posts($array_cat );
 								while (have_posts()) : the_post();
 								//if(have_posts($query_category->$post)): while(have_posts($query_category->$post)): the_post($query_category->$post);
 									$url = get_field('image_for_slider',get_the_ID());
@@ -176,95 +177,7 @@
 </div>
    </div>
    <div class="col-left sidebar col-xs-12 col-sm-12 col-md-3 col-md-pull-9">
-        <div class="arw-toggle-sidebar" data-id="col-left"><span><i class="fa fa-angle-right"></i></span></div>
-           <div class="sidebar-content">
-    			<?php get_template_part('tpl','category');?>
-				<!-- navigation EOF -->
-				<div class="block block-layered-nav">
-				    <div class="block-title">
-				        <strong><span>Shop By</span></strong>
-				    </div>
-			    	<div class="block-content">
-			            <p class="block-subtitle">Shopping Options</p>
-			            <dl id="narrow-by-list">
-		                   	<dt class="odd">Price</dt>
-		                    <dd class="odd">
-		                    	<div id="slider-ee1cc0309985f3e93f6cd75869390d8d" class="price-slider">
-								    <div id="slider-ee1cc0309985f3e93f6cd75869390d8d-min" class="price-slider-handle min selected" style="left: 0px;"></div>
-								    <div id="slider-ee1cc0309985f3e93f6cd75869390d8d-max" class="price-slider-handle max" style="left: 169px;"></div>
-								    <div id="slider-ee1cc0309985f3e93f6cd75869390d8d-span" class="price-slider-span" style="left: 0px; width: 169px;"></div>
-								</div>
-								<div class="layer-price">
-								    $<span id="layer-price-min">0</span>&nbsp;&nbsp;-&nbsp;&nbsp;$<span id="layer-price-max">4000</span>
-								</div>
-							</dd>
-		                    <dt class="last even">ARW Brand</dt>
-		                    <dd class="last even">
-								<ol>
-								    <li>
-						                <a href="http://m2.arexmage.com/arw_dots/tv-video.html?arw_brand=57">All Brands</a>
-						                        (9)
-						            </li>
-								</ol>
-							</dd>
-		            </dl>
-		            <script type="text/javascript">decorateDataList('narrow-by-list')</script>
-			      </div>
-			</div>
-			<div class="block block-banner">
-			    <div class="block-content">
-			                    <a href="http://m2.arexmage.com/arw_dots/checkout/cart/" title="Our customer service is available 24/7. Call us at (555) 555-0123.">
-			                    <img src="http://m2.arexmage.com/arw_dots/skin/frontend/arw_dots/default/images/media/col_left_callout.jpg" alt="Our customer service is available 24/7. Call us at (555) 555-0123.">
-			                </a>
-			            </div>
-			</div>
-			<div class="block block-tags">
-			    <div class="block-title">
-			        <strong><span>Popular Tags</span></strong>
-			    </div>
-			    <div class="block-content">
-			        <ul class="tags-list">
-			                            <li><a href="http://m2.arexmage.com/arw_dots/tag/product/list/tagId/8/" style="font-size:110%;">RAW</a></li>
-			                            <li><a href="http://m2.arexmage.com/arw_dots/tag/product/list/tagId/11/" style="font-size:75%;">Waterproof</a></li>
-			                            <li><a href="http://m2.arexmage.com/arw_dots/tag/product/list/tagId/5/" style="font-size:145%;">camera</a></li>
-			                            <li><a href="http://m2.arexmage.com/arw_dots/tag/product/list/tagId/4/" style="font-size:75%;">deal</a></li>
-			                            <li><a href="http://m2.arexmage.com/arw_dots/tag/product/list/tagId/7/" style="font-size:110%;">hd</a></li>
-			                            <li><a href="http://m2.arexmage.com/arw_dots/tag/product/list/tagId/3/" style="font-size:75%;">hot</a></li>
-			                            <li><a href="http://m2.arexmage.com/arw_dots/tag/product/list/tagId/10/" style="font-size:75%;">product-images</a></li>
-			                            <li><a href="http://m2.arexmage.com/arw_dots/tag/product/list/tagId/2/" style="font-size:110%;">review</a></li>
-			                            <li><a href="http://m2.arexmage.com/arw_dots/tag/product/list/tagId/9/" style="font-size:110%;">shooting</a></li>
-			                            <li><a href="http://m2.arexmage.com/arw_dots/tag/product/list/tagId/1/" style="font-size:75%;">simple</a></li>
-			                            <li><a href="http://m2.arexmage.com/arw_dots/tag/product/list/tagId/6/" style="font-size:110%;">ultra</a></li>
-			                    </ul>
-			        <div class="actions">
-			            <a href="http://m2.arexmage.com/arw_dots/tag/list/">View All Tags</a>
-			        </div>
-			    </div>
-			</div>
-			<div class="block block-subscribe">
-			    <div class="block-title">
-			        <strong><span>Newsletter</span></strong>
-			    </div>
-			    <form action="http://m2.arexmage.com/arw_dots/newsletter/subscriber/new/" method="post" id="newsletter-validate-detail">
-			        <div class="block-content">
-			            <h2 class="form-subscribe-title">Newsletter</h2>
-			            <div class="form-subscribe-header">
-			                <label for="newsletter">Sign Up for Our Newsletter</label>
-			            </div>
-			            <p class="form-subscribe-subtitle">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium...</p>
-			            <div class="input-box">
-			               <input type="text" name="email" id="newsletter" title="Sign up for our newsletter" class="input-text required-entry validate-email">
-			            </div>
-			            <div class="actions">
-			                <button type="submit" title="Subscribe" class="button"><span><span>Subscribe</span></span></button>
-			            </div>
-			        </div>
-			    </form>
-			</div>
-        </div>
-                </div>
-            </div>
-        </div>
+        <?php get_sidebar('san-pham')?>
     </div>
 </div>
         
