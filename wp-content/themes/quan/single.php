@@ -314,55 +314,16 @@
                                         $bigImg = wp_get_attachment_url( get_post_thumbnail_id($ban->ID) );
                                 ?>
                                 <li class="arw-col item">
-                                    <div class="wrapper-item" style="display: table;margin: 0 auto;">
+                                    <div class="wrapper-item" style="display: table;margin-top:20px">
                                         <div class="arw-product-labels"><span class="arw-product-label product-sale-label"><span>Sale</span><span class="arw-label-ribbon"></span></span></div>            <input type="hidden" value="31" name="product"/>
-                                        <div class="wrapper-item-inner  transform-effect vertical-effect skin1-effect">
+                                        <div class="wrapper-item-inner" style="width: 240px;">
                                             <div class="outer-image">
                                                 <a href="<?php echo get_the_permalink($ban->ID)?>" title="<?php echo get_the_title($ban->ID);?>" class="product-image">
-                                                        <img class="front product-collection-image" src="<?php echo $bigImg;?>" alt="<?php echo get_the_title($ban->ID);?>" />
-                                                        
-                                                    </a>
-                                            </div>
-                                            <div class="actions">
-                                                                    <button data-toggle="tooltip" data-placement="left" onclick="setLocation('http://m2.arexmage.com/arw_dots/apple-iphone-22.html')" class="button btn-cart" title="Add to Cart"><span><span class="icon_bag"></span></span></button><!--
-                                                                                                                    --><a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/wishlist/index/add/product/31/form_key/FuS5jSHNsfq830IO/" class="button link-wishlist" title="Add to Wishlist"><span class="fa fa-heart"></span></a><!--
-                                                                                                                    --><a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/catalog/product_compare/add/product/31/uenc/aHR0cDovL20yLmFyZXhtYWdlLmNvbS9hcndfZG90cy9hcHBsZS1pcGhvbmUtMjIuaHRtbA,,/form_key/FuS5jSHNsfq830IO/" class="button link-compare" title="Add to Compare"><span class="fa fa-bar-chart"></span></a><!--
-                                                                                    --><a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/arexworks/quickview/index/product_id/31/" class="button link-quickview" title="Quick View"><span class="fa fa-search-plus"></span></a>                </div>
-                                                                        </div>
-                                        <div class="product-info">
-                                            <div class="row no-margin">
-                                                <div class="col-xs-8 arw-info-separator">
-                                                    <h2 class="product-name">
-                                                        <a href="http://m2.arexmage.com/arw_dots/apple-iphone-22.html" title="Apple iPhone 6">
-                                                            <span title="Apple iPhone 6">Apple iPhone 6</span>
-                                                        </a>
-                                                    </h2>
-                                               
-                                                <div class="col-xs-4 no-padding">
-                                                    
-
-                                                    
-                                        <div class="price-box">
-                                                                                
-                                                        <p class="old-price">
-                                                    <span class="price-label">Regular Price:</span>
-                                                    <span class="price" id="old-price-31">
-                                                        $823.95                </span>
-                                                </p>
-
-                                                                <p class="special-price">
-                                                        <span class="price-label">Special Price</span>
-                                                    <span class="price"  content="799.99" id="product-price-31">
-                                                        $799.99                </span>
-                                                    </p>
-                                                        
-                                        
-                                            </div>
-
-                                                </div>
+                                                    <img class="front product-collection-image" src="<?php echo $bigImg;?>" alt="<?php echo get_the_title($ban->ID);?>" />
+                                                    <p><h3><?php echo get_the_title($ban->ID);?></h3></p>
+                                                </a>
                                             </div>
                                         </div>
-                              </div>
                                 </li>
                                 <?php }?>
                                 </ul>
@@ -393,7 +354,7 @@
             </div>        
         </div>
     </div>
-    <div class="margin-bottom-30 product-collateral-item product-collateral-right col-xs-12 col-md-12"><div class="arw_tab_slider">
+    <div class="margin-bottom-30 product-collateral-item product-collateral-right"><div class="arw_tab_slider">
         <ul class="slider-tab">
             <li data-enable-countdown="0" title="New Arrivals" id="tab_1_product_detail_new_arrival_tab" class="one_tab active first">
                 <span><span>Sản phẩm liên quan</span></span>

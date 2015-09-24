@@ -32,7 +32,7 @@
                     <?php the_tags( '<ul class="tags-list"><li>', '</li><li>', '</li></ul>' ); ?>
                     
                     <div class="actions">
-                        <a href="<?php echo get_bloginfo('home')?>/tag">Xem tất cả</a>
+                        <a href="<?php echo get_bloginfo('home')?>/san-pham">Xem tất cả</a>
                     </div>
                 </div>
             </div>

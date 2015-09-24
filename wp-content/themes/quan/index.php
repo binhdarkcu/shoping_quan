@@ -74,7 +74,7 @@
                                                         $i = 0;
                                                         $args_newhome = array(
                                                             'post_type'      => 'post',
-                                                            'posts_per_page' => 15,
+                                                            'posts_per_page' => 12,
                                                             'meta_query' => array(
                                                                 array(
                                                                     'key' => 'new_product_home', // name of custom field
@@ -108,18 +108,7 @@
                                                                     <?php  endwhile; }?>
                                                                 </a>
                                                             </div>
-                                                            <div class="actions">
-                                                                <button data-toggle="tooltip" data-placement="left" onclick="setLocation('http://m2.arexmage.com/arw_dots/checkout/cart/add/uenc/aHR0cDovL20yLmFyZXhtYWdlLmNvbS9hcndfZG90cy8,/product/22/form_key/fY84n4ctdiOHbUdq/')" class="button btn-cart" title="Add to Cart"><span><span class="icon_bag"></span></span></button>
-                                                                <!--
-                                                                -->
-                                                                <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/wishlist/index/add/product/22/form_key/fY84n4ctdiOHbUdq/" class="button link-wishlist" title="Add to Wishlist"><span class="fa fa-heart"></span></a>
-                                                                <!--
-                                                                -->
-                                                                <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/catalog/product_compare/add/product/22/uenc/aHR0cDovL20yLmFyZXhtYWdlLmNvbS9hcndfZG90cy8,/form_key/fY84n4ctdiOHbUdq/" class="button link-compare" title="Add to Compare"><span class="fa fa-bar-chart"></span></a>
-                                                                <!--
-                                                                -->
-                                                                <a data-toggle="tooltip" data-placement="left" href="http://m2.arexmage.com/arw_dots/arexworks/quickview/index/product_id/22/" class="button link-quickview" title="Quick View"><span class="fa fa-search-plus"></span></a>
-                                                            </div>
+                                                            
                                                         </div>
                                                         <div class="product-info">
                                                             <div class="row no-margin">
@@ -154,6 +143,9 @@
                                                 </li>
                                                
                                             </ul>
+                                            <div class="viewall" style="padding-bottom: 50px;">
+                                                <a style="font-weight: bold;font-size: 15px;float: right" href="<?php echo bloginfo('home')?>/san-pham">Xem tất cả</a>
+                                            </div>
                                         </div>
                                         
                                     </div>
@@ -179,6 +171,9 @@
                                                 -->
                                             </ul>
                                             <?php get_template_part('tpl','special-product')?>
+                                            <div class="viewall" style="padding-bottom: 50px;">
+                                                <a style="font-weight: bold;font-size: 15px;float: right" href="<?php echo bloginfo('home')?>/san-pham">Xem tất cả</a>
+                                            </div>
                                             <div class="ajax_loading_tab"></div>
                                             <div class="backgroundajax_tab"></div>
                                         </div>
