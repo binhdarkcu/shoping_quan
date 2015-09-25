@@ -27,20 +27,7 @@
 					        <h1><?php echo $tags_query->name;?></h1>
 					   </div>
     					<div class="category-products">
-					        <div class="toolbar">
-					            <div class="sorter">
-					                 <p class="view-mode">
-	                                     <label>View as:</label>
-                                         <strong data-toggle="tooltip" title="" class="grid" data-original-title="View as Grid">
-                                         	<i class="icon_grid-3x3"></i>
-                                         </strong>
-                                         <a data-toggle="tooltip" href="http://m2.arexmage.com/arw_dots/tv-video.html?mode=list" title="" class="list" data-original-title="View as List">
-                                         	<i class="icon_ul"></i>
-                                         </a>
-                                    </p>
-					            </div>
-					            
-					    	</div>
+					        
                         <ul class="products-grid arw-3-col arw-row" id="product-list-2046808">
                         	<?php
 								//$query_category = get_category_post($category->name);

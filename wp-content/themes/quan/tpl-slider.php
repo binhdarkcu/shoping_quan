@@ -1,6 +1,6 @@
 <link href='//fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' property='stylesheet' type='text/css'>
 <link type="text/css" rel="stylesheet" href="css/settings.css?v=4.6.0" media="all" property='stylesheet' />
-<link type="text/css" rel="stylesheet" href="http://m2.arexmage.com/arw_dots/revslider/index/getCssCaptions/id/1/" media="all" property='stylesheet' />
+<link type="text/css" rel="stylesheet" href="css/1.css" media="all" property='stylesheet' />
 <div id='rev_slider_1_wrapper' class='rev_slider_wrapper fullwidthbanner-container' style='margin:0px auto;background-color:#E9E9E9;padding:0px;margin-top:0px;margin-bottom:30px;max-height:374px;'>
 	<div id='rev_slider_1' class='rev_slider fullwidthabanner' style='display:none;max-height:374px;height:374px;'>
 		<ul>

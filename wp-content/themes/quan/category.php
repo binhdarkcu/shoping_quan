@@ -27,41 +27,7 @@
 					        <h1><?php echo $category->name;?></h1>
 					   </div>
     					<div class="category-products">
-					        <div class="toolbar">
-					            <div class="sorter">
-					                 <p class="view-mode">
-	                                     <label>View as:</label>
-                                         <strong data-toggle="tooltip" title="" class="grid" data-original-title="View as Grid">
-                                         	<i class="icon_grid-3x3"></i>
-                                         </strong>
-                                         <a data-toggle="tooltip" href="http://m2.arexmage.com/arw_dots/tv-video.html?mode=list" title="" class="list" data-original-title="View as List">
-                                         	<i class="icon_ul"></i>
-                                         </a>
-                                    </p>
-					                
-					                <div class="sort-by">
-					                    <select title="" data-toggle="tooltip" onchange="arwFilter.setAjaxLocation(this.value)" style="display: none;" class="hasInstall" data-original-title="Sort By">
-                                            <option value="http://m2.arexmage.com/arw_dots/tv-video.html?dir=asc&amp;order=position" selected="selected">Position</option>
-                                            <option value="http://m2.arexmage.com/arw_dots/tv-video.html?dir=asc&amp;order=name">Name</option>
-                                            <option value="http://m2.arexmage.com/arw_dots/tv-video.html?dir=asc&amp;order=price">Price</option>
-                                        </select>
-                                        <div class="btn-group bootstrap-select">
-                                        	<button type="button" class="btn dropdown-toggle selectpicker btn-default" data-toggle="dropdown" title="Position"><span class="filter-option pull-left">Position</span>&nbsp;<span class="caret"></span></button>
-                                        	<div class="dropdown-menu open">
-                                        		<ul class="dropdown-menu inner selectpicker" role="menu">
-                                        			<li data-original-index="0" class="selected"><a tabindex="0" class="" data-normalized-text="<span class=&quot;text&quot;>Position</span>"><span class="text">Position</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li>
-                                        			<li data-original-index="1"><a tabindex="0" class="" data-normalized-text="<span class=&quot;text&quot;>Name</span>"><span class="text">Name</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li>
-                                        			<li data-original-index="2"><a tabindex="0" class="" data-normalized-text="<span class=&quot;text&quot;>Price</span>"><span class="text">Price</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li>
-                                        		</ul>
-                                        	</div>
-                                        </div>
-                                        <a data-toggle="tooltip" href="http://m2.arexmage.com/arw_dots/tv-video.html?dir=desc&amp;order=position" title="" data-original-title="Set Descending Direction">
-				                            <i class="fa fa-long-arrow-up"></i>
-				                        </a>
-                                    </div>
-					            </div>
-					            
-					    	</div>
+					        
                         <ul class="products-grid arw-3-col arw-row" id="product-list-2046808">
                         	<?php
 								//$query_category = get_category_post($category->name);

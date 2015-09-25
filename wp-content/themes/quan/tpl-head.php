@@ -7,14 +7,6 @@
     <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
     <?php wp_head();?>
-    <!--[if lt IE 7]>
-    <script type="text/javascript">
-    //<![CDATA[
-        var BLANK_URL = 'http://m2.arexmage.com/arw_dots/js/blank.html';
-        var BLANK_IMG = 'http://m2.arexmage.com/arw_dots/js/spacer.gif';
-    //]]>
-    </script>
-    <![endif]-->
    
     <link rel="stylesheet" type="text/css" href="css/widgets.css" media="all" />
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" media="all" />
@@ -64,17 +56,14 @@
     <script type="text/javascript" src="js/slick.js"></script>
     <script type="text/javascript" src="js/jquery.jcountdown.js"></script>
     <script type="text/javascript" src="js/theme.js"></script>
-    <!--[if lt IE 8]>
-    <link rel="stylesheet" type="text/css" href="http://m2.arexmage.com/arw_dots/skin/frontend/arw_dots/default/css/styles-ie.css" media="all" />
-    <![endif]-->
     <!--[if lt IE 7]>
-    <script type="text/javascript" src="http://m2.arexmage.com/arw_dots/js/lib/ds-sleight.js"></script>
-    <script type="text/javascript" src="http://m2.arexmage.com/arw_dots/skin/frontend/base/default/js/ie6.js"></script>
+    <script type="text/javascript" src="js/ds-sleight.js"></script>
+    <script type="text/javascript" src="js/ie6.js"></script>
     <![endif]-->
     <!--[if lt IE 9]>
-    <script type="text/javascript" src="http://m2.arexmage.com/arw_dots/skin/frontend/arw_dots/default/js/html5shiv.min.js"></script>
-    <script type="text/javascript" src="http://m2.arexmage.com/arw_dots/skin/frontend/arw_dots/default/js/html5shiv-printshiv.min.js"></script>
-    <script type="text/javascript" src="http://m2.arexmage.com/arw_dots/skin/frontend/arw_dots/default/js/respond.min.js"></script>
+    <script type="text/javascript" src="js/html5shiv.min.js"></script>
+    <script type="text/javascript" src="js/html5shiv-printshiv.min.js"></script>
+    <script type="text/javascript" src="js/respond.min.js"></script>
     <![endif]-->
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />

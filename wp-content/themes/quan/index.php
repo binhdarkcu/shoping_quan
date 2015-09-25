@@ -39,8 +39,8 @@
                                                 <div class="row no-margin">
                                                     <div class="col-xs-6 text-uppercase text-center no-padding margin-top-30">
                                                         <p class="font-size-16 no-margin" style="padding-left: 5px;"><a href="<?php echo get_the_permalink($newhome->ID);?>" class="text-color-white"><?php echo get_the_title($newhome->ID);?></a></p>
-                                                        <p class="font-size-30 font-weight-900 margin-bottom-5"><a href="#" class="text-color-white"><?php echo $newhome->post_content;?></a></p>
-                                                        <p class="font-size-16"><a href="#" class="text-color-white">Xem ngay</a></p>
+                                                        <p class="font-size-30 font-weight-900 margin-bottom-5"><a href="<?php echo get_the_permalink($newhome->ID);?>" class="text-color-white"><?php echo $newhome->post_content;?></a></p>
+                                                        <p class="font-size-16"><a href="<?php echo get_the_permalink($newhome->ID);?>" class="text-color-white">Xem ngay</a></p>
                                                     </div>
                                                     <div class="col-xs-6 no-padding margin-top-21">
                                                         <a href="<?php echo get_the_permalink($newhome->ID);?>">
