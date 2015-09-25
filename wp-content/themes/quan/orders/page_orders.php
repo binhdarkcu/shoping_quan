@@ -63,14 +63,14 @@ class TT_Member_List_Table extends WP_List_Table {
                 
         //Set parent defaults
         parent::__construct( array(
-            'singular'  => 'order',     //singular name of the listed records
-            'plural'    => 'orders',    //plural name of the listed records
+            'singular'  => 'member',     //singular name of the listed records
+            'plural'    => 'members',    //plural name of the listed records
             'ajax'      => false        //does this table support ajax?
         ) );
         
     }
-	function countryArray($name, $selected){
-		$country_Array = array('AF' => 'Afghanistan', 'AL' => 'Albania', 'DZ' =>
+    function countryArray($name, $selected){
+        $country_Array = array('AF' => 'Afghanistan', 'AL' => 'Albania', 'DZ' =>
         'Algeria', 'AS' => 'American Samoa', 'AD' => 'Andorra', 'AO' => 'Angola', 'AI' =>
         'Anguilla', 'AQ' => 'Antarctica', 'AG' => 'Antigua and Barbuda', 'AR' =>
         'Argentina', 'AM' => 'Armenia', 'AW' => 'Aruba', 'AU' => 'Australia', 'AT' =>
@@ -144,56 +144,56 @@ class TT_Member_List_Table extends WP_List_Table {
         'Viet Nam', 'VG' => 'Virgin Islands (British)', 'VI' => 'Virgin Islands (U.S.)',
         'WF' => 'Wallis and Futuna Islands', 'EH' => 'Western Sahara', 'YE' => 'Yemen',
         'YU' => 'Yugoslavia', 'ZM' => 'Zambia', 'ZW' => 'Zimbabwe');
-		foreach ($country_Array as $key => $value) {
-	        if ($selected == $key) {
-	            $thisExtra = stripslashes($value);
-	        } else {
-	            $thisExtra = "";
-	        }
-	    }
-		return $thisExtra;
-	}
+        foreach ($country_Array as $key => $value) {
+            if ($selected == $key) {
+                $thisExtra = stripslashes($value);
+            } else {
+                $thisExtra = "";
+            }
+        }
+        return $thisExtra;
+    }
     function column_default($item, $column_name){
         switch($column_name){
-			case 'customer_email':
-                if(!empty($item['customer_email'])){
-                    echo '<a href="mailto:'.$item[ 'customer_email' ].'">'.$item[ 'customer_email' ].'</a>';
-                    break;
+            
+            case 'customer_phone': 
+                echo '<a href="tel:'.$item['customer_phone'].'">'.$item['customer_phone'].'</a>';
+                break;
+            case 'customer_email':
+                echo '<a href="mailto:'.$item['customer_email'].'">'.$item['customer_email'].'</a>';
+                break;
+            case 'id_product':
+                echo get_the_title($item['id_product']);
+                break;
+            case 'order_status':
+                if($item['order_status'] == 0){
+                    echo 'Chưa giao';
+                }else if($item['order_status'] == 1){
+                    echo 'Đang giao';
                 }else{
-                    break;
+                    echo 'Đã giao';
                 }
-            break;
-        	case 'id_product':
-                if(!empty($item['id_product'])){
-                    echo get_the_title($item['id_product']);
-                    break;
-                }else{
-                    break;
-                }
-            break;
+                break;
             case 'customer_name':
             case 'customer_address':
-            case 'amount':
-			case 'price':
-			
-	        case 'customer_phone':
-			
-			case 'price_total':
             
+            case 'price_total':
             case 'buy_date':
-	            return $item[ $column_name ];
-	        default:
-	            return print_r( $item, true ) ; //Show the whole array for troubleshooting purposes
+            case 'delivery_date':
+            
+                return $item[ $column_name ];
+            default:
+                return print_r( $item, true ) ; //Show the whole array for troubleshooting purposes
         }
     }
 
-    function column_p_naam($item){
+    function column_customer_name($item){
         
         //Build row actions
         $actions = array(
             'edit'      => sprintf('<a href="?page=%s&action=%s&id=%s">Edit</a>',$_REQUEST['page'],'edit',$item['id']),
-            'detail'    => sprintf('<a href="?page=%s&action=%s&id=%s">Detail</a>',$_REQUEST['page'],'detail',$item['id']),
-            'delete'    => sprintf('<a href="?page=%s&action=%s&id=%s">Delete</a>',$_REQUEST['page'],'delete',$item['id'])
+            //'detail'    => sprintf('<a href="?page=%s&action=%s&id=%s">Detail</a>',$_REQUEST['page'],'detail',$item['id']),
+            //'delete'    => sprintf('<a href="?page=%s&action=%s&id=%s">Delete</a>',$_REQUEST['page'],'delete',$item['id'])
         );
         
         //Return the title contents
@@ -224,21 +224,20 @@ class TT_Member_List_Table extends WP_List_Table {
      * @return array An associative array containing column information: 'slugs'=>'Visible Titles'
      **************************************************************************/
     function get_columns(){
-		
+        
         $columns = array(
             'cb'        => '<input type="checkbox" />', //Render a checkbox instead of text
-            'customer_name'    => 'Tên khách hàng',
-            'customer_phone'      => 'Số điện thoại',
+            'customer_name' =>'Tên khách hàng',
+            'customer_phone'     => 'Số điện thoại',
             'customer_email'    => 'Email',
-            'customer_address'      => 'Địa chỉ',
-            'id_product' =>'Tên sản phẩm',
-            'amount'     => 'Số lượng',
-            'price'    => 'Giá',
-            
-            'price_total' => 'Tổng tiền',
-            'buy_date' => 'Ngày mua'
+            'customer_address'    => 'Địa chỉ',
+            'id_product'      => 'Tên sản phẩm',
+            'price_total'    => 'Tổng giá tiền',
+            'buy_date'      => 'Ngày mua',
+            'delivery_date' => 'Ngày giao',
+            'order_status' => 'Trạng thái'
         );
-		
+        
         return $columns;
     }
 
@@ -259,17 +258,10 @@ class TT_Member_List_Table extends WP_List_Table {
      **************************************************************************/
     function get_sortable_columns() {
         $sortable_columns = array(
-            'id' => array('id',false),
-            'customer_name' => array('customer_name',false),
-            'customer_phone'   => array('customer_phone',false),
+            'customer_name'  => array('customer_name',false),
+            'customer_phone' => array('customer_phone',false),
             'customer_email'   => array('customer_email',false),
-		    'id_product'  => array('id_product',false),
-            'customer_address'   => array('customer_address',false),
-		    'amount' => array('amount',false),
-		    'price'   => array('price',false),
-            
-            'price_total'   => array('price_total',false),
-            'buy_date'   => array('buy_date',false)
+            'order_status'   => array('order_status',false)
         );
         return $sortable_columns;
     }
@@ -309,11 +301,11 @@ class TT_Member_List_Table extends WP_List_Table {
         
         //Detect when a bulk action is being triggered...
        /* if( 'delete'===$this->current_action() ) {
-        	global $wpdb;
-			echo '<script>alert('.$_GET['id'].')</script>';
+            global $wpdb;
+            echo '<script>alert('.$_GET['id'].')</script>';
             $wpdb->delete('wp_members', array('id' => $_GET['id']));
-			$link = admin_url().'admin.php?page=tt_member';*/
-			//echo "<script>setTimeout(function(){window.location.href = '".$link."';},10);</script>";
+            $link = admin_url().'admin.php?page=tt_member';*/
+            //echo "<script>setTimeout(function(){window.location.href = '".$link."';},10);</script>";
             //wp_die('Items deleted (or they would be if we had items to delete)!');
         
         if ('delete' === $this->current_action()) {
@@ -322,479 +314,347 @@ class TT_Member_List_Table extends WP_List_Table {
 
             if (!empty($ids)) {
                 global $wpdb;
-	            $wpdb->delete('wp_orders', array('id' => $_GET['id']));
-				$link = admin_url().'admin.php?page=tt_orders';
+                $wpdb->delete('wp_orders', array('id' => $_GET['id']));
+                $link = admin_url().'admin.php?page=tt_member';
             }
         }
-		  // If the delete bulk action is triggered
-		  if ( ( isset( $_GET['action'] ) && $_GET['action'] == 'delete' )) {
-		 	
-		    $ids = isset($_GET['member']) ? $_GET['member'] : array();
-		    foreach ( $ids as $id ) {
-		      //self::delete_customer( $id );
-		 		global $wpdb;
-            	$wpdb->delete('wp_members', array('id' => $id));
-				$link = admin_url().'admin.php?page=tt_orders';
-				echo "<script>setTimeout(function(){window.location.href = '".$link."';},10);</script>";
-		    }
-		 
-		  }
+          // If the delete bulk action is triggered
+          if ( ( isset( $_GET['action'] ) && $_GET['action'] == 'delete' )) {
+            
+            $ids = isset($_GET['member']) ? $_GET['member'] : array();
+            foreach ( $ids as $id ) {
+              //self::delete_customer( $id );
+                global $wpdb;
+                $wpdb->delete('wp_orders', array('id' => $id));
+                $link = admin_url().'admin.php?page=tt_member';
+                echo "<script>setTimeout(function(){window.location.href = '".$link."';},10);</script>";
+            }
+         
+          }
     }
-	
+    //active user
+    function process_bulk_active_user_action() {?>
+        
+    <?php
+    }
 
-	//edit member
-	function process_edit_action() {
-	    
-	    //Detect when a bulk action is being triggered...
-	    if( 'edit'===$this->current_action() ) {
-	    	
-			
-			global $wpdb;
-			$query = 'SELECT * FROM wp_members WHERE id = '.$_GET['id'];
-			$member = $wpdb->get_row($query, ARRAY_A);
-		?>
-	    	
-	    	<div class="registerPage ">
-	    		<div class="registerBox">
-		    		<form action="" method="post" enctype="multipart/form-data">
-		    			<h3>Edit member</h3>
-		    			<div style="float: left;">
-		    				<input name="ajaxurl" type="hidden" class="ajaxurl" value="<?php echo bloginfo('home').'/wp-admin/admin-ajax.php'; ?>"/>
-		    				<h4>Naam: <?php echo $member['p_naam']; ?></h4>
-		    				<img src="<?php echo bloginfo('home')?>/wp-content/uploads/avatar/<?php echo $member['p_picture'];?>" style="width: 148px;"/>
-		    				<?php if($member['p_user_status'] == 0){?>
-		    				<p><a href="javascript:void(0);" id="activeuser" data-plainpassword="<?php echo $member['p_plain_password'];?>" data-username="<?php echo $member['p_naam'];?>" data-useremail="<?php echo $member['p_email'];?>" data-userid="<?php echo $member['id'];?>">Active</a></p>
-		    				<?php }?>
-		    			</div>
-		    			<div class="informationBox" style="float: right;">
-							<div class="reg-left">
-								<h3>PRIVEGEGEVENS</h3>
-								<div class="reg-row">
-									<div class="col1">
-										<label>Naam<span class="red">*</span></label>
-										<input type="text" name="p_naam" value="<?php echo $member['p_naam']; ?>" />
-									</div>
-									<div class="col2">
-										<label>Voornaam<span class="red">*</span></label>
-										<input type="text" name="p_voornaam" value="<?php echo $member['p_voornaam']; ?>" />
-									</div>
-								</div>
-								<div class="reg-row">
-									<div class="col1">
-										<label>Geboortedatum<span class="red">*</span></label>
-										<input id="date_geboortedatum" type="text" name="p_geboortedatum" value="<?php echo $member['p_geboortedatum']; ?>" />
-									</div>
-									<div class="col2">
-										<label>Geboorteplaats<span class="red">*</span></label>
-										<input type="text" name="p_geboorteplaats" value="<?php echo $member['p_geboorteplaats']; ?>"  />
-									</div>
-								</div>
-								<div class="reg-row">
-									<div class="col1">
-										<label>Straat<span class="red">*</span></label>
-										<input type="text" name="p_straat" value="<?php echo $member['p_straat']; ?>" />
-									</div>
-									<div class="col2">
-										<label>Nr.<span class="red">*</span></label>
-										<input type="text" name="p_nr" value="<?php echo $member['p_nr']; ?>" />
-									</div>
-								</div>
-								<div class="reg-row">
-									<div class="col1">
-										<label>Postcode<span class="red">*</span></label>
-										<input type="text" name="p_postcode" value="<?php echo $member['p_postcode']; ?>" />
-									</div>
-									<div class="col2">
-										<label>Plaats<span class="red">*</span></label>
-										<input type="text" name="p_plaats" value="<?php echo $member['p_plaats']; ?>" />
-									</div>
-								</div>
-								<div class="reg-row">
-									<div class="colfull">
-										<label>Land<span class="red">*</span></label>
-		                                <?php
-		                                /*$region_location_array = get_field('region_location', 'option');
-		
-		                                $stroption_region_location = '';
-		                                foreach($region_location_array as $region_location)
-		                                {
-		                                    $no = $region_location['no'];
-		                                    $title = $region_location['title'];
-		                                    $stroption_region_location .= '<option value="'.$no.'">'.$title.'</option>';
-		                                }*/
-		                                ?>
-										<!--select name="p_land">
-		                                    <?php echo str_replace('value="'.$member['p_land'].'"', 'value="'.$member['p_land'].'" selected', $stroption_region_location);?>
-										</select-->
-										<?php echo countryArray('p_land',$member['p_land']);?>
-									</div>
-								</div>
-								<div class="reg-row">
-									<div class="col1">
-										<label>Telefoon</label>
-										<input type="text" name="p_telefoon" value="<?php echo $member['p_telefoon']; ?>" />
-									</div>
-									<div class="col2">
-										<label>Fax</label>
-										<input type="text" name="p_fax" value="<?php echo $member['p_fax']; ?>" />
-									</div>
-								</div>
-								<div class="reg-row">
-									<div class="colfull">
-										<label>GSM<span class="red">*</span></label>
-										<input type="text" name="p_gsm" value="<?php echo $member['p_gsm']; ?>" />
-									</div>
-								</div>
-								<div class="reg-row">
-									<div class="colfull">
-										<label>Privé emailadres<span class="red">*</span></label>
-										
-										<input disabled="disabled" type="text" name="p_email" value="<?php echo $member['p_email']; ?>" id="p_email"/>
-										<input type="hidden" name="p_email" value="<?php echo $member['p_email']; ?>" id="p_email"/>
-										<input name="action" type="hidden" class="action" value="check_user_email"/>
-									</div>
-								</div>
-								<div class="reg-row">
-									<div class="colfull">
-										<label>Linkedin Profiel pagina</label>
-										<input type="text" name="p_likedin" value="<?php echo $member['p_likedin']; ?>" />
-									</div>
-								</div>
-								
-								<div class="reg-row">
-									<div class="colfull">
-										<label>Profielfoto</label>
-										<div class="pictureUpload">
-											<img src="<?php echo bloginfo('home')?>/wp-content/uploads/avatar/<?php echo $member['p_picture'];?>" class="imgPreview" style="width: 48px; height: 48px;"/>
-											<div class="fileUpload ">
-												<span>UPLOAD FOTO</span>
-												<input type="file" class="upload" name="p_picture" id="filePicture"/>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="reg-right">
-								<h3>BEROEPSGEGEVENS</h3>
-								<div class="reg-row">
-									<div class="col1">
-										<label>Naam van firma/organisatie<span class="red">*</span></label>
-										<input type="text" name="b_naam" value="<?php echo $member['b_naam']; ?>" />
-									</div>
-									<div class="col2">
-										<label>(Hoofd) Functie<span class="red">*</span></label>
-										<input type="text" name="b_hoofd" value="<?php echo $member['b_hoofd']; ?>" />
-									</div>
-								</div>
-								<div class="reg-row">
-									<div class="colfull">
-										<label>Aard van de firma/organisatie<span class="red">*</span></label>
-		                                <?php
-		                                $business_sector_array = get_field('business_sector', 'option');
-		
-		                                $stroption_business_sector = '';
-		                                foreach($business_sector_array as $business_sector)
-		                                {
-		                                    $no = $business_sector['no'];
-		                                    $title = $business_sector['title'];
-		                                    $stroption_business_sector .= '<option value="'.$no.'">'.$title.'</option>';
-		                                }
-		                                ?>
-										<select name="b_firma">
-											<?php echo str_replace('value="'.$member['b_firma'].'"', 'value="'.$member['b_firma'].'" selected', $stroption_business_sector);?>
-										</select>
-									</div>
-								</div>
-								
-								<div class="reg-row">
-									<div class="col1">
-										<label>Straat<span class="red">*</span></label>
-										<input type="text" name="b_straat" value="<?php echo $member['b_straat']; ?>" />
-									</div>
-									<div class="col2">
-										<label>Nr.<span class="red">*</span></label>
-										<input type="text" name="b_nr" value="<?php echo $member['b_nr']; ?>" />
-									</div>
-								</div>
-								<div class="reg-row">
-									<div class="col1">
-										<label>Postcode<span class="red">*</span></label>
-										<input type="text" name="b_postcode" value="<?php echo $member['b_postcode']; ?>" />
-									</div>
-									<div class="col2">
-										<label>Plaats<span class="red">*</span></label>
-										<input type="text" name="b_plaats" value="<?php echo $member['b_plaats']; ?>" />
-									</div>
-								</div>
-								<div class="reg-row">
-									<div class="colfull">
-										<label>Land<span class="red">*</span></label>
-										<?php
-											$region_location_array = get_field('region_location', 'option');
-		
-			                                $stroption_region_location = '';
-			                                foreach($region_location_array as $region_location)
-			                                {
-			                                    $no = $region_location['no'];
-			                                    $title = $region_location['title'];
-			                                    $stroption_region_location .= '<option value="'.$no.'">'.$title.'</option>';
-			                                }
-										?>
-										<select name="b_land">
-		                                    <?php echo str_replace('value="'.$member['b_land'].'"', 'value="'.$member['b_land'].'" selected', $stroption_region_location);?>
-										</select>
-									</div>
-								</div>
-								<div class="reg-row">
-									<div class="col1">
-										<label>Telefoon</label>
-										<input type="text" name="b_telefoon" value="<?php echo $member['b_telefoon']; ?>" />
-									</div>
-									<div class="col2">
-										<label>Fax</label>
-										<input type="text" name="b_fax" value="<?php echo $member['b_fax']; ?>" />
-									</div>
-								</div>
-								<div class="reg-row">
-									<div class="colfull">
-										<label>GSM</label>
-										<input type="text" name="b_gsm" value="<?php echo $member['b_gsm']; ?>" />
-									</div>
-								</div>
-								<div class="reg-row">
-									<div class="colfull">
-										<label>Emailadres</label>
-										<input type="text" name="b_email" value="<?php echo $member['b_email']; ?>" />
-									</div>
-								</div>
-								<div class="reg-row">
-									<div class="colfull">
-										<label>Website bedrijf/organisatie</label>
-										<input type="text" name="b_organisatie" value="<?php echo $member['b_organisatie']; ?>" />
-									</div>
-								</div>
-								<div class="reg-row">
-									<div class="colfull">
-										<label>Andere functies en mandaten</label>
-										<input type="text" name="b_functies" value="<?php echo $member['b_functies']; ?>" />
-									</div>
-								</div>	
-							</div>
-							<div class="clear"></div>
-							<input type="submit"  value="Update" class="btn" />
-							<?php wp_nonce_field('update_member','act_update_member');?>
-						</div>
-						
-		    		</form>
-		    	</div>
-	    	</div>
-	    <?php 
-			exit();
-		}
-	}
-	function process_detail_action(){
-		if( 'detail'===$this->current_action() ) {
-			global $wpdb;
-			$query = 'SELECT * FROM wp_members WHERE id = '.$_GET['id'];
-			$member = $wpdb->get_row($query, ARRAY_A);
-		?>
-			<div class="registerPage ">
-	    		<div class="registerBox">
-					<h3>Member detail</h3>
-					<div style="float: left;">
-						<h4>Naam: <?php echo $member['p_naam']; ?></h4>
-						<img src="<?php echo bloginfo('home')?>/wp-content/uploads/avatar/<?php echo $member['p_picture'];?>" style="width: 148px;"/>
-					</div>
-					<div class="informationBox" style="float: right;">
-						<div class="reg-left">
-							<h3>PRIVEGEGEVENS</h3>
-							<div class="reg-row">
-								<div class="col1">
-									<label><b>Naam:</b></label>
-									<span><?php echo $member['p_naam']; ?></span>
-								</div>
-								<div class="col2">
-									<label><b>Voornaam:</b></label>
-									<span><?php echo $member['p_voornaam']; ?></span>
-								</div>
-							</div>
-							<div class="reg-row">
-								<div class="col1">
-									<label><b>Geboortedatum:</b></label>
-									<span><?php echo $member['p_geboortedatum']; ?></span>
-								</div>
-								<div class="col2">
-									<label><b>Geboorteplaats:</b></label>
-									<span><?php echo $member['p_geboorteplaats']; ?></span>
-								</div>
-							</div>
-							<div class="reg-row">
-								<div class="col1">
-									<label><b>Straat:</b></label>
-									<span><?php echo $member['p_straat']; ?></span>
-								</div>
-								<div class="col2">
-									<label><b>Nr.:</b></label>
-									<span><?php echo $member['p_nr']; ?></span>
-								</div>
-							</div>
-							<div class="reg-row">
-								<div class="col1">
-									<label><b>Postcode:</b></label>
-									<span><?php echo $member['p_postcode']; ?></span>
-								</div>
-								<div class="col2">
-									<label><b>Plaats:</b></label>
-									<span><?php echo $member['p_plaats']; ?></span>
-								</div>
-							</div>
-							<div class="reg-row">
-								<div class="colfull">
-									<label><b>Land:</b></label>
-									<span>
-										<?php echo getCountry('p_land',$member['p_land']);?>
-									</span>
-								</div>
-							</div>
-							<div class="reg-row">
-								<div class="col1">
-									<label><b>Telefoon:</b></label>
-									<span><?php echo $member['p_telefoon']; ?></span>
-								</div>
-								<div class="col2">
-									<label><b>Fax:</b></label>
-									<span><?php echo $member['p_fax']; ?></span>
-								</div>
-							</div>
-							<div class="reg-row">
-								<div class="colfull">
-									<label><b>GSM:</b></label>
-									<span><?php echo $member['p_gsm']; ?></span>
-								</div>
-							</div>
-							<div class="reg-row">
-								<div class="colfull">
-									<label><b>Privé emailadres:</b></label>
-									<span><?php echo $member['p_email']; ?></span>
-								</div>
-							</div>
-							<div class="reg-row">
-								<div class="colfull">
-									<label><b>Linkedin Profiel pagina:</b></label>
-									<span><?php echo $member['p_likedin']; ?></span>
-								</div>
-							</div>
-						</div>
-						<div class="reg-right">
-							<h3>BEROEPSGEGEVENS</h3>
-							<div class="reg-row">
-								<div class="col1">
-									<label><b>Naam van firma/organisatie:</b></label>
-									<span><?php echo $member['b_naam']; ?></span>
-								</div>
-								<div class="col2">
-									<label><b>(Hoofd) Functie:</b></label>
-									<span><?php echo $member['b_hoofd']; ?></span>
-								</div>
-							</div>
-							<div class="reg-row">
-								<div class="colfull">
-									<label><b>Aard van de firma/organisatie:</b></label>
-									<span>
-										<?php
-											$region_location_array = get_field('business_sector', 'option');
-											foreach($region_location_array as $region_location){
-												if($region_location['no'] == $member['b_firma']){
-													echo $region_location['title'];
-												}
-											}
-										?>
-									</span>
-								</div>
-							</div>
-							
-							<div class="reg-row">
-								<div class="col1">
-									<label><b>Straat:</b></label>
-									<span><?php echo $member['b_straat']; ?></span>
-								</div>
-								<div class="col2">
-									<label><b>Nr.:</b></label>
-									<span><?php echo $member['b_nr']; ?></span>
-								</div>
-							</div>
-							<div class="reg-row">
-								<div class="col1">
-									<label><b>Postcode:</b></label>
-									<span><?php echo $member['b_postcode']; ?></span>
-								</div>
-								<div class="col2">
-									<label><b>Plaats:</b></label>
-									<span><?php echo $member['b_plaats']; ?></span>
-								</div>
-							</div>
-							<div class="reg-row">
-								<div class="colfull">
-									<label><b>Land:</b></label>
-									<span>
-										<?php
-											$region_location_array = get_field('region_location', 'option');
-											foreach($region_location_array as $region_location){
-												if($region_location['no'] == $member['b_land']){
-													echo $region_location['title'];
-												}
-											}
-										?>
-									</span>
-								</div>
-							</div>
-							<div class="reg-row">
-								<div class="col1">
-									<label><b>Telefoon:</b></label>
-									<span><?php echo $member['b_telefoon']; ?></span>
-								</div>
-								<div class="col2">
-									<label><b>Fax:</b></label>
-									<span><?php echo $member['b_fax']; ?></span>
-								</div>
-							</div>
-							<div class="reg-row">
-								<div class="colfull">
-									<label><b>GSM:</b></label>
-									<span><?php echo $member['b_gsm']; ?></span>
-								</div>
-							</div>
-							<div class="reg-row">
-								<div class="colfull">
-									<label><b>Emailadres:</b></label>
-									<span><?php echo $member['b_email']; ?></span>
-								</div>
-							</div>
-							<div class="reg-row">
-								<div class="colfull">
-									<label><b>Website bedrijf/organisatie:</b></label>
-									<span><?php echo $member['b_organisatie']; ?></span>
-								</div>
-							</div>
-							<div class="reg-row">
-								<div class="colfull">
-									<label><b>Andere functies en mandaten:</b></label>
-									<span><?php echo $member['b_functies']; ?></span>
-								</div>
-							</div>	
-						</div>
-						<div class="clear"></div>
-					</div>
-		    	</div>
-	    	</div>
-		<?php	
-		exit();
-		}
-	}
-		
+    //edit member
+    function process_edit_action() {
+        
+        //Detect when a bulk action is being triggered...
+        if( 'edit'===$this->current_action() ) {
+            /*EDIT MEMBER*/
+            if(!empty($_POST) && wp_verify_nonce($_POST['act_update_member'],'update_member')){
+                 global $wpdb;
+                $data['price'] = $_POST['price_total'];
+                $data['price_total'] = $_POST['price_total'];
+                $data['customer_comment'] = $_POST['customer_comment'];
+                $data['delivery_date'] = $_POST['delivery_date'];
+                $data['order_status'] = $_POST['order_status'];
+                $execute = $wpdb->query(
+                    'UPDATE wp_orders 
+                     SET price = "'.$_POST["price_total"].'", 
+                        price_total="'.$_POST["price_total"].'", 
+                        customer_comment = "'.$_POST["customer_comment"].'",
+                        delivery_date = "'.$_POST["delivery_date"].'",
+                        order_status="'.$_POST["order_status"].'"
+                        WHERE id='.$_GET["id"].''
+                );
+                $link = admin_url().'admin.php?page=tt_member&action=edit&id='.$_GET['id'];
+                echo "<script>setTimeout(function(){window.location.href = '".$link."';},0);</script>";
+               
+                exit();
+            }
+            
+            global $wpdb;
+            $query = 'SELECT * FROM wp_orders WHERE id = '.$_GET['id'];
+            $member = $wpdb->get_row($query, ARRAY_A);
+            
+        ?>
+            <script src="<?php echo bloginfo('template_url')?>/js/jquery.js?ver=1.11.1"></script>
+            <script src="<?php echo bloginfo('template_url')?>/js/jquery-ui-1.10.1.min.js"></script>
+            <script src="<?php echo bloginfo('template_url')?>/orders/js/update_member.js"></script>
+            <link href="<?php echo bloginfo('template_url')?>/orders/css/jquery-ui-1.10.1.css" rel="stylesheet">
+            <link type="text/css" rel='stylesheet' href="<?php echo bloginfo('template_url')?>/orders/css/latoja.datepicker.css"/>
+            <script type="text/javascript">
+                  $(function() {
+                    $( "#date_delivery" ).datepicker({
+                        inline: true,
+                        changeMonth: true,
+                        changeYear: true,
+                        showOtherMonths: true,
+                        dateFormat: "yy-mm-dd"
+                    })
+                    .datepicker('widget').wrap('<div class="ll-skin-latoja"/>');
+                  });
+            </script>
+           
+            <div class="registerPage ">
+                <div class="registerBox">
+                    <form action="" method="post">
+                        <h3>Cập nhật đơn hàng</h3>
+                        <div class="header-title" style="float: left;">
+                            <input name="ajaxurl" type="hidden" class="ajaxurl" value="<?php echo bloginfo('home').'/wp-admin/admin-ajax.php'; ?>"/>
+                            <h3>Thông tin khách hàng</h3>
+                            <h4>Người mua: <?php echo $member['customer_name']; ?></h4>
+                            <h4>Email: <?php echo $member['customer_email']; ?></h4>
+                            <h4>Số điện thoại: <?php echo $member['customer_phone']; ?></h4>
+                            <h4>Địa chỉ: <?php echo $member['customer_address']; ?></h4>
+                        </div>
+                        <div class="informationBox" style="float: left;margin-left: 30px;">
+                            <div class="reg-left">
+                                <h3>Thông tin đặt hàng</h3>
+                                <h4>Tên sản phẩm: <?php echo get_the_title($member['id_product']); ?></h4>
+                                <div class="reg-row">
+                                    
+                                    <div class="col2">
+                                        <label>Tổng giá tiền<span class="red">*</span></label>
+                                        <input type="text" name="price_total" value="<?php echo $member['price_total']; ?>" />
+                                    </div>
+                                </div>
+                                <div class="reg-row">
+                                    <div class="col1">
+                                        <label>Ghi chú<span class="red">*</span></label>
+                                        <textarea name="customer_comment"><?php echo $member['customer_comment']; ?></textarea>
+                                    </div>
+                                    <div class="col2">
+                                        <label>Ngày mua<span class="red">*</span></label>
+                                        <input type="text" name="buy_date" value="<?php echo $member['buy_date']; ?>" disable/>
+                                    </div>
+                                </div>
+                                <div class="reg-row">
+                                    <div class="col1">
+                                        <label>Ngày giao<span class="red">*</span></label>
+                                        <input type="text" id="date_delivery" name="delivery_date" value="<?php echo $member['delivery_date']; ?>" />
+                                    </div>
+                                    
+                                </div>
+                                <div class="reg-row">
+                                    <div class="col1">
+                                        <label>Trạng thái<span class="red">*</span></label>
+                                        <select name="order_status">
+                                            <option value="0" <?php if ( $member['order_status'] == 0 ) echo 'selected="selected"'; ?>>Chưa giao</option>
+                                            <option value="1" <?php if ( $member['order_status'] == 1 ) echo 'selected="selected"'; ?>>Đang giao</option>
+                                            <option value="2" <?php if ( $member['order_status'] == 2 ) echo 'selected="selected"'; ?>>Đã giao</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clear"></div>
+                            <input type="submit"  value="Cập nhật" class="btn" />
+                            <?php wp_nonce_field('update_member','act_update_member');?>
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+        <?php 
+            exit();
+        }
+    }
+    function process_detail_action(){
+        if( 'detail'===$this->current_action() ) {
+            global $wpdb;
+            $query = 'SELECT * FROM wp_members WHERE id = '.$_GET['id'];
+            $member = $wpdb->get_row($query, ARRAY_A);
+        ?>
+            <div class="registerPage ">
+                <div class="registerBox">
+                    <h3>Member detail</h3>
+                    <div style="float: left;">
+                        <h4>Naam: <?php echo $member['p_naam']; ?></h4>
+                        <img src="<?php echo bloginfo('home')?>/wp-content/uploads/avatar/<?php echo $member['p_picture'];?>" style="width: 148px;"/>
+                    </div>
+                    <div class="informationBox" style="float: right;">
+                        <div class="reg-left">
+                            <h3>PRIVEGEGEVENS</h3>
+                            <div class="reg-row">
+                                <div class="col1">
+                                    <label><b>Naam:</b></label>
+                                    <span><?php echo $member['p_naam']; ?></span>
+                                </div>
+                                <div class="col2">
+                                    <label><b>Voornaam:</b></label>
+                                    <span><?php echo $member['p_voornaam']; ?></span>
+                                </div>
+                            </div>
+                            <div class="reg-row">
+                                <div class="col1">
+                                    <label><b>Geboortedatum:</b></label>
+                                    <span><?php echo $member['p_geboortedatum']; ?></span>
+                                </div>
+                                <div class="col2">
+                                    <label><b>Geboorteplaats:</b></label>
+                                    <span><?php echo $member['p_geboorteplaats']; ?></span>
+                                </div>
+                            </div>
+                            <div class="reg-row">
+                                <div class="col1">
+                                    <label><b>Straat:</b></label>
+                                    <span><?php echo $member['p_straat']; ?></span>
+                                </div>
+                                <div class="col2">
+                                    <label><b>Nr.:</b></label>
+                                    <span><?php echo $member['p_nr']; ?></span>
+                                </div>
+                            </div>
+                            <div class="reg-row">
+                                <div class="col1">
+                                    <label><b>Postcode:</b></label>
+                                    <span><?php echo $member['p_postcode']; ?></span>
+                                </div>
+                                <div class="col2">
+                                    <label><b>Plaats:</b></label>
+                                    <span><?php echo $member['p_plaats']; ?></span>
+                                </div>
+                            </div>
+                            <div class="reg-row">
+                                <div class="colfull">
+                                    <label><b>Land:</b></label>
+                                    <span>
+                                        <?php echo getCountry('p_land',$member['p_land']);?>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="reg-row">
+                                <div class="col1">
+                                    <label><b>Telefoon:</b></label>
+                                    <span><?php echo $member['p_telefoon']; ?></span>
+                                </div>
+                                <div class="col2">
+                                    <label><b>Fax:</b></label>
+                                    <span><?php echo $member['p_fax']; ?></span>
+                                </div>
+                            </div>
+                            <div class="reg-row">
+                                <div class="colfull">
+                                    <label><b>GSM:</b></label>
+                                    <span><?php echo $member['p_gsm']; ?></span>
+                                </div>
+                            </div>
+                            <div class="reg-row">
+                                <div class="colfull">
+                                    <label><b>Privé emailadres:</b></label>
+                                    <span><?php echo $member['p_email']; ?></span>
+                                </div>
+                            </div>
+                            <div class="reg-row">
+                                <div class="colfull">
+                                    <label><b>Linkedin Profiel pagina:</b></label>
+                                    <span><?php echo $member['p_likedin']; ?></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="reg-right">
+                            <h3>BEROEPSGEGEVENS</h3>
+                            <div class="reg-row">
+                                <div class="col1">
+                                    <label><b>Naam van firma/organisatie:</b></label>
+                                    <span><?php echo $member['b_naam']; ?></span>
+                                </div>
+                                <div class="col2">
+                                    <label><b>(Hoofd) Functie:</b></label>
+                                    <span><?php echo $member['b_hoofd']; ?></span>
+                                </div>
+                            </div>
+                            <div class="reg-row">
+                                <div class="colfull">
+                                    <label><b>Aard van de firma/organisatie:</b></label>
+                                    <span>
+                                        <?php
+                                            $region_location_array = get_field('business_sector', 'option');
+                                            foreach($region_location_array as $region_location){
+                                                if($region_location['no'] == $member['b_firma']){
+                                                    echo $region_location['title'];
+                                                }
+                                            }
+                                        ?>
+                                    </span>
+                                </div>
+                            </div>
+                            
+                            <div class="reg-row">
+                                <div class="col1">
+                                    <label><b>Straat:</b></label>
+                                    <span><?php echo $member['b_straat']; ?></span>
+                                </div>
+                                <div class="col2">
+                                    <label><b>Nr.:</b></label>
+                                    <span><?php echo $member['b_nr']; ?></span>
+                                </div>
+                            </div>
+                            <div class="reg-row">
+                                <div class="col1">
+                                    <label><b>Postcode:</b></label>
+                                    <span><?php echo $member['b_postcode']; ?></span>
+                                </div>
+                                <div class="col2">
+                                    <label><b>Plaats:</b></label>
+                                    <span><?php echo $member['b_plaats']; ?></span>
+                                </div>
+                            </div>
+                            <div class="reg-row">
+                                <div class="colfull">
+                                    <label><b>Land:</b></label>
+                                    <span>
+                                        <?php
+                                            $region_location_array = get_field('region_location', 'option');
+                                            foreach($region_location_array as $region_location){
+                                                if($region_location['no'] == $member['b_land']){
+                                                    echo $region_location['title'];
+                                                }
+                                            }
+                                        ?>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="reg-row">
+                                <div class="col1">
+                                    <label><b>Telefoon:</b></label>
+                                    <span><?php echo $member['b_telefoon']; ?></span>
+                                </div>
+                                <div class="col2">
+                                    <label><b>Fax:</b></label>
+                                    <span><?php echo $member['b_fax']; ?></span>
+                                </div>
+                            </div>
+                            <div class="reg-row">
+                                <div class="colfull">
+                                    <label><b>GSM:</b></label>
+                                    <span><?php echo $member['b_gsm']; ?></span>
+                                </div>
+                            </div>
+                            <div class="reg-row">
+                                <div class="colfull">
+                                    <label><b>Emailadres:</b></label>
+                                    <span><?php echo $member['b_email']; ?></span>
+                                </div>
+                            </div>
+                            <div class="reg-row">
+                                <div class="colfull">
+                                    <label><b>Website bedrijf/organisatie:</b></label>
+                                    <span><?php echo $member['b_organisatie']; ?></span>
+                                </div>
+                            </div>
+                            <div class="reg-row">
+                                <div class="colfull">
+                                    <label><b>Andere functies en mandaten:</b></label>
+                                    <span><?php echo $member['b_functies']; ?></span>
+                                </div>
+                            </div>  
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+        <?php   
+        exit();
+        }
+    }
+        
     function prepare_items() {
         global $wpdb; //This is used only if making any database queries
-		$_SERVER['REQUEST_URI'] = remove_query_arg( '_wp_http_referer', $_SERVER['REQUEST_URI'] );
+        $_SERVER['REQUEST_URI'] = remove_query_arg( '_wp_http_referer', $_SERVER['REQUEST_URI'] );
         /**
          * First, lets decide how many records per page to show
          */
@@ -808,48 +668,49 @@ class TT_Member_List_Table extends WP_List_Table {
         
         $this->process_bulk_action();
         //edit compare
-		  $this->process_edit_action();
-		  
-		  //edit compare
-		  $this->process_detail_action();
+          $this->process_edit_action();
+          
+          //edit compare
+          $this->process_detail_action();
         
-		$this->process_bulk_active_user_action();
+        $this->process_bulk_active_user_action();
         //$data = $this->example_data;
           global $wpdb;
-		  
-		  
-		  $search = $_POST['s'];
-		  //echo "<script>alert('$search')</script>";
-		  if( $search != NULL ){
-		       	
-		        // Trim Search Term
-		        $search = trim($search);
-		       
-		        /* Notice how you can search multiple columns for your search term easily, and return one data set */
-		        $s_query = "SELECT id, id_product, amount, price, customer_name, customer_phone, customer_email, customer_address, customer_comment, price_total,buy_date FROM wp_orders where amount LIKE '%$search%'
-		        	OR price LIKE '%$search%'
-		        	OR customer_name LIKE '%$search%'
-		        	OR customer_phone LIKE '%$search%'
-		        	OR customer_email LIKE '%$search%'
-		        	OR customer_address LIKE '%$search%'
-		        	OR customer_comment LIKE '%$search%'
-                    OR price_total LIKE '%$search%'
-		        ";
-		  		$members = $wpdb->get_results($s_query);
-				$data = array();
-		  		foreach ($members as $querydatum ) {
-		   			array_push($data, (array)$querydatum);}
-		 
-		  }else{
-		  	$query = 'SELECT id, id_product, amount, price, customer_name, customer_phone, customer_email, customer_address, customer_comment, price_total,buy_date FROM wp_orders';
-		  	
-		  	$members = $wpdb->get_results($query);
-			$data = array();
-		  	foreach ($members as $querydatum ) {
-		   			array_push($data, (array)$querydatum);
-			}
-		  }
-		  
+          
+          
+          $search = $_POST['s'];
+          //echo "<script>alert('$search')</script>";
+          if( $search != NULL ){
+                
+                // Trim Search Term
+                $search = trim($search);
+               
+                /* Notice how you can search multiple columns for your search term easily, and return one data set */
+                $s_query = "SELECT id, customer_phone, customer_email,customer_name, customer_address, id_product,price_total,buy_date,delivery_date,order_status FROM wp_orders 
+                    where customer_name LIKE '%$search%'
+                    OR customer_phone LIKE '%$search%'
+                    OR customer_email LIKE '%$search%'
+                    OR customer_address LIKE '%$search%'
+                    OR id_product LIKE '%$search%'
+                    OR buy_date LIKE '%$search%'
+                    OR delivery_date LIKE '%$search%'
+                    OR order_status LIKE '%$search%'
+                ";
+                $members = $wpdb->get_results($s_query);
+                $data = array();
+                foreach ($members as $querydatum ) {
+                    array_push($data, (array)$querydatum);}
+         
+          }else{
+            $query = 'SELECT id,customer_phone, customer_email,customer_name, customer_address, id_product,price_total,buy_date,delivery_date,order_status FROM wp_orders';
+            
+            $members = $wpdb->get_results($query);
+            $data = array();
+            foreach ($members as $querydatum ) {
+                    array_push($data, (array)$querydatum);
+            }
+          }
+          
         
         function usort_reorder($a,$b){
             $orderby = (!empty($_REQUEST['orderby'])) ? $_REQUEST['orderby'] : 'title'; //If no sort, default to title
@@ -888,7 +749,7 @@ class TT_Member_List_Table extends WP_List_Table {
  * menu item to the bottom of the admin menus.
  */
 function tt_add_member_menu_items(){
-    add_menu_page('Đơn hàng', 'Đơn hàng', 'activate_plugins', 'tt_orders', 'tt_render_member_list_page','',8);
+    add_menu_page('Đơn hàng', 'Đơn hàng', 'activate_plugins', 'tt_member', 'tt_render_member_list_page','',8);
 } add_action('admin_menu', 'tt_add_member_menu_items');
 
 
@@ -912,71 +773,14 @@ function tt_render_member_list_page(){
             $testListTable->prepare_items();
     }
     //$testListTable->prepare_items();
-    /*EDIT MEMBER*/
-  	if(!empty($_POST) && wp_verify_nonce($_POST['act_update_member'],'update_member')){
-		global $wpdb;
-        $data['p_naam'] = $_POST['p_naam'];
-        $data['p_voornaam'] = $_POST['p_voornaam'];
-        $data['p_geboortedatum'] = $_POST['p_geboortedatum'];
-        $data['p_geboorteplaats'] = $_POST['p_geboorteplaats'];
-        $data['p_straat'] = $_POST['p_straat'];
-        $data['p_nr'] = $_POST['p_nr'];
-        $data['p_postcode'] = $_POST['p_postcode'];
-        $data['p_plaats'] = $_POST['p_plaats'];
-        $data['p_land'] = $_POST['p_land'];
-        $data['p_telefoon'] = $_POST['p_telefoon'];
-        $data['p_fax'] = $_POST['p_fax'];
-        $data['p_gsm'] = $_POST['p_gsm'];
-        $data['p_likedin'] = $_POST['p_likedin'];
-        
-		if (!empty($_FILES['p_picture']['name'])) {
-			$data['p_picture'] = $_FILES['p_picture']['name'];
-			$root = wp_upload_dir();
-			$root = $root['basedir'];
-			$upload_dir = $root.'/avatar/';
-			if (!file_exists($upload_dir)) {
-				mkdir($upload_dir);
-			}
-			$fileName = time().$data['p_picture'];
-			$target_file = $upload_dir.basename($fileName);
-			move_uploaded_file($_FILES['p_picture']['tmp_name'], $target_file);
-			$data['p_picture'] = basename($fileName);
-		}
-        $data['b_naam'] = $_POST['b_naam'];
-		$data['b_hoofd'] = $_POST['b_hoofd'];
-        $data['b_firma'] = $_POST['b_firma'];
-        $data['b_straat'] = $_POST['b_straat'];
-        $data['b_nr'] = $_POST['b_nr'];
-        $data['b_postcode'] = $_POST['b_postcode'];
-        $data['b_plaats'] = $_POST['b_plaats'];
-        $data['b_land'] = $_POST['b_land'];
-        $data['b_telefoon'] = $_POST['b_telefoon'];
-        $data['b_fax'] = $_POST['b_fax'];
-        $data['b_gsm'] = $_POST['b_gsm'];
-        $data['b_email'] = $_POST['b_email'];
-        $data['b_organisatie'] = $_POST['b_organisatie'];
-        $data['b_functies'] = $_POST['b_functies'];
-		if(!empty($_POST['p_email'])) {
-			$wpdb->update( 
-				'wp_members', 
-				$data,
-				array( 'Id' => $_GET['id'])
-			);
-			$link = admin_url().'admin.php?page=tt_member&action=edit&id='.$_GET['id'];
-			echo "<script>setTimeout(function(){window.location.href = '".$link."';},0);</script>";
-			exit();
-		}
-		else {
-			echo "<script>alert('can\'t update')</script>";
-		}
-	}
+
     ?>
     <div class="wrap">
-    	<input name="ajaxurl" type="hidden" class="ajaxurl" value="<?php echo bloginfo('home').'/wp-admin/admin-ajax.php'; ?>"/>
+        <input name="ajaxurl" type="hidden" class="ajaxurl" value="<?php echo bloginfo('home').'/wp-admin/admin-ajax.php'; ?>"/>
         <form method="post">
-		  <input type="hidden" name="page" value="tt_member" />
-		  <?php $testListTable->search_box('search', 'search_id'); ?>
-		</form>
+          <input type="hidden" name="page" value="tt_member" />
+          <?php $testListTable->search_box('search', 'search_id'); ?>
+        </form>
         <!-- Forms are NOT created automatically, so you need to wrap the table in one to use features like bulk actions -->
         <form id="movies-filter" method="get">
             <!-- For plugins, we also need to ensure that the form posts back to our current page -->

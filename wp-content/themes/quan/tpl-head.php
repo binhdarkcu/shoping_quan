@@ -3,11 +3,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title><?php echo get_bloginfo('name')?> - <?php echo get_bloginfo('description')?></title>
     <base href="<?php echo get_bloginfo('template_url')?>/"></base>
-    <meta name="description" content="Default Description" />
-    <meta name="keywords" content="Magento, Varien, E-commerce" />
     <meta name="robots" content="INDEX,FOLLOW" />
-    <link rel="icon" href="http://m2.arexmage.com/arw_dots/skin/frontend/base/default/favicon.ico" type="image/x-icon" />
-    <link rel="shortcut icon" href="http://m2.arexmage.com/arw_dots/skin/frontend/base/default/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+    <?php wp_head();?>
     <!--[if lt IE 7]>
     <script type="text/javascript">
     //<![CDATA[
@@ -83,4 +82,5 @@
     <script type="text/javascript">var grid_equal_height = false;</script>
     <link href='http://fonts.googleapis.com/css?family=Lato:100italic,100,200italic,200,300italic,300,400,400italic,500italic,500,600,600italic,700,700italic,800italic,800,900,900italic&amp;subset=all' rel='stylesheet' type='text/css' />
     <link href='http://fonts.googleapis.com/css?family=Montserrat:100italic,100,200italic,200,300italic,300,400,400italic,500italic,500,600,600italic,700,700italic,800italic,800,900,900italic&amp;subset=all' rel='stylesheet' type='text/css' />
+
 </head>

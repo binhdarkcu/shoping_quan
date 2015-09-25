@@ -7,8 +7,9 @@
     <meta name="description" content="Default Description" />
     <meta name="keywords" content="Magento, Varien, E-commerce" />
     <meta name="robots" content="INDEX,FOLLOW" />
-    <link rel="icon" href="http://m2.arexmage.com/arw_dots/skin/frontend/base/default/favicon.ico" type="image/x-icon" />
-    <link rel="shortcut icon" href="http://m2.arexmage.com/arw_dots/skin/frontend/base/default/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+    <?php wp_head();?>
     <!--[if lt IE 7]>
     <script type="text/javascript">
     //<![CDATA[

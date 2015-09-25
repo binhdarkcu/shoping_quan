@@ -22,7 +22,7 @@
         $data['price_total'] = $_POST['total_price_input'];
         $data['buy_date'] = date('Y-m-d');
 	    $data['delivery_date'] = date('Y-m-d');
-	        
+	    $data['order_status'] = 0;
 	        
         if (!empty($data['id_product'])) {
 			$results = $wpdb->insert('wp_orders', $data);

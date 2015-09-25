@@ -4,11 +4,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <base href="<?php echo get_bloginfo('template_url')?>/"></base>
 <title><?php echo get_the_title();?></title>
-<meta name="description" content="&lt;p&gt;Integer in ipsum sollicitudin, ornare diam quis, efficitur lectus. Cras ornare leo at elementum porttitor. Nunc erat velit, sagittis vel placerat mattis, aliquet vitae velit. Suspendisse commodo ut felis vitae convallis. Cum sociis natoque penatibus et" />
-<meta name="keywords" content="Magento, Varien, E-commerce" />
+
 <meta name="robots" content="INDEX,FOLLOW" />
-<link rel="icon" href="http://m2.arexmage.com/arw_dots/skin/frontend/base/default/favicon.ico" type="image/x-icon" />
-<link rel="shortcut icon" href="http://m2.arexmage.com/arw_dots/skin/frontend/base/default/favicon.ico" type="image/x-icon" />
+<link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+<?php wp_head();?>
 <!--[if lt IE 7]>
 <script type="text/javascript">
 //<![CDATA[

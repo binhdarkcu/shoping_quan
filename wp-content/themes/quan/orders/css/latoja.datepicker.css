@@ -6,7 +6,26 @@
 	font-family: "Helvetica Neue","Trebuchet MS",Tahoma,Verdana,Arial,sans-serif;
 	background: #fff;
 }
+.header-title h4{
+	font-size: 14px;
+}
+.informationBox{
 
+}
+.reg-left{
+	width: 500px;
+	font-size: 15px;
+}
+.reg-row{
+	margin-bottom: 10px;
+}
+.reg-row label{
+	display: block;
+	margin-bottom: 4px;
+}
+.reg-row textarea, .reg-row input[type="text"]{
+	width: 100%;
+}
 .ll-skin-latoja .ui-datepicker {
 	padding: 0;
 	  width: 280px;
