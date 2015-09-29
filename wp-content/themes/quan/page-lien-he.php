@@ -6,52 +6,36 @@
 	                <div class="col-main col-xs-12 col-sm-12 col-md-12" style="padding: 50px 0;">
 	                	<div class="col-xs-12 col-sm-5 col-md-5">
 	                		<h3>Thông tin liên hệ</h3>
+	                		<?php
+                                $strip = array('<p>','</p>'); // search for <p>
+                            ?>
 	                		<p>
 	                			<label>Hotline:</label>
-	                			<span>0902.636 809 / 0917 280 989 Ms Quỳnh Anh )</span>
+	                			<span><?php echo str_replace($strip,'',get_field('hotline','option'));?></span>
 	                		</p>
 	                		<p>
 	                			<label>Tại Tp. Hồ Chí Minh:</label>
-	                			<span>CÔNG TY TNHH TRANG THIẾT BỊ BHLĐ VIỆT AN
-Trụ sở chính : 29/6A Đường TRẦN THÁI TÔNG, Phường 15, Quận TÂN BÌNH, TP.HCM</span>
+	                			<span><?php echo str_replace($strip,'',get_field('company_address','option'));?></span>
 	                		</p>
 	                		<p>
 	                			<label>Điện thoại:</label>
-	                			<span>086.2731124-086.2970.118-0838.15.15.01-  Fax:0838.15.15.01
-0934.424.525 Ms Vân – Ms Nguyệt : 0912.280.989-0917.280.989 Ms Quỳnh Anh</span>
+	                			<span><?php echo str_replace($strip,'',get_field('phone_number','option'));?></span>
 	                		</p>
 	                		<p>
 	                			<label>Chat - yahoo:</label>
-	                			<span>vietanco  - baohovietan</span>
+	                			<span><?php echo str_replace($strip,'',get_field('sale_email','option'));?></span>
 	                		</p>
 	                		<p>
 	                			<label>Skype:</label>
-	                			<span>Sales.vietan - vietan.co</span>
+	                			<span><?php echo str_replace($strip,'',get_field('link_skype','option'));?></span>
 	                		</p>
 	                		<p>
 	                			<label>Email:</label>
-	                			<span><a href="mailto:baohovietan@gmail.com">baohovietan@gmail.com</a> – <a href="mailto:vietanco82@gmail.com">vietanco82@gmail.com</a>; <a href="mailto:sales.vietanco@gmail.com">sales.vietanco@gmail.com</a></span>
+	                			<span>
+                                            Email: <?php echo str_replace($strip,'',get_field('company_email','option'));?></span>
 	                		</p>
 
-	                		<p>
-	                			<label>Tại Vũng Tàu:</label>
-	                			<span><b>Trụ Sở Chính</b> : 149 Đườ​ng 30/4 , P.Thắng Nhất , TP.Vũng Tàu<br/>
-
-<b>ĐT</b>: 0643.543 994 - Fax : 0643.543 993<br/>
-
-<b>Email</b>: tanthekimvt@yahoo.com / baohotanthekim@gmail.com</span>
-	                		</p>
-	                		<p>
-	                			<h3>CƠ SỞ SẢN XUẤT:</h3>
-	                		</p>
-	                		<p>
-	                			<label>Cơ sở 1:</label>
-	                			<span>144/56 Đường Số 8 , P.Bình Hưng Hòa , Q.Bình Tân , TP.HCM</span>
-	                		</p>
-	                		<p>
-	                			<label>Cơ sở 2:</label>
-	                			<span>428 Đường Tân Thới Hiệp 21 , QL 1 A , P.Tân Thới Hiệp , Q.12 , TP.HCM</span>
-	                		</p>
+	                		
 	                	</div>
 	                	<div class="col-xs-12 col-sm-7 col-md-7 contactcol">
 	                		<h3>Form Liên hệ</h3>

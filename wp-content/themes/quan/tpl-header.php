@@ -365,7 +365,7 @@
     </div>
     <div class="container">
         <div class="advHeader">
-            <img src="images/adv.jpg" border="0" style="width: 100%;">
+            <img src="<?php echo get_field('image_banner_home','option');?>" border="0" style="width: 100%;">
         </div>
     </div>
 </header>

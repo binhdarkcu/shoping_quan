@@ -1,7 +1,7 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title><?php echo get_bloginfo('name')?> - <?php echo get_bloginfo('description')?></title>
+    <title><?php echo get_bloginfo('name')?></title>
     <base href="<?php echo get_bloginfo('template_url')?>/"></base>
     <meta name="robots" content="INDEX,FOLLOW" />
     <link rel="icon" href="images/favicon.ico" type="image/x-icon" />

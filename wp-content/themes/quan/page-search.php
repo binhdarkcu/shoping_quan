@@ -26,7 +26,7 @@
 					   </div>
     					<div class="category-products">
 					       
-                        <ul class="products-grid arw-3-col arw-row" id="product-list-2046808">
+                        <ul class="products-grid arw-4-col arw-row" id="product-list-2046808">
                         	<?php
 								//$query_category = get_category_post($category->name);
                             if(!empty($_GET['category']) && empty($_GET['q'])) {
@@ -68,12 +68,12 @@
                                         </div>
                         				
                            			</div>
-				                    <div class="product-info">
+				                    <div class="product-info-product">
                                         <div class="row no-margin">
-                                            <div class="col-xs-8 arw-info-separator">
+                                            <div class="col-xs-12 arw-info-separator">
                                                 <h2 class="product-name">
-                                                    <a href="<?php echo get_the_permalink($newhome->ID)?>" title="SW3 SmartWatch 3">
-                                                        <span title="SW3 SmartWatch 3"><?php echo get_the_title($newhome->ID);?></span>
+                                                    <a href="<?php echo get_the_permalink($newhome->ID)?>" title="<?php echo get_the_title($newhome->ID);?>">
+                                                        <span title="<?php echo get_the_title($newhome->ID);?>"><?php echo get_the_title($newhome->ID);?></span>
                                                     </a>
                                                 </h2>
                                                 <div class="ratings">
@@ -82,9 +82,9 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-xs-4 no-padding">
+                                            <div class="col-xs-12 arw-info-separator">
                                                 <div class="price-box">
-                                                    <span class="regular-price" id="product-price-22">
+                                                    <span class="regular-price" id="product-price-22" style="padding-bottom: 5px; margin-top: 0px;">
                                                         <span class="price" content="<?php echo $price;?>"><?php echo $price;?> VNĐ</span>
                                                     </span>
 

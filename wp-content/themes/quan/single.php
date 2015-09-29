@@ -157,7 +157,6 @@
                                                                                 
                                     </div>
                                         
-                                
                                 </div>
                                 <div class="short-description">
                                     <span class="description-label"></span>
@@ -306,7 +305,7 @@
                                 <?php
                                     $args_banner = array(
                                         'post_type'      => 'advertises',
-                                        'posts_per_page' => 1,
+                                        'posts_per_page' => 2,
                                         'order'          => 'asc'
                                     );
                                     $queryBanner = get_posts($args_banner);
