@@ -7,10 +7,10 @@ jQuery(document).ready(function(){
             'fullname': {
                 required: true
             },
-            'phonenumber': {
+            'phone': {
                 required: true
             },
-            'youremail':{
+            'khachemail':{
             	required: true,
             	email: true,
             },

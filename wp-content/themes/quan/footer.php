@@ -136,3 +136,22 @@
 </html>
 <script type="text/javascript" src="js/jquery.validate.js"></script>
 <script type="text/javascript" src="js/validate.payment.js"></script>
+
+<script type="text/javascript">
+function addcart( id )
+{   
+    var url_ajax='<?php bloginfo("url");?>/wp-admin/admin-ajax.php';    
+    var data={'productID': id ,'action':'my_cart_special_action','security':'<?php echo encrypt('Security');?>'};
+    jQuery.post(url_ajax,data,function(response){
+        if(!isNaN(response)){
+            jQuery("#product_count").text(jQuery.trim(response));
+            alert("Đã thêm vào giỏ hàng");
+        }
+        else
+        {
+            alert(jQuery.trim(response));
+        }
+
+    });
+}
+</script>

@@ -1,5 +1,5 @@
 <div class="one_tab" id="tab_3_home_featured_tab_contents">
-        <div class="product-list-index">
+        <div class="product-list-index width5item">
             <ul class="products-slide products-grid arw-1-col arw-row">
                 <li class="arw-col item">
                 <?php
@@ -44,24 +44,25 @@
                     </div>
                     <div class="product-info">
                         <div class="row no-margin">
-                            <div class="col-xs-8 arw-info-separator">
+                            <div class="col-xs-12 arw-info-separator">
                                 <h2 class="product-name">
-                                    <a href="<?php echo get_the_permalink($newhome->ID)?>" title="SW3 SmartWatch 3">
+                                    <a href="<?php echo get_the_permalink($newhome->ID)?>" title="<?php echo get_the_title($newhome->ID);?>">
                                         <span title="SW3 SmartWatch 3"><?php echo get_the_title($newhome->ID);?></span>
                                     </a>
                                 </h2>
                                 <div class="ratings">
                                     <div class="rating-box">
-                                        <div class="rating" style="width:0%"></div>
+                                        <?php $rating_star = get_field('rating_star',$newhome->ID);?>
+                                                        <div class="rating" style="width:<?php echo $rating_star*20;?>%"></div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xs-4 no-padding">
+                            <div class="col-xs-12 arw-info-separator">
 
 
 
                                 <div class="price-box">
-                                    <span class="regular-price" id="product-price-22">
+                                   <span class="regular-price" id="product-price-22" style="padding-bottom: 5px; margin-top: 0px;">
                                         <span class="price" content="<?php echo $price;?>"><?php echo $price;?> VNĐ</span>
                                     </span>
 

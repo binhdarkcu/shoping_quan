@@ -111,7 +111,8 @@
                                                 </h2>
                                                 <div class="ratings">
                                                     <div class="rating-box">
-                                                        <div class="rating" style="width:20%"></div>
+                                                        <?php $rating_star = get_field('rating_star',$newhome->ID);?>
+                                                        <div class="rating" style="width:<?php echo $rating_star*20;?>%"></div>
                                                     </div>
                                                 </div>
                                             </div>

@@ -17,7 +17,12 @@
     //include TEMPLATEPATH.'/taxonomy-custom/taxonomy-custom.php';
 	//register meta box
 	require_once( 'meta-box/init.php' );
-
+	
+	//Cart
+	include (TEMPLATEPATH . '/cart/cart.php');
+	include (TEMPLATEPATH . '/cart/cart-db.php');
+	include (TEMPLATEPATH . '/cart/ordersPage_admin.php');
+	include TEMPLATEPATH . '/inc/ma-hoa.php';
     //change label post
     include 'inc/change_label_post.php';
 	
@@ -25,11 +30,9 @@
     //include 'inc/page_nav.php';
 
 	//contact form
-	include TEMPLATEPATH . '/email/smtp.php';
-	include TEMPLATEPATH . '/email/xtemplate.payment.php';
-	//include TEMPLATEPATH . '/email/xtemplate.forgotpassword.php';
+	include TEMPLATEPATH . '/email/index.php';
 	
-	include 'orders/page_orders.php';
+	//include 'orders/page_orders.php';
 	//contact form
 
 	add_filter( 'posts_where', 'title_like_posts_where', 10, 2 );

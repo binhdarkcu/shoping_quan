@@ -1,42 +1,53 @@
 <?php get_header();?>
 <?php
+	$produdct_Arr = array();
 	$product_id = !empty($_GET['product_id']) ? $_GET['product_id']:"";
-	$product_price = !empty($_GET['product_price']) ? $_GET['product_price']:"";
+	$product_price = get_field('product_price', $product_id);
 	//$amount_select = !empty($_GET['amount_select']) ? $_GET['amount_select']:"";
-	$bigImg = wp_get_attachment_url( get_post_thumbnail_id($product_id) );
+	
 	$price = number_format( $product_price, 0, ',', '.');
-	$_SESSION['product'][$product_id] = array('price' => $product_price, 'amount' => $amount_select);
-	//print_r($_SESSION['product'][$product_id]);
+	$cart = get_cart_in_session();
+
 ?>
 <?php
-	if (isset( $_POST['paymnent'] ) && wp_verify_nonce($_POST['paymnent'], 'act_payment') ){
+	if(wp_verify_nonce($_POST['action_contact'], 'contact'))
+	{	
 		global $wpdb;
-		$data['id_product'] = $product_id;
-		$data['price'] = $_SESSION['product'][$product_id]['price'];
-        //$data['amount'] = $_SESSION['product'][$product_id]['amount'];
-        $data['customer_name'] = $_POST['fullname'];
-        $data['customer_phone'] = $_POST['phonenumber'];
-        $data['customer_email'] = $_POST['youremail'];
-        $data['customer_address'] = $_POST['address'];
-        $data['customer_comment'] = $_POST['yournote'];
-        $data['price_total'] = $_POST['total_price_input'];
-        $data['buy_date'] = date('Y-m-d');
-	    $data['delivery_date'] = date('Y-m-d');
-	    $data['order_status'] = 0;
-	        
-        if (!empty($data['id_product'])) {
-			$results = $wpdb->insert('wp_orders', $data);
-			 if($results){
-			 	$product_name = 'Tên sản phẩm: '.get_the_title($data['id_product']).' -Số lượng'.$data['amount'];
-				//payment_form($data['customer_name'], $data['customer_phone'],$data['customer_email'],$data['customer_address'],  );
-	            $link = get_site_url().'/success';
-	            echo "<script>setTimeout(function(){window.location.href = '$link';},1);</script>";
-	        }
-	        else{
-	        	
-	            $message = "Register failed";
-	        }
-        }
+		$errors=array();
+		$cart_tt=get_cart_in_session();
+		$ten=$_POST['fullname'];
+		$dienthoai=$_POST['phone'];
+		$diachi=$_POST['address'];
+		$email=$_POST['khachemail'];
+		$chitiet=$_POST['message'];
+		$order=$wpdb->prefix.'order';
+		$userID=$current_user->ID;	
+		if($cart_tt)
+		{
+			 if(insert_cart_to_db())
+			 {
+			 	$orderid=get_order_id_with_session();						 	
+			 	gui_noi_dung_don_hang_admin($ten, $dienthoai, $diachi, $email, $chitiet, $orderid);
+			 	gui_noi_dung_don_hang_khach($ten, $dienthoai, $diachi, $email, $chitiet, $orderid);
+			 	$wpdb->get_results( "UPDATE {$order} SET email='{$email}' WHERE ID='{$orderid}'");
+			 	 //session_regenerate_id();
+				 session_unset();
+				 //echo '<script>alert("Đặt hàng thành công. Vui lòng kiểm tra email !");</script>';
+				 ?>
+				  <script type="text/javascript">
+                    	function AAA()
+						{
+							location.href="<?php bloginfo('url');?>/success"
+						}
+                    	setTimeout("AAA()",1)                    	
+ 					</script>
+				 <?php 
+				 exit();					
+			 }
+			 else{
+			 	echo '<script>alert("Hiện tại không thể lưu !");</script>';
+			 }
+		}
 	}
 ?>
 <div class="main-container col1-layout" style="margin-top: 30px;">
@@ -53,88 +64,56 @@
             					<fieldset>
                 					<table id="shopping-cart-table" class="data-table cart-table">
                                         <thead>
-						                    <tr class="first last">
-						                        <th rowspan="1">&nbsp;</th>
-						                        <th class="a-left" rowspan="1"><span class="nobr">Tên sản phẩm</span></th>
-						                        <th rowspan="1" class="a-center">Mêu tả</th>
-						                        <th class="a-center" colspan="1"><span class="nobr">Giá tiền</span></th>
-						                        
-						                        
-						                        <th class="a-center" colspan="1">Tổng giá tiền</th>
-						                    </tr>
+						                    <tr class="top">
+								              <td class="sp" width="5%">STT</td>
+								              <td class="sp" width="30%">Sản Phẩm</td>
+								              <td class="dg" width="20%">Đơn giá &nbsp;&nbsp;&nbsp;(1.000 VNĐ)</td>
+								              <td class="sl" width="10%">Số lượng</td>
+								              <td class="tt" width="20%">Thành tiền (1.000 VNĐ)</td>
+								              <td class="xoa" width="5%">Xóa</td>
+								            </tr>
                                         </thead>
+                                        <?php
+                                        	if($cart){
+                                        		$order_details=$cart['order_details'];
+										    	$total = get_total($order_details);
+										    	$i=0;
+										     	foreach ($order_details as $key=>$cart_item){
+										     		$i++;
+										     		$productID = $cart_item['productID']; 
+										     		$bigImg = wp_get_attachment_url( get_post_thumbnail_id($productID) );
+										     		$callcheckbox = get_field('call_checkbox',$productID);
+										     		if(!empty($callcheckbox)) {
+														$price_product = 'Call';
+													}else{
+														$price_product = number_format($cart_item['price'],0);;
+													}
+                                        ?>
                     					<tbody>
-                                            <tr class="first last odd">
-											    <td>
-											    	<a href="<?php echo get_the_permalink($product_id);?>" title="<?php echo get_the_title($product_id);?>" class="product-image">
-											    		<img src="<?php echo $bigImg;?>" width="75" height="75" alt="<?php echo get_the_title($product_id);?>">
-											    	</a>
-											    </td>
-											    <td class="a-left">
-											        <h3 class="product-name">
-									                    <a href="<?php echo get_the_permalink($product_id);?>"><?php echo get_the_title($product_id);?></a>
-									                </h3>
-	                                            </td>
-	                                            <td style="text-align: left;" width="50%">
-	                                            	<?php echo wp_trim_words(get_content_by_id($product_id), 50);?>	
-	                                            </td>
-											    <td class="a-center">
-											        <span class="cart-price">
-											       	<input type="hidden" name="product_price" value="<?php echo $product_price;?>">
-											        <span class="price"><?php echo $price;?> VNĐ</span>                
-											            </span>
-												</td>
-												<!--td><a href="javascript:void(0)" id="edit_amount">Cập nhật</a></td>
-											        <!-- inclusive price starts here -->
-											    <!--td class="a-center">
-											        <input id="product_amount_label" name="product_amount" value="<?php echo $amount_select;?>" size="4" title="Qty" class="input-text qty" maxlength="12">
-											    </td-->
-
-										    <!--Sub total starts here -->
-										        <td class="a-center">
-										            <span class="cart-price">
-										        		<span class="price" id="total_price"></span>                            
-										        	</span>
-	            								</td>
-											</tr>
+                                            <tr id="productID-<?php echo $productID ;?>" >
+								              <td><?php echo $i;?></td>
+								              <td class="sp"><a href="<?php echo get_permalink($productID);?>"><?php echo get_the_title($productID);?></a></td>
+								              <td class="dg"><?php echo $price_product;?><b>&nbsp;</b></td>
+								              <td class="sl quanlity-<?php echo $productID; ?>"><input type="text" name="quanlity-<?php echo $productID;?>" id="tt-<?php echo $productID;?>" value="<?php _e($cart_item['quanlity']); ?>"  class="quanlity" /></td>
+								              <td class="tt subtotal-<?php echo $productID;?>"><span><?php _e(number_format($cart_item['subtotal'],0));?></span><b>&nbsp;</b></td>
+								              <td class="removeItemProduct"><a href="javascript:void(0)" data-productID="<?php _e($productID);?>"><img alt="" src="images/x.jpg"  /></a>
+								              <input type="hidden" id="productID" value ="<?php _e($productID);?>"/>
+								              
+								              </td>
+								            </tr>
                                         </tbody>
-                                        <script type="text/javascript">
-                                        	jQuery(document).ready(function(){
-                                        		function numberWithCommas(x) {
-    												return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-												}
-                                        		var product_amount = 1;//jQuery('input[name="product_amount"]').val();
-                                        		var product_price = jQuery('input[name="product_price"]').val();
-                                        		var total_price = numberWithCommas(parseInt(product_price)*parseInt(product_amount));
-                                        		jQuery('#total_price, #total_price_after').text(total_price+' VMĐ');
-                                        		jQuery('input[name="total_price_input"]').val(parseInt(product_price)*parseInt(product_amount));
-
-                                        		jQuery('#edit_amount').on('click',function(){
-                                        			var product_amount = 1;//jQuery('input[name="product_amount"]').val();
-	                                        		var product_price = jQuery('input[name="product_price"]').val();
-	                                        		var total_price = numberWithCommas(parseInt(product_price)*parseInt(product_amount));
-	                                        		jQuery('#total_price, #total_price_after').text(total_price+' VMĐ');
-	                                        		jQuery('input[name="total_price_input"]').val(parseInt(product_price)*parseInt(product_amount));
-                                        		});
-
-                                        		jQuery('#product_amount_label').on('change',function(){
-                                        			if(jQuery(this).val() <=0){
-                                        				alert('Số lượng phải lớn hơn 0');
-                                        				jQuery(this).val(1);
-                                        			}
-                                        			var numberRegex = /^[+-]?\d+(\.\d+)?([eE][+-]?\d+)?$/;
-                                        			if(!numberRegex.test(jQuery(this).val())) {
-                                        				alert('Số lượng phải là số');
-                                        				jQuery(this).val(1);
-                                        			}
-                                        		});
-                                        	});
-                                        </script>
+                                        <?php } }?>
+                                        
                     				<tfoot>
 
 					                    <tr class="first last">
 					                        <td colspan="50" class="a-right last">
-					                            <a href="<?php echo bloginfo('home')?>/san-pham"><button type="button" title="Hủy bỏ" class="button btn-continue"><span><span>Hủy bỏ</span></span></button></a>
+					                            <h3>Tổng tiền:<span class="totalmoney"><?php _e(number_format($total,0)); ?></span><b>&nbsp;VNĐ</b></span></h3>
+					                        </td>
+					                    </tr>
+					                    <tr class="first last">
+					                        <td colspan="50" class="a-right last">
+					                            <a href="<?php echo bloginfo('home')?>/san-pham"><button type="button" title="Hủy bỏ" class="button btn-continue"><span><span>Tiếp tục mua hàng</span></span></button></a>
 					                           
 					                        </td>
 					                    </tr>
@@ -150,42 +129,31 @@
                                 <div class="shipping">
 								    <h2>Thông tin thanh toán</h2>
 								    <div class="shipping-form">
-								       <form action="http://m2.arexmage.com/arw_dots/checkout/cart/estimatePost/" method="post" id="shipping-zip-form">
-								            <p>Vui lòng nhập thông tin quý khách để thực hiện mua sản phẩm</p>
-								            <ul class="form-list">
-								                <li class="col-xs-12 col-sm-12 col-md-8" style="padding-left: 0;">
-								                    <label for="fullname" class="required"><em>*</em>Họ và tên</label>
-								                    <div class="input-box">
-								                        <input type="text" name="fullname" id="fullname" class="validate-select" title="Họ và tên" value=""/>
-								                    </div>
-								                </li>
-								                <li class="col-xs-12 col-sm-12 col-md-8" style="padding-left: 0;">
-								                    <label for="phonenumber">Số điện thoại</label>
-								                    <div class="input-box">
-								                        <input type="tel" name="phonenumber" id="phonenumber" class="validate-select" title="Số điện thoại" value=""/>
-								                    </div>
-								                </li>
-								                <li class="col-xs-12 col-sm-12 col-md-8" style="padding-left: 0;">
-								                    <label for="youremail">Email</label>
-								                    <div class="input-box">
-								                        <input type="email" name="youremail" id="email" class="validate-select" title="Email" value=""/>
-								                    </div>
-								                </li>
-								                <li>
-								                    <label for="youraddress">Địa chỉ giao hàng</label>
-								                    <div class="input-box">
-								                        <input type="text" name="address" id="youraddress" class="validate-select" title="Địa chỉ giao hàng" value=""/>
-								                    </div>
-								                </li>
-								                <li>
-								                    <label for="yournote">Ghi chú</label>
-								                    <div class="input-box">
-								                        <textarea class="input-text validate-postcode"id="yournote" name="yournote"></textarea>
-								                    </div>
-								                </li>
-								            </ul>
-								            
-								        </form>
+								    	<form action="" method="post" name="form_contact_us" id="form_contact_us">
+        									<p>Vui lòng nhập thông tin quý khách để thực hiện mua sản phẩm</p>
+						                	<p>
+						                    	<label>Tên của bạn<b class="text_red">*</b> : </label>
+						                        <input type="text" name="fullname" value="<?php echo $_POST['fullname'];?>" />
+						                    </p>
+						                    <p>
+						                    	<label>Điện thoại<b class="text_red">*</b> :</label>
+						                        <input type="text" name="phone" value="<?php echo $_POST['phone'];?>"/>
+						                    </p>
+						                    <p>
+						                    	<label>Email<b class="text_red">*</b> :</label>
+						                        <input type="text"  name="khachemail" value=""/>
+						                    </p>
+						                    <p>
+						                    	<label>Địa chỉ<b class="text_red">*</b> :</label>
+						                        <input type="text" name="address" value="<?php echo $_POST['address'];?>"/>
+						                    </p>
+						                    <p>
+						                    	<label>Nội dung<b class="text_red">*</b> :</label>
+						                        <textarea cols="" rows="" name="message"><?php echo $_POST['message'];?></textarea>                        
+						                    </p>
+						                    
+						                     <?php wp_nonce_field('contact', 'action_contact'); ?>
+						                </form>
 									</div>
 								</div>
             				</div>
@@ -205,26 +173,16 @@
 												    </td>
 												    <td style="" class="a-right">
 												    	<input type="hidden" value="" name="total_price_input"/>
-												        <strong><span class="price" id="total_price_after"></span>   </strong> 
+												        <strong><span class="price" id="total_price_after"><?php _e(number_format($total,0)); ?> VNĐ</span>   </strong> 
 												   	</td>
 												</tr>
 									        </tfoot>
-									        <tbody>
-									            <tr>
-												    <td  style="width: 35%" class="a-right" colspan="1">
-												        Tên sản phẩm
-												    </td>
-												    <td style="font-size: 13px;" class="a-right"><?php echo get_the_title($product_id);?>
-												    </td>
-												</tr>
-									        </tbody>
+									       
 									    </table>
 				                    </div>
 				                </div>
                                 <div class="totals">
                         <ul class="checkout-types">
-                        	<li>    
-                        		<?php wp_nonce_field('act_payment','paymnent');?>
                         		<button type="submit" title="Thanh toán" class="button btn-proceed-checkout btn-checkout"><span><span>Thanh Toán</span></span></button>
 							</li>
                         </ul>
@@ -241,3 +199,124 @@
             </div>
         </div>
 <?php get_footer();?>
+
+<!-- update -->
+<script type="text/javascript">
+  jQuery(document).ready(function(){
+	           
+	         jQuery(function(){
+
+	        	 jQuery('.sl .quanlity').bind('keypress', function(e) {		        	
+	        		 var  keycode = (e.keyCode ? e.keyCode : e.which);
+	        		 if(keycode<48 || keycode>57  ){
+		        		 if(!(keycode == 9  ||keycode == 8  || keycode ==46 || keycode ==37|| keycode ==38|| keycode ==39|| keycode ==40)){	
+			        	 	return false;	 
+		        		 }
+		        	}
+	        		
+	        		 
+		        });
+	        	 
+    			 jQuery('.sl .quanlity').live('keyup',function(){
+
+    				    
+    						$quanlity=jQuery(this).val();
+    						if($quanlity==0)
+    						{
+    							$quanlity=1;
+    						}    						
+    						$ID=jQuery(this).attr('id').replace('tt-',' ');
+    						$productID= jQuery.trim($ID);
+    						//alert($quanlity);
+    						//alert($productID);
+								jQuery.ajax
+		    					({
+		    						url:'<?php bloginfo("url");?>/wp-admin/admin-ajax.php',
+		    			   			 type:'POST',
+		    			    		data:'action=my_price_special_action&productID='+$productID+'&quanlity='+ $quanlity,
+		    		       		 	success:function(results)
+		    		      			  {    
+                                         if(isNaN(results)==false)
+                                         {
+                                        	 alert('Số lượng bạn đặt mua lớn hơn số lượng trong kho. Chúng tôi chỉ còn '+results+' sản phẩm');
+                                         }
+                                         else
+                                         {
+	    		      			          $kq=results.split('-');
+	    		      			          $tt='<span>'+	$kq[0]+'</span>';    		      			          
+		    			    		      jQuery('.subtotal-'+$productID).html($tt);
+		    			    		      $st='<span>'+	$kq[1]+'</span><b>&nbsp;</b>'
+									      jQuery('.totalmoney').html($st);
+                                         }     
+											
+		    			   			 }                            
+		    					});
+								
+				    	});
+            		 
+			    	});
+
+  });
+  </script>
+<!-- delete -->
+<script type="text/javascript">
+
+  jQuery(document).ready(function(){
+	          
+	         jQuery(function(){
+	        
+    			 jQuery('.removeItemProduct').live('click',function(){
+                            
+    				 		$productID=jQuery(this).find('a').attr('data-productid');   		 	
+   	   	   				 	jQuery('#productID-'+$productID).remove();
+   	   				 		 
+								jQuery.ajax
+		    					({
+		    						url:'<?php bloginfo("url");?>/wp-admin/admin-ajax.php',
+		    			   			 type:'POST',
+		    			    		data:'action=my_delete_special_action&productID='+$productID,
+		    		       		 	success:function(results)
+		    		      			  {    
+                                         
+	    		      			          // alert(results);
+		    			    		      $rs=results;
+		    			    		     // alert($rs);
+		    			    		      
+		    			    		      if($rs==0)
+		    			    		      {
+                                                jQuery('#cart').remove(); 
+                                                jQuery('#product_count').text(0);
+                                                
+                                                jQuery('table').remove(); 
+                                                jQuery('.capnhat').remove(); 
+                                                jQuery('.tieptheo').remove(); 
+                                                jQuery('#sotien').remove(); 
+                                                
+                                               
+			    			    		   }
+		    			    		      else
+		    			    		      {
+		    			    		    	 		
+		    			    		    	  $rs = results.split('-');
+		    			    		    	 
+											  jQuery('.sotien').html($rs[0] + '<b class="vnd"> VNĐ </b>');
+											  jQuery('#sotien').html($rs[0]); 
+											  jQuery("#product_count").text($rs[1]);
+											  jQuery('#productID-' + $productID).remove(); 
+											  
+			    			    		   }		    			    		  
+		    			    		     
+											
+		    			   			 }                            
+		    					});
+
+                           return false;
+								
+				    	});
+            		 
+			    	});
+
+  });
+
+
+  </script>

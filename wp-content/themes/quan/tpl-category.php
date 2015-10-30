@@ -1,6 +1,6 @@
 <div class="block block-nav hide-below-768">
 	        <div class="block-title">
-	            <strong><span>Loại sản phẩm</span></strong>
+	            <strong><span>Danh mục</span></strong>
 	        </div>
 	        <div class="block-content">
 	            <ul id="categories_nav_left" class="nav-accordion nav-categories">

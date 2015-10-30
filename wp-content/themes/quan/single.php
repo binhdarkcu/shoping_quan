@@ -5,13 +5,14 @@
         $bigImg = wp_get_attachment_url( get_post_thumbnail_id(get_the_ID()) );
         $price = get_field('product_price',get_the_ID());
         $price = number_format( $price, 0, ',', '.');
+        $callcheckbox = get_field('call_checkbox',get_the_ID());
     ?>
     <div class="main-container col1-layout">
        <div class="arw_breadcrumbs"><div class="container">
             <div class="breadcrumbs">
                 <ul>
                     <li class="home">
-                        <a href="http://m2.arexmage.com/arw_dots/" title="Go to Home Page">Trang chủ</a>
+                        <a href="<?php echo get_bloginfo('home')?>" title="Go to Home Page">Trang chủ</a>
                                     <span><i class="fa fa-caret-right"></i></span>
                     </li>
                     <li class="product">
@@ -33,10 +34,10 @@
                         <div class="product-essential">
                             <div class="row">
                                 <div class="col-main-details col-sm-12 col-md-9">
-                                    <form action="<?php echo bloginfo('home')?>/cart" method="get" id="product_addtocart_form">
+                                    <form action="" method="get" id="product_addtocart_form">
                                         <input name="form_key" type="hidden" value="FuS5jSHNsfq830IO" />
                                         <div class="no-display">
-                                            <input type="hidden" name="product_id" value="<?php echo get_the_ID();?>" />
+                                            <input type="hidden" name="productID" value="<?php echo get_the_ID();?>" />
                                         </div>
                                         <div class="row">
                                             <div class="product-img-box col-xs-12 col-sm-5 col-md-5">
@@ -143,9 +144,15 @@
                                         <div class="price-box">
                                             <p class="special-price">
                                                 <span class="price-label">Giá bán:</span>
+                                                <?php if(!empty($callcheckbox)) {?>
                                                 <span class="price" itemprop="price" content="<?php echo $price;?>">
-                                                    <?php echo $price;?> VNĐ                
+                                                    Call 
                                                 </span>
+                                                <?php } else {?>
+                                                <span class="price" itemprop="price" content="<?php echo $price;?>">
+                                                    <?php echo $price;?> VNĐ   
+                                                </span>
+                                                <?php }?>
                                                 <input type="hidden" name="product_price" value="<?php echo get_field('product_price',get_the_ID());?>"/>
                                             </p>
                                                     
@@ -223,9 +230,9 @@
             <div class="product-options-bottom">
                 
                 <div class="add-to-box-actions"><!-- ./ start add-to-box-actions-->
-                    <button type="submit" title="Mua ngay" id="product-addtocart-button" class="button btn-cart"><span><span class="icon_bag"></span>
-                        <span class="text">Mua ngay</span></span>
-                    </button>
+                    <a style="    background: #4cd5d3;color: #fff;padding: 8px 17px;font-weight: bold;text-transform: uppercase;" href="javascript:void()" class="button-addcart" onclick="addcart(<?php echo $id;?>);" title="Mua ngay" id="product-addtocart-button" class="button btn-cart"><span><span class="icon_bag"></span>
+                        <span class="text">Order</span></span>
+                    </a>
                     
                 </div><!-- ./ end add-to-box-actions-->
             </div>

@@ -358,7 +358,14 @@
                         </div>
                         
                     </nav>
-                    
+                    <div class="header-mini-cart arw-toggle-container pull-right">
+                            <a class="mini-cart-header" href="<?php bloginfo('url');?>/cart/">
+                                <span class="icon_bag"></span>
+                                    <span class="total-badge">
+                                        Bạn hiện có <span id="product_count"><?php echo trim(get_count_product());?></span> Sản phẩm             
+                                </span>
+                            </a>
+                    </div>
                 </div>
             </div>
         </div>

@@ -3758,6 +3758,19 @@ ul.tags-list:hover li:hover a, ul.tags-list:hover li:active a, ul.tags-list:hove
 .products-grid .ratings .rating-box {
   margin: 0;
 }
+.width5item .products-grid .arw-col .wrapper-item{
+      max-width: 230px;
+}
+.width5item .products-grid .arw-col .wrapper-item .outer-image{
+      height: 240px;
+      min-height: 240px;
+}
+.width5item .products-grid li.item .wrapper-item:hover .ratings{
+  display: block;
+}
+.width5item .products-grid .price-box .price, .width5item .products-grid .price-box{
+  text-align: left;
+}
 .products-grid .outer-image {
   position: relative;
   min-height: 335px;
@@ -4067,7 +4080,6 @@ ul.tags-list:hover li:hover a, ul.tags-list:hover li:active a, ul.tags-list:hove
 .products-grid li.item .wrapper-item:hover .product-name a, .products-grid li.item .wrapper-item:active .product-name a, .products-grid li.item .wrapper-item:focus .product-name a {
   overflow: visible;
   text-overflow: clip;
-  white-space: normal;
 }
 .products-grid li.item .wrapper-item:hover .ratings, .products-grid li.item .wrapper-item:active .ratings, .products-grid li.item .wrapper-item:focus .ratings {
   display: none;
